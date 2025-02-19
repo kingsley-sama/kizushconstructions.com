@@ -13,7 +13,7 @@ const Portfolio = () => {
       <div className="container mx-auto px-4 py-12 bg-white">
         {/* Mobile Scroll Container */}
         <div className="relative md:hidden">
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          
           <div className="flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
             {galleryItems.map((item, index) => (
               <div
