@@ -52,5 +52,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"),
+    ({ addUtilities }) => {
+      const newUtilities = {
+        ".clip-path": {
+          clipPath: "var(--clip-path)",
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
 };
