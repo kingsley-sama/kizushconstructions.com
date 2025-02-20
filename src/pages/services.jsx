@@ -41,7 +41,7 @@ function Section({ data, imageOnLeft = false }) {
   return (
     <div className="grid lg:grid-cols-2 gap-4 items-center">
       {/* Image Section */}
-      <div className={`relative h-[250px] md:h-[400px] w-5/6 overflow-hidden ${imageOnLeft ? "lg:order-1" : "lg:order-2"}`}>
+      <div className={`relative h-[250px] md:h-[400px] w-full md:w-5/6 overflow-hidden ${imageOnLeft ? "lg:order-1" : "lg:order-2"}`}>
         <div
           className="absolute inset-0 bg-cover bg-center lg:clip-path"
           style={{

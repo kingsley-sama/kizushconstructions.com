@@ -19,7 +19,7 @@ export default function AboutSection() {
           transition={{ duration: 0.5 }}
           className="text-sm tracking-[0.2em] uppercase text-[#4A4A4A] mb-4"
         >
-          Design & Renovation Specialist in Barrie
+          Design Renovation & Construction Specialist In Canada
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function AboutSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed max-w-3xl mx-auto"
         >
-          At Bay Point Contracting, we specialize in bringing your vision to life through thoughtful design and
+          At Kizush Constructions, we specialize in bringing your vision to life through thoughtful design and
           renovation. Crafting a space that reflects your style and dreams, our in-house design team and renovation
           expertise come together for a customized and stylish transformation of your home.
         </motion.p>

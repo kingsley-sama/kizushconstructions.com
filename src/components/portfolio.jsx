@@ -8,9 +8,21 @@ const Portfolio = () => {
       { src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea", alt: "Alea Pro", caption: "Alea Pro" },
       { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0", alt: "Nirnia", caption: "Nirnia" },
     ]
-  
+    
     return (
-      <div className="container mx-auto px-4 py-12 bg-white">
+      <div className="container mx-auto px-4 py-12 bg-white ">
+           {/* Content Section */}
+        <div className="flex lg:flex-row flex-col gap-2 items-center py-12">
+          <h2 className="text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center">Our Portfolio</h2>
+          <div className="max-w-l px-4  lg:pr-12">
+            <p className="text-muted-foreground text-lg mb-4">
+            At Kizush Constructions, we believe in transforming spaces with purpose 
+            </p> 
+          <button variant="outline" className="border-2 border-black hover:bg-white hover:text-white transition-colors">
+            View Mor Projects
+          </button>
+        </div>
+        </div>
         {/* Mobile Scroll Container */}
         <div className="relative md:hidden">
           

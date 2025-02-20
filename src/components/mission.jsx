@@ -9,7 +9,7 @@ export default function MissionSection() {
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <h2 className="text-3xl md:text-4xl font-serif text-[#2D2D2D] mb-6">Our Mission</h2>
             <p className="text-lg text-[#4A4A4A] leading-relaxed">
-              At Bay Point Contracting, we believe in transforming spaces with purpose and passion. Our approach goes
+              At Kizush Constructions, we believe in transforming spaces with purpose and passion. Our approach goes
               beyond mere renovation – we create environments that reflect your unique style while enhancing
               functionality. By combining innovative design solutions with expert craftsmanship, we've built a
               reputation for delivering exceptional results that exceed expectations.
