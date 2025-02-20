@@ -5,6 +5,7 @@ import HeroBanner from './pages/hero'
 import DesignSections from './pages/services';
 import AboutSection from './components/about';
 import Portfolio from './components/portfolio';
+import ScrollingTestimonials from './components/testimonial';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <AboutSection />
           <DesignSections />
           <Portfolio />
+          <ScrollingTestimonials />
           <Footer />
         </main>
       } />
