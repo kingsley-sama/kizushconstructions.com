@@ -6,6 +6,7 @@ import DesignSections from './pages/services';
 import AboutSection from './components/about';
 import Portfolio from './components/portfolio';
 import ScrollingTestimonials from './components/testimonial';
+import ServicesSection from './components/service_type';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <AboutSection />
           <DesignSections />
           <Portfolio />
+          <ServicesSection />
           <ScrollingTestimonials />
           <Footer />
         </main>
