@@ -1,0 +1,61 @@
+SOFTWARE LICENSE AGREEMENT
+
+This Software License Agreement ("Agreement") is made and entered into by and between ActiveWidgets SARL ("Licensor"), 
+located at avenue Louis-Casaï 18, 1209 Geneva, Switzerland, and the user ("Licensee"). By installing, accessing, or 
+otherwise using the software, Licensee agrees to be bound by the terms of this Agreement.
+
+1. License Grant
+
+Licensor grants Licensee a non-exclusive, non-transferable, revocable license to install and use the software product 
+("Software") solely for Licensee's personal or internal business purposes. This license is subject to the terms and 
+limitations set forth in this Agreement.
+
+2. Restrictions
+
+Licensee shall not:
+
+- Modify, adapt, or create derivative works based on the Software.
+- Reverse engineer, decompile, or disassemble the Software, except as permitted by applicable law.
+- Rent, lease, lend, sell, redistribute, or sublicense the Software.
+- Use the Software in any manner that violates applicable laws or regulations.
+
+3. Ownership
+
+The Software is licensed, not sold. Licensor retains all rights, title, and interest in and to the Software, including 
+all intellectual property rights therein.
+
+4. Term and Termination
+
+This Agreement is effective upon Licensee's acceptance and shall continue until terminated. Licensor may terminate 
+this Agreement immediately if Licensee fails to comply with any term of this Agreement. Upon termination, Licensee 
+must cease all use of the Software and destroy all copies in its possession.
+
+5. Limited Warranty
+
+The Software is provided "AS IS" without warranty of any kind. Licensor does not warrant that the Software will meet 
+Licensee's requirements or that the operation of the Software will be uninterrupted or error-free.
+
+6. Limitation of Liability
+
+In no event shall Licensor be liable for any special, incidental, indirect, or consequential damages whatsoever 
+arising out of or related to Licensee's use or inability to use the Software, even if Licensor has been advised 
+of the possibility of such damages.
+
+7. Governing Law
+
+This Agreement shall be governed by and construed in accordance with the laws of the Canton of Geneva, Switzerland, 
+without regard to its conflict of law principles. Any legal actions related to this Agreement shall be brought in 
+the cantonal court located in Geneva, Switzerland.
+
+8. Entire Agreement
+
+This Agreement constitutes the entire understanding between the parties with respect to the Software and supersedes 
+all prior agreements, negotiations, and understandings, whether oral or written, relating to its subject matter.
+
+9. Amendments
+
+Licensor reserves the right to modify this Agreement at any time. Any such modifications will be effective upon 
+Licensee's continued use of the Software after such changes have been made.
+
+By using the Software, Licensee acknowledges that they have read, understood, and agree to be bound by the terms 
+of this Agreement.
