@@ -1,35 +1,18 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from './components/footer'
-import HeroBanner from './pages/hero'
 import DesignSections from './pages/services';
 import AboutSection from './components/about';
 import Portfolio from './components/portfolio';
 import ScrollingTestimonials from './components/testimonial';
-import ServicesSection from './components/service_type';
+import WhyChooseUs from './components/why_choose_us';
 
-function App() {
-
+function HomeSection() {
   return (
-    <Router>
-    <Routes>
-      <Route path="/" element={
-        <main className='bg-black'>
-          <HeroBanner />
-          <AboutSection />
-          <DesignSections />
-          <Portfolio />
-          <ServicesSection />
-          <ScrollingTestimonials />
-          <Footer />
-        </main>
-      } />
-      <Route path="/about" element={< ></>} />
-      <Route path="/contact" element={<></>} />
-    </Routes>
-  </Router>
-    
+         <>
+            <AboutSection />
+            <DesignSections />
+            <Portfolio />
+            <WhyChooseUs />
+            <ScrollingTestimonials />
+         </>
   )
 }
-
-export default App
+export default HomeSection;
