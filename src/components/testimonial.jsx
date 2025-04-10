@@ -23,7 +23,10 @@ const testimonials = [
   {
     name: "Emma Davis",
     role: "Marketing Director",
-    quote: "The analytics capabilities are simply outstanding.",
+    quote: `The analytics capabilities are simply outstanding.he analytics 
+    capabilities are simply outstanding.he analytics capabilities are simply outstanding.
+    he analytics capabilities are simply outstanding.he analytics capabilities 
+    are simply outstanding.he analytics capabilities are simply outstanding.`,
     rating: 5.0,
   },
   {
@@ -47,15 +50,12 @@ const StarRating = ({ rating }) => {
 
   return (
     <div className="flex items-center gap-0.5">
-      {/* Full stars */}
       {[...Array(fullStars)].map((_, index) => (
         <StarIcon key={`full-${index}`} className="w-4 h-4 text-yellow-400" />
       ))}
 
-      {/* Half star */}
       {hasHalfStar && <StarHalfIcon className="w-4 h-4 text-yellow-400" />}
 
-      {/* Empty stars */}
       {[...Array(emptyStars)].map((_, index) => (
         <StarOutlineIcon key={`empty-${index}`} className="w-4 h-4 text-gray-200" />
       ))}
@@ -99,8 +99,8 @@ export default function ScrollingTestimonials() {
     if (!scrollContainerRef.current) return
 
     const container = scrollContainerRef.current
-    const cardWidth = 280 // Width of each card
-    const gap = 16 // Gap between cards (4 in Tailwind = 16px)
+    const cardWidth = 280 
+    const gap = 16
     const scrollAmount = cardWidth + gap
 
     const currentScroll = container.scrollLeft
@@ -114,12 +114,14 @@ export default function ScrollingTestimonials() {
 
   return (
     <div className="container mx-auto px-4 py-12 bg-[#f5f5f5]">
-      {/* Content Section */}
+   
       <div className="flex lg:flex-row flex-col gap-2 items-center py-12">
         <h2 className="text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center">What our Clients are saying</h2>
         <div className="max-w-l px-4 lg:pr-12">
           <p className="text-muted-foreground text-lg mb-4">
             At Kizush Constructions, we believe in transforming spaces with purpose
+            this has been our guiding principle in our development project. Below are 
+            some reviews we got from our clients 
           </p>
           <button className="border-2 border-black hover:bg-black hover:text-white transition-colors px-4 py-2">
             View More Testimonials
@@ -186,7 +188,7 @@ export default function ScrollingTestimonials() {
               </div>
             </div>
             <p className="mt-4 text-slate-600">{testimonial.quote}</p>
-            <div className="mt-4 pt-4 border-t">
+            <div className="mt-4 pt-4">
               <StarRating rating={testimonial.rating} />
             </div>
           </div>

@@ -18,12 +18,11 @@ export default function HeroBanner({pathname}) {
     setIsTransitioning(true)
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
   }
-
   useEffect(() => {
     if (isTransitioning) {
       const timer = setTimeout(() => {
         setIsTransitioning(false)
-      }, 1000) // Match this to your transition duration
+      }, 1000) 
       return () => clearTimeout(timer)
     }
   }, [isTransitioning])
@@ -32,14 +31,13 @@ export default function HeroBanner({pathname}) {
     const bgElement = document.querySelector(".bg-zoom-effect")
     if (bgElement) {
       bgElement.style.animation = "none"
-      bgElement.offsetHeight // Trigger reflow
+      bgElement.offsetHeight
       bgElement.style.animation = ""
     }
-  }, []) // Removed unnecessary dependency: currentSlide
+  }, [])
 
   return (
     <div className=" relative w-full overflow-hidden h-[40vh] sm:h-[40vh] md:h-[50vh] lg:h-[70vh] ">
-      {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-linear bg-zoom-effect"
         style={{
@@ -50,12 +48,11 @@ export default function HeroBanner({pathname}) {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Content */}
       <div className="relative h-full">
 
         <div className="container relative flex h-full flex-col items-start justify-center px-4">
           <motion.h1
-            key={currentSlide} // Add this to trigger animation on slide change
+            key={currentSlide}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -64,10 +61,9 @@ export default function HeroBanner({pathname}) {
             {route_data.heading}
           </motion.h1>
           <motion.div className="container absolute right-0 bottom-0 flex flex-col items-center max-h-fit md:h-1/3 md:bottom-14 border-t-2 md:absolute"
-
           >
             <motion.p
-              key={`${currentSlide}-subtitle`} // Add this to trigger animation on slide change
+              key={`${currentSlide}-subtitle`} 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
@@ -86,7 +82,6 @@ export default function HeroBanner({pathname}) {
                 Read More
               </button>
             </motion.div>
-                    {/* Navigation Dots */}
            <div className="absolute flex bottom-10 right-20 space-x-2">
               <button
                 onClick={prevSlide}

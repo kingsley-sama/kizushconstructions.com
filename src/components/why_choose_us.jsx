@@ -1,7 +1,22 @@
 function WhyChooseUs() {
     return (
-      <div className="relative w-full max-w-6xl mx-auto">
-        <div className="relative w-full h-[400px]">
+      <div className="relative max-w-[1400px] mr-auto ml-auto">
+        <div className="container">
+        <div className="flex lg:flex-row flex-col gap-2 items-center py-12">
+        <h2 className="text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center">What our Clients are saying</h2>
+        <div className="max-w-l px-4 lg:pr-12">
+          <p className="text-muted-foreground text-lg mb-4">
+            At Kizush Constructions, we believe in transforming spaces with purpose
+            this has been our guiding principle in our development project. Below are 
+            some reviews we got from our clients 
+          </p>
+          <button className="border-2 border-black hover:bg-black hover:text-white transition-colors px-4 py-2">
+            View More Testimonials
+          </button>
+        </div>
+      </div>
+        </div>
+        <div className="relative w-full h-[500px]">
           {/* Background image */}
           <div
             className="absolute inset-0 w-full h-full bg-cover bg-center"
