@@ -1,30 +1,21 @@
 function WhyChooseUs() {
     return (
       <div className="relative max-w-[1400px] mr-auto ml-auto">
-        <div className="container">
-        <div className="flex lg:flex-row flex-col gap-2 items-center py-12">
-        <h2 className="text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center">What our Clients are saying</h2>
-        <div className="max-w-l px-4 lg:pr-12">
-          <p className="text-muted-foreground text-lg mb-4">
-            At Kizush Constructions, we believe in transforming spaces with purpose
-            this has been our guiding principle in our development project. Below are 
-            some reviews we got from our clients 
-          </p>
-          <button className="border-2 border-black hover:bg-black hover:text-white transition-colors px-4 py-2">
-            View More Testimonials
-          </button>
-        </div>
-      </div>
-        </div>
         <div className="relative w-full h-[500px]">
           {/* Background image */}
-          <div
-            className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1741850826374-47b63fd4a840?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
-          ></div>
+          <div className="absolute flex flex-col items-center justify-center p-4 inset-0 w-full h-full bg-cover bg-center bg-primary">
+            <h2 className="text-4xl max-h-fit md:w-1/2 text-white bg-amber-400md:text-5xl font-bold text-center">Why Choose Us</h2>
+            <div className="max-w-l px-4 lg:pr-12">
+              <p className="text-muted-foreground text-lg text-white mb-4">
+                At Kizush Constructions, we believe in transforming spaces with purpose
+                this has been our guiding principle in our development project. Below are 
+                some reviews we got from our clients 
+              </p>
+            </div>  
+          </div>
   
           {/* Dim black overlay */}
-          <div className="absolute inset-0 w-full h-full bg-black opacity-40"></div>
+          
         </div>
   
         <div className="flex flex-col md:flex-row justify-between bg-white p-8 md:p-10 pt-10 pb-6 -mt-20 mx-auto w-[90%] shadow-lg relative z-10 rounded-t-lg">
@@ -112,6 +103,7 @@ function WhyChooseUs() {
             </p>
           </div>
         </div>
+        
       </div>
     )
   }

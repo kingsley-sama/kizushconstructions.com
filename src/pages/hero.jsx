@@ -37,17 +37,10 @@ export default function HeroBanner({pathname}) {
   }, [])
 
   return (
-    <div className=" relative w-full overflow-hidden h-[40vh] sm:h-[40vh] md:h-[50vh] lg:h-[70vh] ">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-linear bg-zoom-effect"
-        style={{
-          backgroundImage: `url(${route_data.bg_image})`,
-          transform: isTransitioning ? "scale(1)" : "scale(1)",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
+    <div className="w-full overflow-hidden h-[40vh] sm:h-[40vh] md:h-[50vh] lg:h-[70vh] bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-linear bg-zoom-effect" style={{
+      backgroundImage: `url(${route_data.bg_image})`,
+      transform: isTransitioning ? "scale(1)" : "scale(1)",
+    }}>
       <div className="relative h-full">
 
         <div className="container relative flex h-full flex-col items-start justify-center px-4">
@@ -85,13 +78,13 @@ export default function HeroBanner({pathname}) {
            <div className="absolute flex bottom-10 right-20 space-x-2">
               <button
                 onClick={prevSlide}
-                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border"
+                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border border-accent"
               >       
                 <TrendingFlatIcon/>
               </button>
               <button
                 onClick={nextSlide}
-                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border"
+                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border border-accent"
               >
                 <TrendingFlatIcon />
               </button>

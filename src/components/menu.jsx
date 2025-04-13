@@ -51,13 +51,11 @@ export default function Navbar() {
     <nav className="sticky border-b bg-white ">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 text-white">
-            <HomeIcon style={{ fontSize: 30 }} />
-          </div>
-          <span className="text-lg font-bold leading-5">
-            Kizush<span className="text-orange-600"><br></br>Construction</span>
-          </span>
+        <Link path="/" className="gap-2">
+        <div className="w-40 bg-red-950">
+          <img src="/medias/logo.jpeg" alt="kizush_logo" className="w-full h-auto"></img>
+        </div>
+          
         </Link>
 
         {/* Desktop Navigation */}
@@ -123,12 +121,12 @@ export default function Navbar() {
 
         {/* Auth Buttons */}
         <div className="hidden items-center gap-4 md:flex">
-          <Link href="/login" className="text-sm font-medium text-orange-600 hover:text-orange-700">
+          <Link href="/login" className="text-sm font-medium text-orange-600 hover:text-primary">
             Log in
           </Link>
           <Link
             href="/signup"
-            className="rounded-md bg-orange-600 px-4 py-2 text-sm font-medium text-white hover:bg-orange-700"
+            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-orange-700"
           >
             Sign up
           </Link>
@@ -225,14 +223,14 @@ export default function Navbar() {
           <div className="flex flex-col space-y-3 pt-4">
             <Link
               href="/login"
-              className="text-center text-base font-medium text-orange-600 hover:text-orange-700"
+              className="text-center text-lg font-medium text-orange-600 hover:text-orange-700"
               onClick={() => setIsMenuOpen(false)}
             >
               Log in
             </Link>
             <Link
               href="/signup"
-              className="rounded-md bg-orange-600 px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700"
+              className="rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700"
               onClick={() => setIsMenuOpen(false)}
             >
               Sign up

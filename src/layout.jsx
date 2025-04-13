@@ -10,7 +10,7 @@ function Layout() {
         <>
             <Navbar />
             <HeroBanner pathname={location.pathname}/>
-            <main className='bg-black'>
+            <main className='bg-background'>
                 <Outlet />
             </main>
             <Footer />

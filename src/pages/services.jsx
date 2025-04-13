@@ -53,11 +53,11 @@ function Section({ data, imageOnLeft = false }) {
 
       {/* Content Section */}
       <div className={`max-w-xl px-4 py-16 ${imageOnLeft ? "lg:order-2" : "lg:order-1"}`}>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">{data.title}</h2>
+        <h2 className="text-4xl text-primary md:text-5xl font-bold tracking-tight mb-6">{data.title}</h2>
 
-        <p className="text-muted-foreground text-lg mb-8">{data.description}</p>
+        <p className="text-primary text-lg mb-8">{data.description}</p>
 
-        <button variant="outline" className="border-2 border-black hover:bg-white hover:text-white transition-colors">
+        <button variant="outline" className="border border-2 p-4 border-accent text-accent hover:border-black hover:bg-white hover:text-black transition-colors">
           Learn More
         </button>
       </div>

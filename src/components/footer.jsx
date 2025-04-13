@@ -46,12 +46,12 @@ const styles = {
 
 export default function Footer() {
   return (
-    <footer className="bg-black" style={styles.footer}>
+    <footer className="bg-primary" style={styles.footer}>
       <div style={styles.container}>
         <div style={styles.grid}>
           {/* Logo and Company Info */}
           <div style={styles.section}>
-            <h2 style={styles.title}>KIZUSH CONSTRUCTIONS</h2>
+            <img src="/medias/logo_white_1.png" alt="kizush_logo"></img>
             <p style={styles.subtitle}>A Delightful experience for every project</p>
           </div>
 
