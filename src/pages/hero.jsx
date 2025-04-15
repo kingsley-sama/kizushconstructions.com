@@ -1,7 +1,8 @@
 "use client"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
+import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import { routeData } from "../route-data";
 
 
@@ -18,6 +19,32 @@ export default function HeroBanner({pathname}) {
     setIsTransitioning(true)
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
   }
+  const MaterialButton = ({ onClick, children, className = "" }) => (
+    <button
+      onClick={onClick}
+      className={`
+        relative
+        rounded-full
+        p-3
+        text-[#08445e]
+        border-2
+        border-[#08445e]
+        bg-transparent
+        transition-all
+        duration-300
+        hover:bg-[#08445e]/5
+        active:scale-95
+        disabled:opacity-70
+        disabled:hover:scale-100
+        ${className}
+      `}
+      style={{
+        WebkitTapHighlightColor: "transparent",
+      }}
+    >
+      {children}
+    </button>
+  )
   useEffect(() => {
     if (isTransitioning) {
       const timer = setTimeout(() => {
@@ -75,20 +102,16 @@ export default function HeroBanner({pathname}) {
                 Read More
               </button>
             </motion.div>
-           <div className="absolute flex bottom-10 right-20 space-x-2">
-              <button
-                onClick={prevSlide}
-                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border border-accent"
-              >       
-                <TrendingFlatIcon/>
-              </button>
-              <button
-                onClick={nextSlide}
-                className="flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 border border-accent"
-              >
-                <TrendingFlatIcon />
-              </button>
-          </div>
+            <div className="flex justify-end items-center gap-3 mt-4 px-4">
+            <div className="flex gap-3 p-1">
+              <MaterialButton onClick={() => scroll("left")} aria-label="Previous testimonial">
+                <ChevronLeftIcon className="w-6 h-6" />
+              </MaterialButton>
+              <MaterialButton onClick={() => scroll("right")} aria-label="Next testimonial">
+                <ChevronRightIcon className="w-6 h-6" />
+              </MaterialButton>
+            </div>
+        </div>
           </motion.div>
         </div>
       </div>

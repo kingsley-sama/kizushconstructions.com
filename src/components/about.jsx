@@ -9,7 +9,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2D2D2D] mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary mb-6"
         >
           About Us
         </motion.h1>
@@ -17,7 +17,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-sm tracking-[0.2em] uppercase text-[#4A4A4A] mb-4"
+          className="text-sm tracking-[0.2em] uppercase text-primary mb-4"
         >
           Design Renovation & Construction Specialist In Canada
         </motion.p>
@@ -25,7 +25,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed max-w-3xl mx-auto"
+          className="text-lg md:text-xl text-primary leading-relaxed max-w-3xl mx-auto"
         >
           At Kizush Constructions, we specialize in bringing your vision to life through thoughtful design and
           renovation. Crafting a space that reflects your style and dreams, our in-house design team and renovation
