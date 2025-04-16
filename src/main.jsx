@@ -9,6 +9,7 @@ import Process from './pages/Process';
 import Contact from './pages/contact';
 import './index.css';
 import Layout from './layout.jsx';
+
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
 		],
 	},
 ]);
+
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<RouterProvider router={router} />
