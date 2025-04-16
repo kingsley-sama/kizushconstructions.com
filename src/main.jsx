@@ -5,6 +5,7 @@ import HomeSection, { Blogs } from './pages/Homepage';
 import AboutPage from './pages/aboutPage.jsx';
 import Services from './pages/services';
 import Projects from './pages/Projects';
+import Process from './pages/Process';
 import Contact from './pages/contact';
 import './index.css';
 import Layout from './layout.jsx';
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
 			{ path: 'project', element: <Projects /> },
 			{ path: 'contact', element: <Contact /> },
 			{ path: 'resource', element: <Blogs /> },
-
+			{ path: 'process', element: <Process /> },
 		],
 	},
 ]);
