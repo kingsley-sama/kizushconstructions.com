@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeSection from './pages/Homepage';
+import AboutPage from './pages/aboutPage.jsx';
 import Services from './pages/services';
 import Projects from './pages/Projects';
 import './index.css';
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{ index: true, element: <HomeSection /> },
-			{ path: 'about', element: <Services /> },
+			{ path: 'about', element: <AboutPage /> },
 			{ path: 'service', element: <Services /> },
 			{ path: 'project', element: <Projects /> },
 			{ path: 'contact', element: <h1>Contact Us</h1> },
