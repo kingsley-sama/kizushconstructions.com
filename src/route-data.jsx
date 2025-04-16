@@ -43,8 +43,9 @@ export const routeData = [
 	},
 	{
 		path: '/contact',
-		heading: 'Login',
-		bg_image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
+		heading: 'Contact Us',
+		bg_image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom-1200x800.jpeg',
 		tagline: '',
 		button_text: 'Read More',
 		button_link: '',

@@ -5,6 +5,7 @@ import HomeSection from './pages/Homepage';
 import AboutPage from './pages/aboutPage.jsx';
 import Services from './pages/services';
 import Projects from './pages/Projects';
+import Contact from './pages/contact';
 import './index.css';
 import Layout from './layout.jsx';
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
 			{ path: 'about', element: <AboutPage /> },
 			{ path: 'service', element: <Services /> },
 			{ path: 'project', element: <Projects /> },
-			{ path: 'contact', element: <h1>Contact Us</h1> },
+			{ path: 'contact', element: <Contact /> },
 		],
 	},
 ]);
