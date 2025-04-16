@@ -51,7 +51,7 @@ const ValueCard = ({ icon, title, description }) => {
 };
 
 const KizushValues = () => {
-	const iconStyle = { fontSize: 40, color: '#808080' };
+	const iconStyle = { fontSize: 40, color: 'var(--primary)' };
 
 	const valuesData = [
 		{
@@ -109,13 +109,14 @@ const KizushValues = () => {
 			maxWidth='lg'
 			sx={{ py: 8 }}>
 			<Typography
+				className='text-[var(--primary)]'
 				variant='h2'
 				component='h1'
 				align='center'
 				gutterBottom
 				sx={{
 					mb: 8,
-					color: '#333',
+
 					fontWeight: 500,
 				}}>
 				Our Values
