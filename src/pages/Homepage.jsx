@@ -6,6 +6,7 @@ import WhyChooseUs from '../components/why_choose_us';
 import FAQPage from '../components/faq';
 import ContactForm from '../components/contact';
 import KiSushDifference from '../components/kizush';
+import BlogList from '../components/resource_card';
 
 const sections = [
 	{
@@ -65,3 +66,11 @@ function HomeSection() {
 	);
 }
 export default HomeSection;
+
+export function Blogs(){
+	return(
+		<>
+		<BlogList />
+		</>
+	)
+}

@@ -10,8 +10,7 @@ export const routeData = [
 	{
 		path: '/about',
 		heading: 'About Us',
-		bg_image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/05/contact-zoomed-1240x645.jpg',
+		bg_image:'https://baypointcontracting.ca/wp-content/uploads/2024/05/contact-zoomed-1240x645.jpg',
 		tagline: '',
 		button_text: 'Read More',
 		button_link: '',
@@ -27,16 +26,16 @@ export const routeData = [
 	{
 		path: '/project',
 		heading: 'Our Projects',
-		bg_image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom.jpeg',
+		bg_image:'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom.jpeg',
 		tagline: '',
 		button_text: 'Read More',
 		button_link: '',
 	},
 	{
-		path: 'resource',
+		path: '/resource',
 		heading: 'Resources',
-		bg_image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
+		bg_image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom.jpeg',
 		tagline: '',
 		button_text: 'Read More',
 		button_link: '',
