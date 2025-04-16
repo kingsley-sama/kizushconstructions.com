@@ -9,17 +9,24 @@ import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import { cn } from '../lib/utils';
 
 const featuresDropdown = [
-	{ title: 'Property Search', href: '/features/search' },
-	{ title: 'Property Listings', href: '/features/listings' },
-	{ title: 'Market Analysis', href: '/features/market-analysis' },
-	{ title: 'Agent Directory', href: '/features/agents' },
+	{ title: 'Design', href: '/features/search' },
+	{ title: 'Whole Home Renovations', href: '/features/listings' },
+	{ title: 'Additions', href: '/features/market-analysis' },
+	{ title: 'Kitchens', href: '/features/agents' },
+	{ title: 'Bathrooms', href: '/features/agents' },
+	{ title: 'Basements', href: '/features/agents' },
+	{ title: 'Second Floor', href: '/features/agents' },
+	{ title: 'Exterior Upgrades', href: '/features/agents' },
+	{ title: 'Accessibilty Improvements', href: '/features/agents' },
 ];
 
 const blogDropdown = [
-	{ title: 'Latest Articles', href: '/blog' },
-	{ title: 'Market Trends', href: '/blog/market-trends' },
-	{ title: 'Buying Tips', href: '/blog/buying-tips' },
-	{ title: 'Selling Tips', href: '/blog/selling-tips' },
+	{ title: 'Mission & Vision', href: '/blog' },
+	{ title: 'Our Values', href: '/blog/market-trends' },
+	{ title: 'Our Team', href: '/blog/buying-tips' },
+	{ title: 'The Kizush Difference', href: '/blog/selling-tips' },
+	{ title: 'Testimonials', href: '/blog/selling-tips' },
+	{ title: 'Careers', href: '/blog/selling-tips' },
 ];
 
 export default function Navbar() {
@@ -104,12 +111,6 @@ export default function Navbar() {
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Home
 					</Link>
-					<Link
-						href='/service'
-						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
-						Service
-					</Link>
-
 					{/* Features Dropdown */}
 					<div
 						ref={featuresRef}
@@ -119,7 +120,7 @@ export default function Navbar() {
 						<button
 							onClick={() => toggleDropdown('features')}
 							className='flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-							Features
+							Our Services
 							<KeyboardArrowDownIcon
 								className={cn(
 									'transition-transform duration-300',
@@ -131,7 +132,7 @@ export default function Navbar() {
 						<AnimatePresence>
 							{activeDropdown === 'features' && (
 								<motion.div
-									className='absolute left-0 top-full z-[100] mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5'
+									className='absolute left-0 top-full z-[100] mt-2 w-56 rounded-md bg-white py-4 shadow-lg ring-1 ring-black ring-opacity-5'
 									initial={{ opacity: 0, y: -10 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: -10 }}
@@ -140,7 +141,7 @@ export default function Navbar() {
 										<Link
 											key={item.href}
 											href={item.href}
-											className='block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors'
+											className='block px-4 py-2 text-sm mt-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors'
 											onClick={() => setActiveDropdown(null)}>
 											{item.title}
 										</Link>
@@ -149,6 +150,16 @@ export default function Navbar() {
 							)}
 						</AnimatePresence>
 					</div>
+					<Link
+						href='/project'
+						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
+						Projects
+					</Link>
+					<Link
+						href='/process'
+						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
+						Our Process
+					</Link>
 
 					{/* Blog Dropdown */}
 					<div
@@ -159,7 +170,7 @@ export default function Navbar() {
 						<button
 							onClick={() => toggleDropdown('blog')}
 							className='flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-							Blog
+							About Us
 							<KeyboardArrowDownIcon
 								className={cn(
 									'transition-transform duration-300',
@@ -191,9 +202,9 @@ export default function Navbar() {
 					</div>
 
 					<Link
-						href='/contact'
+						href='/resources'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
-						Contact Us
+						Resources
 					</Link>
 				</div>
 
@@ -205,9 +216,9 @@ export default function Navbar() {
 						Log in
 					</Link>
 					<Link
-						href='/signup'
+						href='/contact'
 						className='rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-orange-700 transition-colors'>
-						Sign up
+						Contact Us
 					</Link>
 				</div>
 
