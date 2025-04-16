@@ -28,6 +28,7 @@ const ValueCard = ({ icon, title, description }) => {
 			</Box>
 			<Typography
 				variant='h5'
+				className='text-[var(--primary)]'
 				component='h3'
 				gutterBottom
 				sx={{
@@ -38,6 +39,7 @@ const ValueCard = ({ icon, title, description }) => {
 				{title}
 			</Typography>
 			<Typography
+				className='text-[var(--primary)]'
 				variant='body1'
 				color='text.secondary'
 				sx={{
