@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeSection from './pages/Homepage';
 import Services from './pages/services';
+import Projects from './pages/Projects';
 import './index.css';
 import Layout from './layout.jsx';
 const router = createBrowserRouter([
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomeSection /> },
 			{ path: 'about', element: <Services /> },
 			{ path: 'service', element: <Services /> },
-			{ path: 'project', element: <h1>Portfolio</h1> },
+			{ path: 'project', element: <Projects /> },
 			{ path: 'contact', element: <h1>Contact Us</h1> },
 		],
 	},

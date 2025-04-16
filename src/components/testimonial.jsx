@@ -151,7 +151,7 @@ export default function ScrollingTestimonials() {
 		if (!scrollContainerRef.current) return;
 
 		const container = scrollContainerRef.current;
-		const cardWidth = 280;
+		const cardWidth = 300;
 		const gap = 16;
 		const scrollAmount = cardWidth + gap;
 
@@ -181,7 +181,7 @@ export default function ScrollingTestimonials() {
 
 		const handleScroll = () => {
 			const scrollLeft = container.scrollLeft;
-			const cardWidth = 280 + 16; // card width + gap
+			const cardWidth = 300 + 16; // card width + gap
 			const newIndex = Math.round(scrollLeft / cardWidth);
 			setFocusedIndex(Math.min(Math.max(0, newIndex), testimonials.length - 1));
 		};
@@ -209,69 +209,87 @@ export default function ScrollingTestimonials() {
 			</div>
 
 			{/* Mobile Scroll Container with Navigation */}
-			<div className='relative md:min-w-[300px] md:gap-8 lg:min-w-[300px]'>
+			<div className='relative w-full'>
+				{/* Left blur gradient */}
+				<div className='absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-[#f5f5f5] to-transparent z-10'></div>
+
+				{/* Right blur gradient */}
+				<div className='absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-[#f5f5f5] to-transparent z-10'></div>
+
 				<div
 					ref={scrollContainerRef}
-					className='flex overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-none -mx-8 px-4 pb-8'
+					className='flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-none px-8 pb-8'
 					style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 					{testimonials.map((testimonial, idx) => (
 						<div
 							key={idx}
 							className={`
-                relative flex-none 
-                ${
-									idx === focusedIndex
-										? 'w-[320px] scale-105 shadow-lg z-10'
-										: 'w-[280px]'
-								} 
-                overflow-hidden rounded-lg group snap-start bg-white p-6 
+                flex-none 
+                w-[300px]
+                ${idx === focusedIndex ? 'scale-105' : 'scale-95 opacity-80'}
+                h-96
+                overflow-hidden rounded-lg bg-white p-6 
                 shadow-[0_2px_10px_-3px_rgba(8,68,94,0.1)]
-                transition-all duration-300
+                transition-all duration-300 ease-in-out
+                flex flex-col
               `}>
 							{/* Quote mark - only closing */}
 							<div className='absolute top-4 right-4 text-3xl font-serif text-[#08445e]'>
 								&#8221;
 							</div>
 
-							<div className='flex flex-col items-center'>
+							<div className='flex flex-col items-center h-full'>
 								{/* Avatar */}
 								<div className='w-16 h-16 mb-4 rounded-full bg-[#08445e]/10 border-2 border-[#08445e] flex items-center justify-center text-[#08445e] font-semibold text-lg'>
 									{testimonial.name[0]}
 								</div>
 
 								{/* Testimonial */}
-								<p className='text-center text-[#08445e] mb-6 text-sm leading-relaxed line-clamp-6'>
-									{testimonial.quote}
-								</p>
-
-								{/* Rating */}
-								<div className='mt-auto pt-4 w-full'>
-									<StarRating rating={testimonial.rating} />
+								<div className='flex-grow overflow-hidden'>
+									<p className='text-center text-[#08445e] mb-6 text-sm leading-relaxed line-clamp-6'>
+										{testimonial.quote}
+									</p>
 								</div>
 
-								{/* Reviewer name */}
-								<p className='w-full text-right text-[#08445e] font-medium mt-2'>
-									{testimonial.name}
-								</p>
+								{/* Footer content - pushed to bottom */}
+								<div className='mt-auto w-full'>
+									{/* Rating */}
+									<div className='w-full pt-4'>
+										<StarRating rating={testimonial.rating} />
+									</div>
+
+									{/* Reviewer name */}
+									<p className='w-full text-right text-[#08445e] font-medium mt-2'>
+										{testimonial.name}
+									</p>
+								</div>
 							</div>
 						</div>
 					))}
 				</div>
 
-				{/* Updated Navigation Buttons */}
-				<div className='flex justify-end items-center gap-3 mt-4 px-4'>
-					<div className='flex gap-3 p-1'>
-						<MaterialButton
-							onClick={() => scroll('left')}
-							aria-label='Previous testimonial'>
-							<ChevronLeftIcon className='w-6 h-6' />
-						</MaterialButton>
-						<MaterialButton
-							onClick={() => scroll('right')}
-							aria-label='Next testimonial'>
-							<ChevronRightIcon className='w-6 h-6' />
-						</MaterialButton>
-					</div>
+				{/* Updated Navigation Buttons - centered */}
+				<div className='flex justify-center items-center gap-3 mt-4'>
+					<MaterialButton
+						onClick={() => scroll('left')}
+						aria-label='Previous testimonial'
+						className={
+							focusedIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
+						}
+						disabled={focusedIndex === 0}>
+						<ChevronLeftIcon className='w-6 h-6' />
+					</MaterialButton>
+					<MaterialButton
+						onClick={() => scroll('right')}
+						aria-label='Next testimonial'
+						className={
+							focusedIndex === testimonials.length - 1
+								? 'opacity-50 cursor-not-allowed'
+								: ''
+						}
+						disabled={focusedIndex === testimonials.length - 1}>
+						<ChevronRightIcon className='w-6 h-6' />
+					</MaterialButton>
 				</div>
 			</div>
 		</div>
