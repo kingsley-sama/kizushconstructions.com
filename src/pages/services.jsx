@@ -1,102 +1,108 @@
 import react from 'react';
 import AboutSection from '../components/about';
+import DesignSections from '../components/DesignSections';
+import FAQPage from '../components/faq';
+import ScrollingTestimonials from '../components/testimonial';
+import ContactForm from '../components/contact';
 
 const sections = [
 	{
 		id: 1,
 		title: 'Design',
 		description:
-			'Elevate your home with our custom design services, where creativity meets functionality. Our expert designers work with you to bring your vision to life, ensuring every detail reflects your personal style and enhances your living experience.',
-		image: '/images/im3rd-media-FJZtZldA-uE-unsplash.jpg',
-		imageAlt: 'Modern kitchen interior with white cabinets and island',
+			'Design your dream home with an expert team that will make it a reality. At Kizush Contracting, we are passionate about crafting spaces that blend functionality and beauty. From the initial idea to the final touches, we collaborate closely with you, getting to know your unique style and goals.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Bay-Point-Contracting-Main-Floor-Reno-2023_001-scaled.jpg',
+		imageAlt: 'Modern sitting area interior with white sofas and large windows',
 	},
 	{
 		id: 2,
-		title: 'Build',
+		title: 'Renovations',
 		description:
-			'Transform your space with our expert construction services. Our skilled craftsmen bring precision and care to every project, ensuring superior quality and attention to detail that exceeds your expectations.',
-		image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
-		imageAlt: 'Construction project in progress',
+			"Whether it's a single room makeover or a complete home transformation, our renovation services breathe new life into your living spaces. From outdated kitchens to cramped bathrooms, we specialize in revitalizing every corner of your home to better suit your lifestyle and aesthetic preferences.",
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Bay-Point-Contracting-Main-Floor-Reno-2023_002-scaled.jpeg',
+		imageAlt: 'Kitchen with white cabinets and high stools',
 	},
 	{
 		id: 3,
-		title: 'Renovate',
+		title: 'Additions',
 		description:
-			'Breathe new life into your existing space with our renovation services. We specialize in updating and modernizing homes while preserving their unique character and maximizing their potential.',
-		image: '/images/jolene-hardy-uuApNXxgcRM-unsplash.jpg',
+			'Dreaming of more space? Turn your dream into a reality with a custom home addition by Bay Point Contracting. We specialize in building spaces that integrate seamlessly with your existing home. As your partner, we help you create the room you need to live, work, and play without compromise.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Atwell_02-copyae-Large.jpeg',
 		imageAlt: 'Home renovation project',
 	},
 	{
 		id: 4,
-		title: 'Maintain',
+		title: 'Kitchens',
 		description:
-			'Keep your home in perfect condition with our comprehensive maintenance services. Our preventive care and prompt attention to details ensure your space remains beautiful and functional for years to come.',
-		image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
+			'Transform your kitchen into the heart of your home with Bay Point Contracting. Our comprehensive kitchen renovation services are designed to enhance both the beauty and functionality of your cooking and dining spaces. From modern layouts to classic designs, we tailor every detail to suit your lifestyle and personal taste.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Enns-Whole-Home20240111_004-scaled.jpeg',
 		imageAlt: 'Home maintenance work',
+	},
+	{
+		id: 5,
+		title: 'Bathrooms',
+		description:
+			'Build your perfect sanctuary with the bathroom of your dreams. Bay Point Contracting is your partner in creating a serene place for you to unwind. From sleek and modern designs to sophisticated and timeless styles, our bathroom renovation services ensure your new space is as functional as it is stunning.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_007-Large.jpeg',
+		imageAlt: 'Bathroom work',
+	},
+	{
+		id: 6,
+		title: 'Basements',
+		description:
+			'Discover the full potential of your basement with Bay Point Contracting. Our basement renovation services convert underutilized spaces into usable areas made for all your living needs. With our expert craftsmanship and creative solutions, you can enjoy a basement that adds value and joy to your home.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Bay-Point-Contracting-Basement-2024-Large.jpeg',
+		imageAlt: 'Sitting Area',
+	},
+	{
+		id: 7,
+		title: 'Second Floor',
+		description:
+			'Enhance your home living with a second-floor renovation to match your lifestyle needs. At Bay Point Contracting, we work closely with you to consider every detail. Whether you’re looking to design a quiet retreat or add more living areas, our skilled team will turn your vision into a beautifully realized space.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_003-Large.jpeg',
+		imageAlt: 'Green and water chair interior',
+	},
+	{
+		id: 8,
+		title: 'Exterior Upgrades',
+		description:
+			'Give your home an outdoor makeover you’ll enjoy through the seasons. Our exterior upgrade services are designed to enhance your home’s aesthetic and revitalize your outdoor living experience. We transform your backyard into a functional and inviting oasis that complements your lifestyle and enhances curb appeal.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/Barriero-1-no-flag-Large.jpeg',
+		imageAlt: 'Cottage house and forest view',
+	},
+	{
+		id: 8,
+		title: 'Accessibility Improvements',
+		description:
+			'Ensure your home is accessible for all with thoughtfully designed solutions for mobility needs. At Bay Point Contracting, we understand the importance of creating a home environment that is accommodating and safe for people of every ability. We collaborate with you to improve and enhance access throughout your home.',
+		image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Turgeon-3-copyae-Large-1.jpeg',
+		imageAlt: 'Staircase with handrail',
 	},
 ];
 
-function Section({ data, imageOnLeft = false }) {
-	const clipPath = imageOnLeft
-		? 'polygon(0 0, 100% 10%, 100% 90%, 0 100%)'
-		: 'polygon(0 10%, 100% 0, 100% 100%, 0 90%)';
-
+const Services = () => {
 	return (
-		<div className='grid lg:grid-cols-2 gap-4 items-center'>
-			{/* Image Section */}
-			<div
-				className={`relative h-[250px] md:h-[400px] w-full md:w-5/6 overflow-hidden ${
-					imageOnLeft ? 'lg:order-1' : 'lg:order-2'
-				}`}>
-				<div
-					className='absolute inset-0 bg-cover bg-center lg:clip-path'
-					style={{
-						backgroundImage: `url(${data.image || '/placeholder.svg'})`,
-						clipPath: clipPath,
-					}}
-				/>
-			</div>
-
-			{/* Content Section */}
-			<div
-				className={`max-w-xl px-4 py-16 ${
-					imageOnLeft ? 'lg:order-2' : 'lg:order-1'
-				}`}>
-				<h2 className='text-4xl text-primary md:text-5xl font-bold tracking-tight mb-6'>
-					{data.title}
-				</h2>
-
-				<p className='text-primary text-lg mb-8'>{data.description}</p>
-
-				<button
-					variant='outline'
-					className='border border-2 p-4 border-accent text-accent hover:border-black hover:bg-white hover:text-black transition-colors'>
-					Learn More
-				</button>
-			</div>
-		</div>
+		<>
+			<AboutSection
+				title='Our Services'
+				subtitle='What We Do'
+				description='Kizush transforms homes to match your evolving lifestyle. From concept to completion, we handle every aspect of renovation—whether it’s a single room, full remodel, stylish additions, or exterior upgrades. Led by our in-house designer, we craft spaces that reflect your taste, needs, and budget. Let Kizush unlock your home’s full potential.'
+			/>
+			<DesignSections sections={sections} />
+			<FAQPage />
+			<ScrollingTestimonials />
+			<ContactForm />
+		</>
 	);
-}
+};
 
-export default function DesignSections() {
-	return (
-		<div className='container mx-auto bg-white'>
-			{sections.map((section, index) => (
-				<div
-					key={section.id}
-					className='py-2 md:py-4'>
-					<Section
-						data={section}
-						imageOnLeft={index % 2 === 0}
-					/>
-					{index < sections.length - 1 && (
-						<div className='max-w-4xl mx-auto'>
-							<hr className='my-6 md:my-14 border-gray-700' />
-							hello world
-						</div>
-					)}
-				</div>
-			))}
-		</div>
-	);
-}
+export default Services;
