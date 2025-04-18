@@ -45,6 +45,28 @@ export const routeData = [
 		heading: 'Login',
 		bg_image:
 			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom.jpeg',
+		path: '/resource',
+		heading: 'Resources',
+		bg_image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom.jpeg',
+		tagline: '',
+		button_text: 'Read More',
+		button_link: '',
+	},
+	{
+		path: '/process',
+		heading: 'Our Process',
+		bg_image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom-1200x800.jpeg',
+		tagline: '',
+		button_text: 'Read More',
+		button_link: '',
+	},
+	{
+		path: '/contact',
+		heading: 'Contact Us',
+		bg_image:
+			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0669-Enhanced-NR-Custom-1200x800.jpeg',
 		tagline: '',
 		button_text: 'Read More',
 		button_link: '',
