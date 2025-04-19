@@ -9,24 +9,24 @@ import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import { cn } from '../lib/utils';
 
 const featuresDropdown = [
-	{ title: 'Design', href: '/features/search' },
-	{ title: 'Whole Home Renovations', href: '/features/listings' },
-	{ title: 'Additions', href: '/features/market-analysis' },
-	{ title: 'Kitchens', href: '/features/agents' },
-	{ title: 'Bathrooms', href: '/features/agents' },
-	{ title: 'Basements', href: '/features/agents' },
-	{ title: 'Second Floor', href: '/features/agents' },
-	{ title: 'Exterior Upgrades', href: '/features/agents' },
-	{ title: 'Accessibilty Improvements', href: '/features/agents' },
+	{ title: 'Design', to: '/features/search' },
+	{ title: 'Whole Home Renovations', to: '/features/listings' },
+	{ title: 'Additions', to: '/features/market-analysis' },
+	{ title: 'Kitchens', to: '/features/agents' },
+	{ title: 'Bathrooms', to: '/features/agents' },
+	{ title: 'Basements', to: '/features/agents' },
+	{ title: 'Second Floor', to: '/features/agents' },
+	{ title: 'Exterior Upgrades', to: '/features/agents' },
+	{ title: 'Accessibilty Improvements', to: '/features/agents' },
 ];
 
 const blogDropdown = [
-	{ title: 'Mission & Vision', href: '/blog' },
-	{ title: 'Our Values', href: '/blog/market-trends' },
-	{ title: 'Our Team', href: '/blog/buying-tips' },
-	{ title: 'The Kizush Difference', href: '/blog/selling-tips' },
-	{ title: 'Testimonials', href: '/blog/selling-tips' },
-	{ title: 'Careers', href: '/blog/selling-tips' },
+	{ title: 'Mission & Vision', to: '/blog' },
+	{ title: 'Our Values', to: '/blog/market-trends' },
+	{ title: 'Our Team', to: '/blog/buying-tips' },
+	{ title: 'The Kizush Difference', to: '/blog/selling-tips' },
+	{ title: 'Testimonials', to: '/blog/selling-tips' },
+	{ title: 'Careers', to: '/blog/selling-tips' },
 ];
 
 export default function Navbar() {
@@ -107,7 +107,7 @@ export default function Navbar() {
 				{/* Desktop Navigation */}
 				<div className='hidden items-center gap-8 md:flex'>
 					<Link
-						href='/'
+						to='/'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Home
 					</Link>
@@ -139,8 +139,8 @@ export default function Navbar() {
 									transition={{ duration: 0.2 }}>
 									{featuresDropdown.map((item) => (
 										<Link
-											key={item.href}
-											href={item.href}
+											key={item.to}
+											to={item.to}
 											className='block px-4 py-2 text-sm mt-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors'
 											onClick={() => setActiveDropdown(null)}>
 											{item.title}
@@ -151,12 +151,12 @@ export default function Navbar() {
 						</AnimatePresence>
 					</div>
 					<Link
-						href='/project'
+						to='/project'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Projects
 					</Link>
 					<Link
-						href='/process'
+						to='/process'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Our Process
 					</Link>
@@ -189,8 +189,8 @@ export default function Navbar() {
 									transition={{ duration: 0.2 }}>
 									{blogDropdown.map((item) => (
 										<Link
-											key={item.href}
-											href={item.href}
+											key={item.to}
+											to={item.to}
 											className='block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors'
 											onClick={() => setActiveDropdown(null)}>
 											{item.title}
@@ -202,7 +202,7 @@ export default function Navbar() {
 					</div>
 
 					<Link
-						href='/resources'
+						to='/resource'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Resources
 					</Link>
@@ -211,12 +211,12 @@ export default function Navbar() {
 				{/* Auth Buttons */}
 				<div className='hidden items-center gap-4 md:flex'>
 					<Link
-						href='/login'
+						to='/login'
 						className='text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors'>
 						Log in
 					</Link>
 					<Link
-						href='/contact'
+						to='/contact'
 						className='rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-orange-700 transition-colors'>
 						Contact Us
 					</Link>
@@ -243,7 +243,7 @@ export default function Navbar() {
 						transition={{ duration: 0.3 }}>
 						<div className='flex flex-col space-y-4 pt-4'>
 							<Link
-								href='/'
+								to='/'
 								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
 								onClick={() => setIsMenuOpen(false)}>
 								Home
@@ -272,8 +272,8 @@ export default function Navbar() {
 											transition={{ duration: 0.2 }}>
 											{featuresDropdown.map((item) => (
 												<Link
-													key={item.href}
-													href={item.href}
+													key={item.to}
+													to={item.to}
 													className='block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors'
 													onClick={() => setIsMenuOpen(false)}>
 													{item.title}
@@ -307,8 +307,8 @@ export default function Navbar() {
 											transition={{ duration: 0.2 }}>
 											{blogDropdown.map((item) => (
 												<Link
-													key={item.href}
-													href={item.href}
+													key={item.to}
+													to={item.to}
 													className='block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors'
 													onClick={() => setIsMenuOpen(false)}>
 													{item.title}
@@ -320,7 +320,7 @@ export default function Navbar() {
 							</div>
 
 							<Link
-								href='/contact'
+								to='/contact'
 								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
 								onClick={() => setIsMenuOpen(false)}>
 								Contact Us
@@ -328,13 +328,13 @@ export default function Navbar() {
 
 							<div className='flex flex-col space-y-3 pt-4'>
 								<Link
-									href='/login'
+									to='/login'
 									className='text-center text-lg font-medium text-orange-600 hover:text-orange-700 transition-colors'
 									onClick={() => setIsMenuOpen(false)}>
 									Log in
 								</Link>
 								<Link
-									href='/signup'
+									to='/signup'
 									className='rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700 transition-colors'
 									onClick={() => setIsMenuOpen(false)}>
 									Sign up
