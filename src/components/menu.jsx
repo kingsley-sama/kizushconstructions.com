@@ -95,7 +95,7 @@ export default function Navbar() {
 					className='gap-2'>
 					<div className='w-40 bg-red-950'>
 						<img
-							src='/medias/logo.jpeg'
+							src='/medias/kizush_logo2.png'
 							alt='kizush_logo'
 							className='w-full h-auto'></img>
 					</div>
@@ -167,6 +167,7 @@ export default function Navbar() {
 						className='relative'
 						onMouseEnter={() => handleMouseEnter('blog')}
 						onMouseLeave={handleMouseLeave}>
+							<Link to={'/about'}>
 						<button
 							onClick={() => toggleDropdown('blog')}
 							className='flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors'>
@@ -179,6 +180,7 @@ export default function Navbar() {
 								style={{ fontSize: 18 }}
 							/>
 						</button>
+						</Link>
 						<AnimatePresence>
 							{activeDropdown === 'blog' && (
 								<motion.div

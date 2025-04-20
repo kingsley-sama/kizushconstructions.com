@@ -28,7 +28,7 @@ const sections = [
 const TeamBio = [
 	{
 		id: 1,
-		title: 'Paul Hood: Father, Owner, Visionary',
+		title: 'Kizzy: Father, Owner, Visionary',
 		image:
 			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Paul-family-square-640x607.jpeg',
 		paragraphs: [

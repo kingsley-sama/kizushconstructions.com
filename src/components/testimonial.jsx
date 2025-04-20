@@ -188,31 +188,15 @@ export default function ScrollingTestimonials() {
 	}, []);
 
 	return (
-		<div className='container mx-auto px-4 py-12 '>
+		<div className='container my-10 mx-auto px-4 py-12 '>
 			<div className='flex lg:flex-row flex-col gap-2 items-center py-12'>
-				<h2 className='text-[#08445e] text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center'>
+				<h2 className='text-primary flex justify-center  w-full text-4xl max-h-fit md:text-5xl font-bold text-center'>
 					What our Clients are saying
 				</h2>
-				<div className='max-w-l px-4 lg:pr-12'>
-					<p className='text-[#08445e] text-lg mb-4'>
-						At Kizush Constructions, we believe in transforming spaces with
-						purpose this has been our guiding principle in our development
-						project. Below are some reviews we got from our clients
-					</p>
-					<button className='border-2 border-[#ed6a11] text-[#ed6a11] hover:border-0 hover:bg-[#08445e] hover:text-white transition-colors px-4 py-2'>
-						View More Testimonials
-					</button>
-				</div>
 			</div>
-
-			{/* Mobile Scroll Container with Navigation */}
 			<div className='relative w-full'>
-				{/* Left blur gradient */}
 				<div className='absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-[#f5f5f5] to-transparent z-10'></div>
-
-				{/* Right blur gradient */}
 				<div className='absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-[#f5f5f5] to-transparent z-10'></div>
-
 				<div
 					ref={scrollContainerRef}
 					className='flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-none px-8 pb-8'
@@ -230,18 +214,14 @@ export default function ScrollingTestimonials() {
                 transition-all duration-300 ease-in-out
                 flex flex-col
               `}>
-							{/* Quote mark - only closing */}
 							<div className='absolute top-4 right-4 text-3xl font-serif text-[#08445e]'>
 								&#8221;
 							</div>
 
 							<div className='flex flex-col items-center h-full'>
-								{/* Avatar */}
 								<div className='w-16 h-16 mb-4 rounded-full bg-[#08445e]/10 border-2 border-[#08445e] flex items-center justify-center text-[#08445e] font-semibold text-lg'>
 									{testimonial.name[0]}
 								</div>
-
-								{/* Testimonial */}
 								<div className='flex-grow overflow-hidden'>
 									<p className='text-center text-[#08445e] mb-6 text-sm leading-relaxed line-clamp-6'>
 										{testimonial.quote}

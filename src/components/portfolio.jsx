@@ -5,12 +5,12 @@ const Projects = () => {
 	const galleryItems = [
 		{
 			src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace',
-			alt: 'Mondrian',
-			caption: 'Mondrian',
+			alt: 'Ontario',
+			caption: 'Basement Remodel',
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77',
-			alt: 'Nirnia',
+			alt: '',
 			caption: 'Nirnia',
 		},
 		{

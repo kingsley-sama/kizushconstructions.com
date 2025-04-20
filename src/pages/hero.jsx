@@ -67,13 +67,13 @@ export default function HeroBanner({ pathname }) {
 
   return (
     <div
-      className='w-full overflow-hidden h-[40vh] sm:h-[40vh] md:h-[50vh] lg:h-[70vh] bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-linear bg-zoom-effect relative'
+      className='w-full overflow-hidden h-[35vh] md:h-[40vh] lg:h-[60vh] bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-linear bg-zoom-effect relative'
       style={{
         backgroundImage: `url(${route_data.bg_image})`,
         transform: isTransitioning ? 'scale(1)' : 'scale(1)',
       }}
     >
-      <div className='absolute inset-0 bg-black opacity-30'></div>
+      <div className='absolute inset-0 bg-black opacity-40'></div>
       <div className='relative h-full'>
         <div className='container relative flex h-full flex-col items-start justify-center px-4'>
           <motion.h1
@@ -117,14 +117,16 @@ export default function HeroBanner({ pathname }) {
                   <MaterialButton
                     onClick={() => scroll('left')}
                     aria-label='Previous testimonial'
+                    className='border-white h-[40px] w-[40px] flex items-center justify-center'
                   >
-                    <ChevronLeftIcon className='w-6 h-6' />
+                    <ChevronLeftIcon className='w-6 h-6 text-white' />
                   </MaterialButton>
                   <MaterialButton
                     onClick={() => scroll('right')}
                     aria-label='Next testimonial'
+                    className='border-white h-[40px] w-[40px] flex items-center justify-center'
                   >
-                    <ChevronRightIcon className='w-6 h-6' />
+                    <ChevronRightIcon className='w-6 h-6 text-white' />
                   </MaterialButton>
                 </div>
               </div>
