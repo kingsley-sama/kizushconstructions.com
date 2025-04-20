@@ -1,23 +1,20 @@
 'use client';
-
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { motion, AnimatePresence } from 'framer-motion';
-import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import { cn } from '../lib/utils';
 
-const featuresDropdown = [
-	{ title: 'Design', to: '/features/search' },
-	{ title: 'Whole Home Renovations', to: '/features/listings' },
-	{ title: 'Additions', to: '/features/market-analysis' },
-	{ title: 'Kitchens', to: '/features/agents' },
-	{ title: 'Bathrooms', to: '/features/agents' },
-	{ title: 'Basements', to: '/features/agents' },
-	{ title: 'Second Floor', to: '/features/agents' },
-	{ title: 'Exterior Upgrades', to: '/features/agents' },
-	{ title: 'Accessibilty Improvements', to: '/features/agents' },
+const servicesDropdown = [
+	{ title: 'Design', to: '/services/search' },
+	{ title: 'Whole Home Renovations', to: '/services/listings' },
+	{ title: 'Additions', to: '/service/market-analysis' },
+	{ title: 'Kitchens', to: '/services/agents' },
+	{ title: 'Bathrooms', to: '/services/agents' },
+	{ title: 'Basements', to: '/services/agents' },
+	{ title: 'Second Floor', to: '/services/agents' },
+	{ title: 'Exterior Upgrades', to: '/services/agents' },
+	{ title: 'Accessibilty Improvements', to: '/services/agents' },
 ];
 
 const blogDropdown = [
@@ -34,7 +31,7 @@ export default function Navbar() {
 	const [activeDropdown, setActiveDropdown] = useState(null);
 
 	// Refs for the dropdown containers
-	const featuresRef = useRef(null);
+	const servicesRef = useRef(null);
 	const blogRef = useRef(null);
 
 	// Function to handle mouse enter for desktop dropdowns
@@ -74,8 +71,8 @@ export default function Navbar() {
 	useEffect(() => {
 		function handleClickOutside(event) {
 			if (
-				featuresRef.current &&
-				!featuresRef.current.contains(event.target) &&
+				servicesRef.current &&
+				!servicesRef.current.contains(event.target) &&
 				blogRef.current &&
 				!blogRef.current.contains(event.target)
 			) {
@@ -111,33 +108,36 @@ export default function Navbar() {
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Home
 					</Link>
-					{/* Features Dropdown */}
 					<div
-						ref={featuresRef}
+						ref={servicesRef}
 						className='relative'
-						onMouseEnter={() => handleMouseEnter('features')}
+						onMouseEnter={() => handleMouseEnter('services')}
 						onMouseLeave={handleMouseLeave}>
 						<button
-							onClick={() => toggleDropdown('features')}
+							onClick={() => toggleDropdown('services')}
 							className='flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-							Our Services
+						<Link
+							to='/services'
+							className='text-sm font-medium text-gray-700 hover:text-orange-600'>
+							Services
+						</Link>
 							<KeyboardArrowDownIcon
 								className={cn(
 									'transition-transform duration-300',
-									activeDropdown === 'features' ? 'rotate-180' : ''
+									activeDropdown === 'services' ? 'rotate-180' : ''
 								)}
 								style={{ fontSize: 18 }}
 							/>
 						</button>
 						<AnimatePresence>
-							{activeDropdown === 'features' && (
+							{activeDropdown === 'services' && (
 								<motion.div
 									className='absolute left-0 top-full z-[100] mt-2 w-56 rounded-md bg-white py-4 shadow-lg ring-1 ring-black ring-opacity-5'
 									initial={{ opacity: 0, y: -10 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: -10 }}
 									transition={{ duration: 0.2 }}>
-									{featuresDropdown.map((item) => (
+									{servicesDropdown.map((item) => (
 										<Link
 											key={item.to}
 											to={item.to}
@@ -151,14 +151,14 @@ export default function Navbar() {
 						</AnimatePresence>
 					</div>
 					<Link
-						to='/project'
+						to='/projects'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Projects
 					</Link>
 					<Link
 						to='/process'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
-						Our Process
+						Process
 					</Link>
 
 					{/* Blog Dropdown */}
@@ -202,7 +202,7 @@ export default function Navbar() {
 					</div>
 
 					<Link
-						to='/resource'
+						to='/resources'
 						className='text-sm font-medium text-gray-700 hover:text-orange-600'>
 						Resources
 					</Link>
@@ -249,28 +249,28 @@ export default function Navbar() {
 								Home
 							</Link>
 
-							{/* Mobile Features Dropdown */}
+							{/* Mobile services Dropdown */}
 							<div>
 								<button
-									onClick={() => toggleDropdown('features-mobile')}
+									onClick={() => toggleDropdown('services-mobile')}
 									className='flex w-full items-center justify-between text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-									Features
+									services
 									<KeyboardArrowDownIcon
 										className={cn(
 											'transition-transform duration-300',
-											activeDropdown === 'features-mobile' ? 'rotate-180' : ''
+											activeDropdown === 'services-mobile' ? 'rotate-180' : ''
 										)}
 									/>
 								</button>
 								<AnimatePresence>
-									{activeDropdown === 'features-mobile' && (
+									{activeDropdown === 'services-mobile' && (
 										<motion.div
 											className='mt-2 space-y-2 pl-4'
 											initial={{ opacity: 0, height: 0 }}
 											animate={{ opacity: 1, height: 'auto' }}
 											exit={{ opacity: 0, height: 0 }}
 											transition={{ duration: 0.2 }}>
-											{featuresDropdown.map((item) => (
+											{servicesDropdown.map((item) => (
 												<Link
 													key={item.to}
 													to={item.to}

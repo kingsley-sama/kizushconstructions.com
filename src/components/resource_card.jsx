@@ -2,7 +2,7 @@
 import { ArrowForward } from '@mui/icons-material';
 import React from 'react';
 
-const blogPosts = [
+const resourcePosts = [
 	{
 		id: 1,
 		title: 'Boost your conversion rate',
@@ -155,8 +155,8 @@ const blogPosts = [
 	},
 ];
 
-const BlogCard = ({ post }) => {
-	// Define colors similar to what was used in the MUI version
+const ResourceCard = ({ post }) => {
+
 	const colors = {
 		primary: '#3b82f6',
 		primaryLight: '#dbeafe',
@@ -205,7 +205,7 @@ const BlogCard = ({ post }) => {
 	);
 };
 
-const BlogList = () => {
+const ResourceList = () => {
 	return (
 		<div className='bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
@@ -214,8 +214,8 @@ const BlogList = () => {
 				</h1>
 
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{blogPosts.map((post) => (
-						<BlogCard
+					{resourcePosts.map((post) => (
+						<ResourceCard
 							key={post.id}
 							post={post}
 						/>
@@ -226,5 +226,5 @@ const BlogList = () => {
 	);
 };
 
-export default BlogList;
+export default ResourceList;
 

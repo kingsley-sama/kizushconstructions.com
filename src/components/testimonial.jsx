@@ -165,16 +165,13 @@ export default function ScrollingTestimonials() {
 			left: newScroll,
 			behavior: 'smooth',
 		});
-
-		// Update focused index
-		const newIndex =
+			const newIndex =
 			direction === 'left'
 				? Math.max(0, focusedIndex - 1)
 				: Math.min(testimonials.length - 1, focusedIndex + 1);
 		setFocusedIndex(newIndex);
 	};
 
-	// Track scroll position to update focused card
 	useEffect(() => {
 		const container = scrollContainerRef.current;
 		if (!container) return;
@@ -191,7 +188,7 @@ export default function ScrollingTestimonials() {
 	}, []);
 
 	return (
-		<div className='container mx-auto px-4 py-12 bg-[#f5f5f5]'>
+		<div className='container mx-auto px-4 py-12 '>
 			<div className='flex lg:flex-row flex-col gap-2 items-center py-12'>
 				<h2 className='text-[#08445e] text-4xl max-h-fit md:w-1/2 md:text-5xl font-bold text-center'>
 					What our Clients are saying
@@ -228,7 +225,7 @@ export default function ScrollingTestimonials() {
                 w-[300px]
                 ${idx === focusedIndex ? 'scale-105' : 'scale-95 opacity-80'}
                 h-96
-                overflow-hidden rounded-lg bg-white p-6 
+                overflow-hidden rounded-lg bg-[#f8f8f8] p-6 
                 shadow-[0_2px_10px_-3px_rgba(8,68,94,0.1)]
                 transition-all duration-300 ease-in-out
                 flex flex-col

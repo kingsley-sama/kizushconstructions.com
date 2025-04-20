@@ -6,7 +6,6 @@ const contactMethods = [
   { id: "email", label: "Email", icon: "✉️", placeholder: "your.email@example.com" },
   { id: "phone", label: "Phone", icon: "📱", placeholder: "+1 (123) 456-7890" },
   { id: "whatsapp", label: "WhatsApp", icon: "💬", placeholder: "+1 (123) 456-7890" },
-  { id: "social", label: "Social Media", icon: "📱", placeholder: "@yourusername" },
 ]
 
 export default function ContactForm() {

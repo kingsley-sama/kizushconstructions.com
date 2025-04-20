@@ -1,12 +1,13 @@
 import DesignSections from '../components/DesignSections';
 import AboutSection from '../components/about';
-import Portfolio from '../components/portfolio';
 import ScrollingTestimonials from '../components/testimonial';
 import WhyChooseUs from '../components/why_choose_us';
 import FAQPage from '../components/faq';
 import ContactForm from '../components/contact';
 import KiSushDifference from '../components/kizush';
-import BlogList from '../components/resource_card';
+import ResourceList from '../components/resource_card';
+import Projects from '../components/portfolio';
+
 
 const sections = [
 	{
@@ -56,7 +57,7 @@ function HomeSection() {
           transformation of your home.'
 			/>
 			<DesignSections sections={sections} />
-			<Portfolio />
+			<Projects />
 			<WhyChooseUs />
 			<KiSushDifference />
 			<ContactForm></ContactForm>
@@ -67,10 +68,10 @@ function HomeSection() {
 }
 export default HomeSection;
 
-export function Blogs(){
+export function Resources(){
 	return(
 		<>
-		<BlogList />
+		<ResourceList />
 		</>
 	)
 }

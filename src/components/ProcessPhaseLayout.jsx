@@ -20,10 +20,8 @@ export default function RenovationPhase({
 				<p className='text-gray-700 max-w-3xl mx-auto'>{description}</p>
 			</div>
 
-			{/* Main Content */}
-			<div className='flex flex-col md:flex-row-reverse items-center justify-center mt-12 gap-6 pl-6'>
-				{/* Image Section: Displayed first on mobile and takes 2/3 on desktop */}
-				<div className='w-full md:w-2/3 '>
+			<div className='flex flex-col md:flex-row-reverse items-center justify-center mt-12 gap-6 pl-6 '>
+				<div className='w-2/5 '>
 					<img
 						src={imageSrc}
 						alt={`${title} phase visual`}

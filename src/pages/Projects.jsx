@@ -119,7 +119,6 @@ const Projects = () => {
 				]}
 				projects={projects}
 				onFilterChange={(selected) => {
-					// Handle the filtering logic here
 					console.log('Selected categories:', selected);
 				}}
 			/>
