@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function ReusableDifference({
 	title = 'The KiSush Difference',
-	primaryText = 'At KiSush Constructions, we believe in transforming spaces with purpose and passion. Our dedicated team brings expertise, creativity, and attention to detail to every project, ensuring results that exceed expectations.',
+	primaryText = 'At KiZush Constructions, we believe in transforming spaces with purpose and passion. Our dedicated team brings expertise, creativity, and attention to detail to every project, ensuring results that exceed expectations.',
 	secondaryText = 'What sets us apart is our commitment to understanding your vision and bringing it to life. We don’t just build structures; we create environments where people thrive, connect, and feel inspired every day.',
-	buttonText = 'Join our team',
+	buttonText = 'About Us',
 	buttonOnClick = () => {},
 	mainImage = {
-		src: '/placeholder.svg?height=500&width=600',
+		src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
 		alt: 'KiSush team members collaborating',
 	},
 	className = '',
@@ -42,23 +42,3 @@ export default function ReusableDifference({
 		</div>
 	);
 }
-
-ReusableDifference.propTypes = {
-	title: PropTypes.string,
-	primaryText: PropTypes.string,
-	secondaryText: PropTypes.string,
-	buttonText: PropTypes.string,
-	buttonOnClick: PropTypes.func,
-	mainImage: PropTypes.shape({
-		src: PropTypes.string.isRequired,
-		alt: PropTypes.string,
-	}),
-	bottomImages: PropTypes.arrayOf(
-		PropTypes.shape({
-			src: PropTypes.string.isRequired,
-			alt: PropTypes.string,
-			span: PropTypes.number,
-		})
-	),
-	className: PropTypes.string,
-};

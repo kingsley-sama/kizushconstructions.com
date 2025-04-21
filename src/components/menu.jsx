@@ -17,7 +17,7 @@ const servicesDropdown = [
 	{ title: 'Accessibilty Improvements', to: '/services/agents' },
 ];
 
-const blogDropdown = [
+const aboutDropdown = [
 	{ title: 'Mission & Vision', to: '/blog' },
 	{ title: 'Our Values', to: '/blog/market-trends' },
 	{ title: 'Our Team', to: '/blog/buying-tips' },
@@ -32,7 +32,7 @@ export default function Navbar() {
 
 	// Refs for the dropdown containers
 	const servicesRef = useRef(null);
-	const blogRef = useRef(null);
+	const aboutRef = useRef(null);
 
 	// Function to handle mouse enter for desktop dropdowns
 	const handleMouseEnter = (dropdown) => {
@@ -73,8 +73,8 @@ export default function Navbar() {
 			if (
 				servicesRef.current &&
 				!servicesRef.current.contains(event.target) &&
-				blogRef.current &&
-				!blogRef.current.contains(event.target)
+				aboutRef.current &&
+				!aboutRef.current.contains(event.target)
 			) {
 				setActiveDropdown(null);
 			}
@@ -91,7 +91,7 @@ export default function Navbar() {
 			<div className='mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8'>
 				{/* Logo */}
 				<Link
-					path='/'
+					to='/'
 					className='gap-2'>
 					<div className='w-40 bg-red-950'>
 						<img
@@ -161,35 +161,35 @@ export default function Navbar() {
 						Process
 					</Link>
 
-					{/* Blog Dropdown */}
+					{/* About Us Dropdown */}
 					<div
-						ref={blogRef}
+						ref={aboutRef}
 						className='relative'
-						onMouseEnter={() => handleMouseEnter('blog')}
+						onMouseEnter={() => handleMouseEnter('about')}
 						onMouseLeave={handleMouseLeave}>
-							<Link to={'/about'}>
 						<button
-							onClick={() => toggleDropdown('blog')}
+							onClick={() => toggleDropdown('about')}
 							className='flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-							About Us
+							<Link to='/about' className='text-sm font-medium text-gray-700 hover:text-orange-600'>
+								About Us
+							</Link>
 							<KeyboardArrowDownIcon
 								className={cn(
 									'transition-transform duration-300',
-									activeDropdown === 'blog' ? 'rotate-180' : ''
+									activeDropdown === 'about' ? 'rotate-180' : ''
 								)}
 								style={{ fontSize: 18 }}
 							/>
 						</button>
-						</Link>
 						<AnimatePresence>
-							{activeDropdown === 'blog' && (
+							{activeDropdown === 'about' && (
 								<motion.div
 									className='absolute left-0 top-full z-[100] mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5'
 									initial={{ opacity: 0, y: -10 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: -10 }}
 									transition={{ duration: 0.2 }}>
-									{blogDropdown.map((item) => (
+									{aboutDropdown.map((item) => (
 										<Link
 											key={item.to}
 											to={item.to}
@@ -251,12 +251,12 @@ export default function Navbar() {
 								Home
 							</Link>
 
-							{/* Mobile services Dropdown */}
+							{/* Mobile Services Dropdown */}
 							<div>
 								<button
 									onClick={() => toggleDropdown('services-mobile')}
 									className='flex w-full items-center justify-between text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-									services
+									Services
 									<KeyboardArrowDownIcon
 										className={cn(
 											'transition-transform duration-300',
@@ -286,28 +286,44 @@ export default function Navbar() {
 								</AnimatePresence>
 							</div>
 
-							{/* Mobile Blog Dropdown */}
+							{/* Projects Link */}
+							<Link
+								to='/projects'
+								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
+								onClick={() => setIsMenuOpen(false)}>
+								Projects
+							</Link>
+
+							{/* Process Link */}
+							<Link
+								to='/process'
+								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
+								onClick={() => setIsMenuOpen(false)}>
+								Process
+							</Link>
+
+							{/* Mobile About Us Dropdown */}
 							<div>
 								<button
-									onClick={() => toggleDropdown('blog-mobile')}
+									onClick={() => toggleDropdown('about-mobile')}
 									className='flex w-full items-center justify-between text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-									Blog
+									About Us
 									<KeyboardArrowDownIcon
 										className={cn(
 											'transition-transform duration-300',
-											activeDropdown === 'blog-mobile' ? 'rotate-180' : ''
+											activeDropdown === 'about-mobile' ? 'rotate-180' : ''
 										)}
 									/>
 								</button>
 								<AnimatePresence>
-									{activeDropdown === 'blog-mobile' && (
+									{activeDropdown === 'about-mobile' && (
 										<motion.div
 											className='mt-2 space-y-2 pl-4'
 											initial={{ opacity: 0, height: 0 }}
 											animate={{ opacity: 1, height: 'auto' }}
 											exit={{ opacity: 0, height: 0 }}
 											transition={{ duration: 0.2 }}>
-											{blogDropdown.map((item) => (
+											{aboutDropdown.map((item) => (
 												<Link
 													key={item.to}
 													to={item.to}
@@ -321,11 +337,12 @@ export default function Navbar() {
 								</AnimatePresence>
 							</div>
 
+							{/* Resources Link */}
 							<Link
-								to='/contact'
+								to='/resources'
 								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
 								onClick={() => setIsMenuOpen(false)}>
-								Contact Us
+								Resources
 							</Link>
 
 							<div className='flex flex-col space-y-3 pt-4'>
@@ -336,10 +353,10 @@ export default function Navbar() {
 									Log in
 								</Link>
 								<Link
-									to='/signup'
+									to='/contact'
 									className='rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700 transition-colors'
 									onClick={() => setIsMenuOpen(false)}>
-									Sign up
+									Contact Us
 								</Link>
 							</div>
 						</div>
