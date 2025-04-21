@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProjectCard from './project_card';
 
 const Projects = () => {
@@ -7,31 +8,37 @@ const Projects = () => {
 			src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace',
 			alt: 'Ontario',
 			caption: 'Basement Remodel',
+			id: "basement-remodel"
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77',
 			alt: '',
 			caption: 'Nirnia',
+			id: "kitchen-remodel"
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77',
 			alt: 'Nirnia',
-			caption: 'Nirnia',
+			caption: 'bathroom-remodel',
+			id: 'bathroom-remodel',
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
 			alt: 'Artex',
 			caption: 'Artex',
+			id: 'bathroom-remodel',
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
 			alt: 'Brera',
 			caption: 'Brera',
+			id: 'kitchen-remodel',
 		},
 		{
 			src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea',
 			alt: 'Alea Pro',
 			caption: 'Alea Pro',
+			id: 'cottage-remodel',
 		},
 	];
 
@@ -42,7 +49,7 @@ const Projects = () => {
 					Our Projects
 				</h1>
 				<div className='max-w-l px-4 lg:pr-12'>
-					<p className='text-muted-foreground text-lg mb-4 text-primary'>
+					<p className='text-lg mb-4 text-primary'>
 						At Kizush Constructions, we believe in transforming spaces with purpose
 					</p>
 					<button
@@ -57,7 +64,9 @@ const Projects = () => {
 			<div className='relative md:hidden'>
 				<div className='flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4'>
 					{galleryItems.map((item, index) => (
+					<Link key={item.id} to={`/projects/${item.id}`}>
 						<ProjectCard key={index} item={item} />
+					</Link>
 					))}
 				</div>
 			</div>
@@ -65,7 +74,9 @@ const Projects = () => {
 			{/* Desktop Grid */}
 			<div className='hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto'>
 				{galleryItems.map((item, index) => (
-					<ProjectCard key={index} item={item} />
+					<Link key={item.id} to={`/projects/${item.id}`}>
+						<ProjectCard key={index} item={item} />
+					</Link>
 				))}
 			</div>
 		</div>

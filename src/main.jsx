@@ -9,19 +9,21 @@ import Process from './pages/Process';
 import Contact from './pages/contact';
 import './index.css';
 import Layout from './layout.jsx';
+import ProjectPage from './pages/projects_page.jsx';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Layout />,
-		children: [
-			{ index: true, element: <HomeSection /> },
-			{ path: 'about', element: <AboutPage /> },
-			{ path: 'services', element: <Services /> },
-			{ path: 'projects', element: <Projects /> },
-			{ path: 'contact', element: <Contact /> },
-			{ path: 'resources', element: <Resources /> },
-			{ path: 'process', element: <Process /> },
+			children: [
+				{ index: true, element: <HomeSection /> },
+				{ path: 'about', element: <AboutPage /> },
+				{ path: 'services', element: <Services /> },
+				{ path: 'projects', element: <Projects /> },
+				{ path: 'contact', element: <Contact /> },
+				{ path: 'resources', element: <Resources /> },
+				{ path: 'process', element: <Process /> },
+				{ path: 'projects/:slug', element: <ProjectPage /> },
 		],
 	},
 ]);
