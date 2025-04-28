@@ -64,8 +64,8 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full px-4 py-12 bg-[#f5f5f5]">
-      <div className="container mx-auto">
+    <div className="w-full px-6 lg:container py-12 bg-[#f5f5f5]">
+      <div className="mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-[#08445e] text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-[#08445e] text-lg">
@@ -74,10 +74,10 @@ export default function ContactForm() {
         </div>
 
         {/* Flex container for side-by-side layout on large screens */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
+        <div className="flex lg:flex-row lg:items-center lg:gap-8">
           {/* Contact Form - Full width on mobile, 50% on large screens */}
           <div className="w-full lg:w-1/2">
-            <div className="bg-white rounded-lg shadow-[0_2px_10px_-3px_rgba(8,68,94,0.1)] p-8">
+            <div className="bg-white rounded-lg shadow-[0_2px_10px_-3px_rgba(8,68,94,0.1)] p-4">
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">✅</div>
@@ -248,7 +248,7 @@ export default function ContactForm() {
                     <button
                       type="submit"
                       disabled={formData.contactMethods.length === 0}
-                      className="w-full py-3 px-6 bg-[#08445e] text-white rounded-lg hover:bg-[#08445e]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full max-w-[200px] py-3 px-6 bg-[#08445e] text-white rounded-lg hover:bg-[#08445e]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Send Message
                     </button>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Email, Phone, Facebook, Twitter } from "@mui/icons-material"
+import { Email, Phone, Facebook, Twitter,Place } from "@mui/icons-material"
 
 const styles = {
   footer: {
@@ -7,7 +7,7 @@ const styles = {
     padding: "2rem 0",
   },
   container: {
-    maxWidth: "1200px",
+    maxWidth: "1440px",
     margin: "0 auto",
     padding: "0 1rem",
   },
@@ -22,20 +22,21 @@ const styles = {
     gap: "1rem",
   },
   title: {
-    fontSize: "1.25rem",
+    fontSize: "2.25rem",
     fontWeight: "bold",
   },
   subtitle: {
-    fontSize: "0.875rem",
+    fontSize: "1rem",
     color: "#cbd5e0",
   },
   link: {
     color: "white",
     textDecoration: "none",
     transition: "color 0.3s",
+    fontSize: "1.25rem"
   },
   icon: {
-    fontSize: "1.25rem",
+    fontSize: "2.25rem",
     marginRight: "0.5rem",
   },
   socialIcons: {
@@ -51,22 +52,22 @@ export default function Footer() {
         <div style={styles.grid}>
           {/* Logo and Company Info */}
           <div style={styles.section}>
-            <img src="/medias/logo_white_1.png" alt="kizush_logo"></img>
+            <img src="/medias/construction_company_logo.png" alt="construction_company_logo"></img>
             <p style={styles.subtitle}>A Delightful experience for every project</p>
           </div>
 
           {/* Quick Links */}
           <div style={styles.section}>
             <nav>
-              <ul style={{ listStyle: "none", padding: 0 }}>
+              <ul style={{ listStyle: "none", padding: 0 }} >
                 <li>
                   <Link to="/about" style={styles.link}>
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blog" style={styles.link}>
-                    Blog
+                  <Link to="/resources" style={styles.link}>
+                    Resources
                   </Link>
                 </li>
                 <li>
@@ -77,6 +78,11 @@ export default function Footer() {
                 <li>
                   <Link to="/projects" style={styles.link}>
                     Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" style={styles.link}>
+                    Contact
                   </Link>
                 </li>
               </ul>
@@ -97,7 +103,12 @@ export default function Footer() {
                 +123 456 789
               </a>
             </div>
-            <p style={styles.subtitle}>1234, 111 Main St CA qw, AB</p>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Place style={styles.icon} />
+              <a href="tel:+123456789" style={styles.link}>
+                1234, 111 Main St CA qw, AB
+              </a>
+            </div>
           </div>
 
           {/* Social Links */}

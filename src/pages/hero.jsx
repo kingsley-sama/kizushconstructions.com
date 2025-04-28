@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { routeData } from '../route-data';
+import {Link} from 'react-router-dom';
 
 export default function HeroBanner({ pathname }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -103,6 +104,7 @@ export default function HeroBanner({ pathname }) {
                 transition={{ delay: 0.9, duration: 0.8 }}
                 className='mt-8'
               >
+                <Link to={"/about"}>
                 <button
                   size='lg'
                   className='bg-white p-2 pt-1 pb-1 m-2 rounded-[15px] md:p-6 md:pt-3 md:pb-3 md:rounded-[30px]'
@@ -110,6 +112,7 @@ export default function HeroBanner({ pathname }) {
                 >
                   Read More
                 </button>
+                </Link>
               </motion.div>
 
               <div className='flex justify-end items-center gap-3 mt-4 px-4'>

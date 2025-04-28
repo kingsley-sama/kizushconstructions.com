@@ -1,5 +1,5 @@
 "use client"
-
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { BiChevronDown, BiChevronUp } from "react-icons/bi"
 
@@ -30,31 +30,32 @@ const FAQItem = ({ question, answer }) => {
 export default function FAQPage() {
   const faqData = [
     {
-      question: "What is your return policy?",
+      question: "What types of construction and renovation services do you offer?",
       answer:
-        "We offer a 30-day return policy for all unused items in their original packaging. Please contact our customer support team to initiate a return.",
+        "At Kizush Constructions, we specialize in full-service home renovations, custom remodeling, and design-build projects across Canada. Whether it's a kitchen makeover, bathroom remodel, basement finishing, or a complete home transformation, our in-house design and construction teams work closely with you to bring your vision to life with high-quality craftsmanship and personalized service.",
     },
     {
-      question: "How long does shipping take?",
+      question: "How long does a typical renovation project take?",
       answer:
-        "Standard shipping typically takes 3-5 business days within the continental US. International shipping can take 7-14 business days depending on the destination.",
+        "The timeline for a renovation project can vary depending on the size and complexity of the work. Smaller projects like bathroom remodels may take 2-4 weeks, while larger full-home renovations can take several months. During our initial consultation, we provide a detailed project schedule and keep you updated throughout the entire process to ensure transparency and minimize disruptions.",
     },
     {
-      question: "Do you offer international shipping?",
+      question: "Do you provide design services along with construction?",
       answer:
-        "Yes, we ship to most countries worldwide. Shipping costs and delivery times vary based on location. You can see the exact shipping cost during checkout.",
+        "Yes, we do! Kizush Constructions has an in-house design team that collaborates with you to create a space tailored to your needs, lifestyle, and aesthetic preferences. We guide you through the entire design process — from initial concept drawings and material selection to final layouts — ensuring a seamless transition from vision to reality.",
     },
     {
-      question: "How can I track my order?",
+      question: "Are you licensed and insured?",
       answer:
-        "Once your order ships, you'll receive a confirmation email with a tracking number and link. You can also track your order in your account dashboard.",
+        "Absolutely. Kizush Constructions is fully licensed and insured to operate across Canada. We meet all regulatory requirements and carry liability insurance to protect our clients and team members. When you work with us, you can feel confident that your project is handled professionally and safely from start to finish.",
     },
     {
-      question: "Are there any discounts for bulk orders?",
+      question: "How do I get started with a renovation project?",
       answer:
-        "Yes, we offer discounts for bulk orders. Please contact our sales team at sales@example.com for a custom quote based on your requirements.",
+        "Getting started is easy! Simply reach out to our team through our website or call us directly to schedule a consultation. We'll discuss your ideas, goals, and budget, and then provide a customized plan and quote. From the initial design meeting to the final walkthrough, we are committed to making the renovation process smooth, collaborative, and exciting for you.",
     },
-  ]
+  ];
+  
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 py-12">
@@ -67,9 +68,11 @@ export default function FAQPage() {
 
       <div className="mt-12 text-center">
         <p className="text-primary mb-4">Still have questions?</p>
+        <Link to={"/contact"}>
         <button className="px-6 py-2 bg-accent text-white rounded-md hover:bg-gray-800 transition-colors">
           Contact Us
         </button>
+        </Link>
       </div>
     </div>
   )
