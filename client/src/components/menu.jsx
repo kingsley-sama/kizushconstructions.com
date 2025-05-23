@@ -4,26 +4,25 @@ import { Link } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
-
+import { ArrowDownward } from '@mui/icons-material';
 const servicesDropdown = [
 	{ title: 'Design', to: '/services/search' },
-	{ title: 'Whole Home Renovations', to: '/services/listings' },
-	{ title: 'Additions', to: '/service/market-analysis' },
-	{ title: 'Kitchens', to: '/services/agents' },
-	{ title: 'Bathrooms', to: '/services/agents' },
-	{ title: 'Basements', to: '/services/agents' },
-	{ title: 'Second Floor', to: '/services/agents' },
-	{ title: 'Exterior Upgrades', to: '/services/agents' },
-	{ title: 'Accessibilty Improvements', to: '/services/agents' },
+	{ title: 'Whole Home Renovations', to: '/services/design' },
+	{ title: 'Additions', to: '/service/additions' },
+	{ title: 'Kitchens', to: '/services/kitchens' },
+	{ title: 'Bathrooms', to: '/services/bathrooms' },
+	{ title: 'Basements', to: '/services/basements' },
+	{ title: 'Second Floor', to: '/services/second_floors' },
+	{ title: 'Exterior Upgrades', to: '/services/upgrades' },
+	{ title: 'Accessibilty Improvements', to: '/services/accessibility' },
 ];
 
 const aboutDropdown = [
-	{ title: 'Mission & Vision', to: '/blog' },
-	{ title: 'Our Values', to: '/blog/market-trends' },
-	{ title: 'Our Team', to: '/blog/buying-tips' },
-	{ title: 'The Kizush Difference', to: '/blog/selling-tips' },
-	{ title: 'Testimonials', to: '/blog/selling-tips' },
-	{ title: 'Careers', to: '/blog/selling-tips' },
+	{ title: 'Mission & Vision', to: '/about' },
+	{ title: 'Our Values', to: '/about' },
+	{ title: 'Our Team', to: '/about' },
+	{ title: 'The Kizush Difference', to: '/about' },
+	{ title: 'Testimonials', to: '/about' },
 ];
 
 export default function Navbar() {
@@ -235,134 +234,172 @@ export default function Navbar() {
 			</div>
 
 			{/* Mobile Navigation */}
-			<AnimatePresence>
-				{isMenuOpen && (
-					<motion.div
-						className='fixed left-0 right-0 top-[72px] z-[90] bg-white px-4 pb-6 shadow-lg md:hidden'
-						initial={{ opacity: 0, height: 0 }}
-						animate={{ opacity: 1, height: 'auto' }}
-						exit={{ opacity: 0, height: 0 }}
-						transition={{ duration: 0.3 }}>
-						<div className='flex flex-col space-y-4 pt-4'>
-							<Link
-								to='/'
-								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
-								onClick={() => setIsMenuOpen(false)}>
-								Home
-							</Link>
+			<AnimatePresence mode="wait">
+        {isMenuOpen && (
+          <motion.div
+            className="fixed left-0 right-0 top-[72px] z-[90] bg-white px-4 pb-6 shadow-lg md:hidden overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="flex flex-col space-y-4 pt-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+            >
+              <Link
+                href="/"
+                className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
 
-							{/* Mobile Services Dropdown */}
-							<div>
-								<button
-									onClick={() => toggleDropdown('services-mobile')}
-									className='flex w-full items-center justify-between text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-									Services
-									<KeyboardArrowDownIcon
-										className={cn(
-											'transition-transform duration-300',
-											activeDropdown === 'services-mobile' ? 'rotate-180' : ''
-										)}
-									/>
-								</button>
-								<AnimatePresence>
-									{activeDropdown === 'services-mobile' && (
-										<motion.div
-											className='mt-2 space-y-2 pl-4'
-											initial={{ opacity: 0, height: 0 }}
-											animate={{ opacity: 1, height: 'auto' }}
-											exit={{ opacity: 0, height: 0 }}
-											transition={{ duration: 0.2 }}>
-											{servicesDropdown.map((item) => (
-												<Link
-													key={item.to}
-													to={item.to}
-													className='block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors'
-													onClick={() => setIsMenuOpen(false)}>
-													{item.title}
-												</Link>
-											))}
-										</motion.div>
-									)}
-								</AnimatePresence>
-							</div>
+              {/* Mobile Services Dropdown */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/services"
+                    className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation() // Prevent dropdown toggle when clicking the link
+                    }}
+                  >
+                    Services
+                  </Link>
+                  <button
+                    onClick={() => toggleDropdown("services-mobile")}
+                    className="p-1 text-gray-700 hover:text-orange-600 transition-colors"
+                  >
+                    <ArrowDownward
+                      className={cn(
+                        "h-5 w-5 transition-transform duration-300",
+                        activeDropdown === "services-mobile" ? "rotate-180" : "",
+                      )}
+                    />
+                  </button>
+                </div>
+                <AnimatePresence>
+                  {activeDropdown === "services-mobile" && (
+                    <motion.div
+                      className="mt-2 space-y-2 pl-4 overflow-hidden"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {servicesDropdown.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-							{/* Projects Link */}
-							<Link
-								to='/projects'
-								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
-								onClick={() => setIsMenuOpen(false)}>
-								Projects
-							</Link>
+              {/* Projects Link */}
+              <Link
+                href="/projects"
+                className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
+              </Link>
 
-							{/* Process Link */}
-							<Link
-								to='/process'
-								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
-								onClick={() => setIsMenuOpen(false)}>
-								Process
-							</Link>
+              {/* Process Link */}
+              <Link
+                href="/process"
+                className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Process
+              </Link>
 
-							{/* Mobile About Us Dropdown */}
-							<div>
-								<button
-									onClick={() => toggleDropdown('about-mobile')}
-									className='flex w-full items-center justify-between text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'>
-									About Us
-									<KeyboardArrowDownIcon
-										className={cn(
-											'transition-transform duration-300',
-											activeDropdown === 'about-mobile' ? 'rotate-180' : ''
-										)}
-									/>
-								</button>
-								<AnimatePresence>
-									{activeDropdown === 'about-mobile' && (
-										<motion.div
-											className='mt-2 space-y-2 pl-4'
-											initial={{ opacity: 0, height: 0 }}
-											animate={{ opacity: 1, height: 'auto' }}
-											exit={{ opacity: 0, height: 0 }}
-											transition={{ duration: 0.2 }}>
-											{aboutDropdown.map((item) => (
-												<Link
-													key={item.to}
-													to={item.to}
-													className='block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors'
-													onClick={() => setIsMenuOpen(false)}>
-													{item.title}
-												</Link>
-											))}
-										</motion.div>
-									)}
-								</AnimatePresence>
-							</div>
+              {/* Mobile About Us Dropdown */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/about"
+                    className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation() // Prevent dropdown toggle when clicking the link
+                    }}
+                  >
+                    About Us
+                  </Link>
+                  <button
+                    onClick={() => toggleDropdown("about-mobile")}
+                    className="p-1 text-gray-700 hover:text-orange-600 transition-colors"
+                  >
+                    <KeyboardArrowDownIcon
+                      className={cn(
+                        "h-5 w-5 transition-transform duration-300",
+                        activeDropdown === "about-mobile" ? "rotate-180" : "",
+                      )}
+                    />
+                  </button>
+                </div>
+                <AnimatePresence>
+                  {activeDropdown === "about-mobile" && (
+                    <motion.div
+                      className="mt-2 space-y-2 pl-4 overflow-hidden"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {aboutDropdown.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-							{/* Resources Link */}
-							<Link
-								to='/resources'
-								className='text-base font-medium text-gray-700 hover:text-orange-600 transition-colors'
-								onClick={() => setIsMenuOpen(false)}>
-								Resources
-							</Link>
+              {/* Resources Link */}
+              <Link
+                href="/resources"
+                className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Resources
+              </Link>
 
-							<div className='flex flex-col space-y-3 pt-4'>
-								<Link
-									to='/login'
-									className='text-center text-lg font-medium text-orange-600 hover:text-orange-700 transition-colors'
-									onClick={() => setIsMenuOpen(false)}>
-									Log in
-								</Link>
-								<Link
-									to='/contact'
-									className='rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700 transition-colors'
-									onClick={() => setIsMenuOpen(false)}>
-									Contact Us
-								</Link>
-							</div>
-						</div>
-					</motion.div>
-				)}
-			</AnimatePresence>
+              <div className="flex flex-col space-y-3 pt-4">
+                <Link
+                  href="/login"
+                  className="text-center text-lg font-medium text-orange-600 hover:text-orange-700 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/contact"
+                  className="rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 		</nav>
 	);
 }
