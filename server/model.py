@@ -13,7 +13,7 @@ import uuid
 
 class Admin(Base):
     __tablename__ = 'admins'
-    id = Column(Integer, primary_key=True)
+    id = Column(UUID(as_uuid=True), primary_key=True)
     username = Column(String(50), unique=True, nullable=False)
     hashed_password = Column(String(100), nullable=False)
     email = Column(String(100), unique=True, nullable=False)
@@ -26,7 +26,7 @@ class Project(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(100), nullable=False)
     description = Column(String(255), nullable=False)
-    image_url = Column(String(255), nullable=False)
+    image_url = Column(String(255), nullable=True)
     owner_name = Column(String(100), nullable=False)
     location = Column(String(100), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
@@ -57,5 +57,18 @@ class Review(Base):
     content    = Column(Text, nullable=False)
     rating     = Column(Integer, nullable=False) 
     created_at = Column(DateTime(timezone=True), server_default=func.now())  
+    project = relationship(
+        "Project",
+        back_populates="review"
+    )
 
-
+# Message Model
+class Message(Base):
+    __tablename__ = "messages"
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    sender_name = Column(String(100), nullable=False)
+    sender_email = Column(String(100), nullable=False)
+    sender_phone = Column(String(20), nullable=False)
+    sender_whattsapp = Column(String(20), nullable=False)
+    message = Column(Text, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())

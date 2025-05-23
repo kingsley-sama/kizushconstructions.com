@@ -9,6 +9,19 @@ from fastapi import Depends, HTTPException, status, UploadFile
 from sqlalchemy.orm import Session
 from model import Admin
 from config import settings
+import os
+from s3 import S3ImageUploader
+from dotenv import load_dotenv
+load_dotenv()
+
+async def get_s3_uploader() -> S3ImageUploader:
+    """Dependency to get S3ImageUploader instance"""
+    return S3ImageUploader(
+        bucket_name=settings.AWS_S3_BUCKET_NAME,
+        aws_access_key_id=settings.AWS_ACCESS_KEY,
+        aws_secret_access_key=settings.AWS_SECRET_KEY,
+        aws_region=settings.AWS_REGION
+    )
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -37,8 +50,9 @@ def creat_access_token(data: dict, expires_delta: int = None):
     return encoded_jwt
 
 def get_admin_by_email(db: Session, email: str = None):
+    print(db.query(Admin).filter(Admin.email == email).first())
     return db.query(Admin).filter(Admin.email == email).first()
-
+    
 def authenticate_admin(db: Session, email: str = None, password: str = None):
     admin = get_admin_by_email(db, email)
     if not admin:

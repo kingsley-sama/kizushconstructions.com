@@ -9,7 +9,6 @@ from fastapi import UploadFile, HTTPException
 from sqlalchemy.orm import Session
 
 
-
 class S3ImageUploader:
     """
     Utility class for uploading images to AWS S3 and saving metadata to database.
@@ -21,8 +20,9 @@ class S3ImageUploader:
         aws_access_key_id: Optional[str] = None,
         aws_secret_access_key: Optional[str] = None,
         aws_region: str = "us-east-1",
+        bucket_url: str = None,
         allowed_extensions: List[str] = None,
-        max_size_mb: int = 0.5,
+        max_size_mb: int = 2,
     ):
         """
         Initialize the S3 uploader with credentials and configuration.
@@ -41,7 +41,7 @@ class S3ImageUploader:
         self.max_size_bytes = max_size_mb * 1024 * 1024  # Convert MB to bytes
         
         # Generate the base URL for accessing objects (can be customized based on region)
-        self.base_url = f"https://{bucket_name}.s3.{aws_region}.amazonaws.com"
+        self.base_url = bucket_url
     
     def _validate_image(self, file: UploadFile) -> None:
         """Validate the uploaded file."""
@@ -68,16 +68,16 @@ class S3ImageUploader:
         """Generate a unique filename to avoid collisions in S3."""
         # Extract the file extension
         extension = original_filename.split('.')[-1].lower() if original_filename else "jpg"
-        initial_filename = original_filename.split('.')[0].lower if original_filename else " "
+        initial_filename = original_filename.split('.')[0].lower() if original_filename else "untitled"  # Fixed syntax error
         # Create a unique filename using UUID and current timestamp
         unique_id = str(uuid.uuid4())
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         
         return f"uploads/projects/{timestamp}_{unique_id}.{extension}"
     
-    def upload_image( self, file: UploadFile, folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
+    def upload_image(self, file: UploadFile, folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """
-            - Uploads single image and returns an object with the detail
+        Uploads single image and returns an object with the detail
         """
         self._validate_image(file)
         base_filename = self._generate_unique_filename(file.filename)
@@ -122,6 +122,7 @@ class S3ImageUploader:
     
     def delete_image(self, image_id: int) -> Dict[str, Any]:
         """
+        Delete image from S3
         """
         try:
             self.s3_client.delete_object(
@@ -148,10 +149,9 @@ class S3ImageUploader:
                 detail=f"Deletion failed: {str(e)}"
             )
 
-
-    def upload_multiple_images(self, files: List[UploadFile], folder: str = None, metadata: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    def upload_multiple_images(self, files: List[UploadFile], folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """
-            call the image upload function multiple times
+        Call the image upload function multiple times
         """
         results = []
         errors = []
@@ -165,7 +165,8 @@ class S3ImageUploader:
                 )
                 results.append(result)
             except HTTPException as e:
-                errors.append({  "filename": file.filename, "error": e.detail,"status_code": e.status_code})
+                errors.append({"filename": file.filename, "error": e.detail, "status_code": e.status_code})
+        
         return {
             "successful_uploads": results,
             "failed_uploads": errors,
@@ -175,7 +176,7 @@ class S3ImageUploader:
     
     def delete_multiple_images(self, image_ids: List[int]) -> Dict[str, Any]:
         """
-            call the image delete function multiple times
+        Call the image delete function multiple times
         """
         results = []
         errors = []
@@ -185,7 +186,8 @@ class S3ImageUploader:
                 result = self.delete_image(image_id=image_id)
                 results.append(result)
             except HTTPException as e:
-                errors.append({  "image_id": image_id, "error": e.detail,"status_code": e.status_code})
+                errors.append({"image_id": image_id, "error": e.detail, "status_code": e.status_code})
+        
         return {
             "successful_deletions": results,
             "failed_deletions": errors,
