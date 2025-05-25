@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 export default function HeroBanner({ pathname }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const route_data = routeData.find((r) => r.path == pathname) || null;
+  const route_data = routeData.find((r) => r.path == pathname ) || routeData.find((r) => r.path === 'notfound');
 
   const nextSlide = () => {
     setIsTransitioning(true);

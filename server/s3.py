@@ -2,14 +2,14 @@ import os
 import uuid
 from datetime import datetime
 from typing import Optional, Dict, Any, List, BinaryIO
-
+import asyncio
 import boto3
 from botocore.exceptions import ClientError
-from fastapi import UploadFile, HTTPException
+from fastapi import UploadFile, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 
 
-class S3ImageUploader:
+class  S3ImageUploader:
     """
     Utility class for uploading images to AWS S3 and saving metadata to database.
     """
@@ -75,7 +75,7 @@ class S3ImageUploader:
         
         return f"uploads/projects/{timestamp}_{unique_id}.{extension}"
     
-    def upload_image(self, file: UploadFile, folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
+    async def upload_image(self, file: UploadFile, folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Uploads single image and returns an object with the detail
         """
@@ -149,7 +149,7 @@ class S3ImageUploader:
                 detail=f"Deletion failed: {str(e)}"
             )
 
-    def upload_multiple_images(self, files: List[UploadFile], folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
+    async def upload_multiple_images(self, files: List[UploadFile], back_ground_task=BackgroundTasks, folder: str = None, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Call the image upload function multiple times
         """
@@ -158,11 +158,7 @@ class S3ImageUploader:
         
         for file in files:
             try:
-                result = self.upload_image(
-                    file=file,
-                    folder=folder,
-                    metadata=metadata
-                )
+                result = back_ground_task.add_task(self.upload_image, file=file, folder=folder, metadata=metadata)
                 results.append(result)
             except HTTPException as e:
                 errors.append({"filename": file.filename, "error": e.detail, "status_code": e.status_code})

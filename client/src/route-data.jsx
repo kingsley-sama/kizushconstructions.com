@@ -17,6 +17,14 @@ export const routeData = [
 		button_link: '',
 	},
 	{
+		path: 'notfound',
+		heading: '404 NOT FOUND!!!',
+		bg_image:'/medias/notfound.png',
+		tagline: '',
+		button_text: 'Back To Home',
+		button_link: '/',
+	},
+	{
 		path: '/services',
 		heading: 'Our Services',
 		bg_image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
