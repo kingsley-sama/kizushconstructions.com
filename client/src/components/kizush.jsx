@@ -2,13 +2,13 @@ import { ArrowRight } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 
 export default function ReusableDifference({
-	title = 'The KiSush Difference',
+	title = 'Hear What Makes Us Different',
 	primaryText = 'At KiZush Constructions, we believe in transforming spaces with purpose and passion. Our dedicated team brings expertise, creativity, and attention to detail to every project, ensuring results that exceed expectations.',
 	secondaryText = 'What sets us apart is our commitment to understanding your vision and bringing it to life. We don’t just build structures; we create environments where people thrive, connect, and feel inspired every day.',
 	buttonText = 'About Us',
 	buttonOnClick = () => {},
 	mainImage = {
-		src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+		src: '/medias/kizush_difference.jpg',
 		alt: 'KiSush team members collaborating',
 	},
 	className = '',
@@ -31,11 +31,12 @@ export default function ReusableDifference({
 						</button>
 					</div>
 				</div>
-				<div className='rounded-lg overflow-hidden shadow-lg h-[400px] md:h-[500px]'>
+				<div className='rounded-lg overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]'>
 					<img
 						src={mainImage.src}
 						alt={mainImage.alt}
 						className='w-full h-full object-cover'
+						loading="lazy" 
 					/>
 				</div>
 			</div>

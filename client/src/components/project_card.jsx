@@ -8,6 +8,7 @@ const ProjectCard = ({ item }) => {
 				src={item.src || item.imageUrl}
 				alt={item.alt || item.title}
 				className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
+				loading="lazy" 
 			/>
 			<div className='absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-100 transition-opacity duration-300' />
 			<div className='absolute bottom-3 flex justify-between items-center w-full text-white font-semibold text-lg opacity-100 transition-opacity duration-300 drop-shadow-lg px-4'>

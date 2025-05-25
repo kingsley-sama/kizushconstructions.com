@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import Process from './pages/Process';
 import Contact from './pages/contact';
 import './index.css';
+import NotFound from './pages/404.jsx';
 import Layout from './layout.jsx';
 import ProjectPage from './pages/projects_page.jsx';
 
@@ -24,6 +25,8 @@ const router = createBrowserRouter([
 				{ path: 'resources', element: <Resources /> },
 				{ path: 'process', element: <Process /> },
 				{ path: 'projects/:slug', element: <ProjectPage /> },
+				// Catch-all route for 404 Not Found
+				{ path: '*', element: <NotFound /> }
 		],
 	},
 ]);
