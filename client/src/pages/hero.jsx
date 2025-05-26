@@ -31,11 +31,131 @@ const landingPageSlides = [
   },
 ]
 
+// Loading component
+const HeroBannerSkeleton = () => (
+  <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] bg-gray-900">
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 animate-pulse" />
+    <div className="container mx-auto h-full px-6 sm:px-8 lg:px-12 xl:px-16">
+      <div className="flex h-full flex-col justify-center items-center lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="flex-1 max-w-5xl space-y-6 md:space-y-8 lg:space-y-10 text-center lg:text-left">
+          {/* Skeleton heading */}
+          <div className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-32 bg-gray-600 rounded-lg animate-pulse" />
+          {/* Skeleton tagline */}
+          <div className="space-y-3">
+            <div className="h-6 sm:h-8 md:h-10 bg-gray-700 rounded animate-pulse max-w-4xl" />
+            <div className="h-6 sm:h-8 md:h-10 bg-gray-700 rounded animate-pulse max-w-3xl" />
+          </div>
+          {/* Skeleton button */}
+          <div className="pt-6 md:pt-8">
+            <div className="h-12 sm:h-14 md:h-16 w-48 sm:w-56 md:w-64 bg-gray-600 rounded-full animate-pulse mx-auto lg:mx-0" />
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* Loading indicator */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
+    </div>
+  </div>
+)
+
+// Hook to preload images and validate data
+const useDataValidation = (pathname) => {
+  const [isDataReady, setIsDataReady] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  
+  useEffect(() => {
+    const validateAndPreloadData = async () => {
+      try {
+        // Find route data or fallback to notfound
+        const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
+        
+        if (!route_data) {
+          console.warn(`No route data found for pathname: ${pathname}`)
+          return
+        }
+
+        // Use slider data for landing page, otherwise use single route data
+        const isLandingPage = pathname === "/" && route_data.navigat
+        const slides = isLandingPage ? landingPageSlides : [route_data]
+
+        // Validate that all slides have required data
+        const isValidSlides = slides.every(slide => 
+          slide.heading && 
+          slide.bg_image && 
+          (slide.tagline !== undefined) &&
+          (slide.button_text !== undefined || route_data.button_text) &&
+          (slide.button_link !== undefined || route_data.navigat)
+        )
+
+        if (!isValidSlides) {
+          console.warn('Some slide data is missing:', slides)
+          return
+        }
+
+        // Preload all images
+        const imagePromises = slides.map(slide => {
+          return new Promise((resolve, reject) => {
+            const img = new Image()
+            
+            img.onload = () => {
+              console.log(`Image loaded successfully: ${slide.bg_image}`)
+              resolve(slide.bg_image)
+            }
+            
+            img.onerror = (error) => {
+              console.error(`Failed to load image: ${slide.bg_image}`, error)
+              reject(new Error(`Failed to load image: ${slide.bg_image}`))
+            }
+            
+            // Set a timeout for image loading
+            setTimeout(() => {
+              if (!img.complete) {
+                reject(new Error(`Image load timeout: ${slide.bg_image}`))
+              }
+            }, 10000) // 10 second timeout
+            
+            img.src = slide.bg_image
+          })
+        })
+
+        // Wait for all images to load
+        await Promise.all(imagePromises)
+        setImagesLoaded(true)
+        
+        // Small delay to ensure everything is ready
+        setTimeout(() => {
+          setIsDataReady(true)
+        }, 100)
+
+      } catch (error) {
+        console.error('Error validating data or preloading images:', error)
+        // Even if some images fail, we should still show the component
+        // but you might want to handle this differently based on your needs
+        setTimeout(() => {
+          setIsDataReady(true)
+        }, 2000) // Fallback timeout
+      }
+    }
+
+    // Reset states when pathname changes
+    setIsDataReady(false)
+    setImagesLoaded(false)
+    
+    validateAndPreloadData()
+  }, [pathname])
+
+  return { isDataReady, imagesLoaded }
+}
+
 export default function HeroBanner({ pathname }) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(true)
+
+  // Use the data validation hook
+  const { isDataReady, imagesLoaded } = useDataValidation(pathname)
 
   // Find route data or fallback to notfound
   const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
@@ -72,7 +192,7 @@ export default function HeroBanner({ pathname }) {
       large: "p-4 w-14 h-14 sm:w-16 sm:h-16",
     }
 
-    return (
+    return ( 
       <button
         onClick={onClick}
         disabled={disabled}
@@ -111,14 +231,14 @@ export default function HeroBanner({ pathname }) {
 
   // Auto-slide functionality for landing page only
   useEffect(() => {
-    if (!isLandingPage || isPaused || slides.length <= 1) return
+    if (!isLandingPage || isPaused || slides.length <= 1 || !isDataReady) return
 
     const interval = setInterval(() => {
       nextSlide()
     }, 6000) // Increased to 6 seconds for better reading time
 
     return () => clearInterval(interval)
-  }, [isLandingPage, isPaused, nextSlide, slides.length])
+  }, [isLandingPage, isPaused, nextSlide, slides.length, isDataReady])
 
   useEffect(() => {
     if (isTransitioning) {
@@ -131,12 +251,17 @@ export default function HeroBanner({ pathname }) {
 
   // Preload next image
   useEffect(() => {
-    if (isLandingPage && slides.length > 1) {
+    if (isLandingPage && slides.length > 1 && isDataReady) {
       const nextIndex = (currentSlide + 1) % slides.length
       const img = new Image()
       img.src = slides[nextIndex].bg_image
     }
-  }, [currentSlide, isLandingPage, slides])
+  }, [currentSlide, isLandingPage, slides, isDataReady])
+
+  // Show loading skeleton if data is not ready
+  if (!isDataReady) {
+    return <HeroBannerSkeleton />
+  }
 
   const currentSlideData = slides[currentSlide]
 
@@ -146,7 +271,7 @@ export default function HeroBanner({ pathname }) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Image with Enhanced Animation and Positioning */}
+
       <AnimatePresence mode="wait">
         <motion.div
           key={`bg-${currentSlide}`}
