@@ -30,7 +30,7 @@ const TeamBio = [
 		id: 1,
 		title: 'Kizzy: Father, Owner, Visionary',
 		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Paul-family-square-640x607.jpeg',
+			'/medias/kizush_difference.jpg',
 		paragraphs: [
 			"Meet Paul, the driving force behind Bay Point Contracting's commitment to excellence in design and renovations. With roots tracing back to his early days working alongside his father, he brings over three decades of experience to every project and an unwavering dedication to quality, professionalism, and values.",
 			"Paul's commitment to quality and dedication to his principles infuse every aspect of his work. With Paul, your renovation project is a partnership, driven by integrity, expertise, and a genuine passion for creating extraordinary spaces.",
