@@ -11,7 +11,7 @@ const landingPageSlides = [
   {
     heading: "About Us",
     tagline: "Welcome to our innovative platform",
-    bg_image: "/images/webaliser-_TPTXZd9mOo-unsplash.jpg",
+    bg_image: "/medias/kizush_about.png",
     button_text: "Read More",
     button_link: "/about",
   },
@@ -25,7 +25,7 @@ const landingPageSlides = [
   {
     heading: "Reach Us",
     tagline: "Join thousands of satisfied customers",
-    bg_image: "https://baypointcontracting.ca/wp-content/uploads/2024/05/contact-zoomed-1240x645.jpg",
+    bg_image: "/medias/kizush_banner.png",
     button_text: "Get Started",
     button_link: "/contact",
   },
@@ -81,6 +81,7 @@ const useDataValidation = (pathname) => {
 
         // Validate that all slides have required data
         const isValidSlides = slides.every(slide => 
+          slide && 
           slide.heading && 
           slide.bg_image && 
           (slide.tagline !== undefined) &&
@@ -157,8 +158,13 @@ export default function HeroBanner({ pathname }) {
   // Use the data validation hook
   const { isDataReady, imagesLoaded } = useDataValidation(pathname)
 
-  // Find route data or fallback to notfound
-  const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
+  // Find route data or fallback to notfound - with null check
+  const route_data = routeData?.find((r) => r.path === pathname) || routeData?.find((r) => r.path === "notfound")
+
+  // Early return if no route data found
+  if (!route_data) {
+    return <HeroBannerSkeleton />
+  }
 
   // Use slider data for landing page, otherwise use single route data
   const isLandingPage = pathname === "/" && route_data.navigat
@@ -265,6 +271,11 @@ export default function HeroBanner({ pathname }) {
 
   const currentSlideData = slides[currentSlide]
 
+  // Additional null check for currentSlideData
+  if (!currentSlideData) {
+    return <HeroBannerSkeleton />
+  }
+
   return (
     <div
       className="relative w-full overflow-hidden"
@@ -293,14 +304,14 @@ export default function HeroBanner({ pathname }) {
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(${currentSlideData.bg_image})`,
+              backgroundImage: `url(${currentSlideData.bg_image || ''})`,
               backgroundPosition: 'center 40%', // Better positioning for hero images
             }}
             onLoad={() => setImageLoaded(true)}
           />
           
           {/* Image overlay for better text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/10" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
         </motion.div>
       </AnimatePresence>
@@ -333,7 +344,7 @@ export default function HeroBanner({ pathname }) {
                     lineHeight: '0.85',
                   }}
                 >
-                  {currentSlideData.heading}
+                  {currentSlideData.heading || ''}
                 </motion.h1>
               </AnimatePresence>
 
