@@ -138,6 +138,7 @@ const ResourceCard = ({ post }) => {
 	};
 
 	return (
+	<Link to={`/notfound`} className='text-[var(--primary)] hover:underline'>
 		<div className='max-w-md overflow-hidden rounded-lg shadow-lg bg-white'>
 			<img
 				src={post.imageUrl || '/placeholder.svg'}
@@ -166,15 +167,16 @@ const ResourceCard = ({ post }) => {
 					<p className='mb-3 leading-relaxed text-gray-600 text-sm flex-grow'>
 						{post.excerpt}
 					</p>
-					<Link to={`/notfound`} className='text-[var(--primary)] hover:underline'>
+				
 					<button className='bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded flex items-center self-start'>
 						Read More
 						<ArrowForward />
 					</button>
-					</Link>
+					
 				</div>
 			</div>
 		</div>
+	</Link>
 	);
 };
 

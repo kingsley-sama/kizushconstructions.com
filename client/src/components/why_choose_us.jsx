@@ -6,7 +6,7 @@ function WhyChooseUs() {
           <div className="absolute flex flex-col items-center justify-center p-4 inset-0 w-full h-full bg-cover bg-center bg-primary">
             <h2 className="text-4xl max-h-fit md:w-1/2 text-white bg-amber-400md:text-5xl font-bold text-center">Why Choose Us</h2>
             <div className="max-w-l px-4 lg:pr-12">
-              <p className="text-muted-foreground text-lg text-white mb-4">
+              <p className="text-muted-foreground font-serif text-lg text-white mb-4 px-10">
                 At Kizush Constructions, we believe in transforming spaces with purpose
                 this has been our guiding principle in our development project. Below are 
                 some reviews we got from our clients 

@@ -11,7 +11,7 @@ const landingPageSlides = [
   {
     heading: "About Us",
     tagline: "Welcome to our innovative platform",
-    bg_image: "/images/webaliser-_TPTXZd9mOo-unsplash.jpg",
+    bg_image: "/medias/kizush_about.png",
     button_text: "Read More",
     button_link: "/about",
   },
@@ -25,7 +25,7 @@ const landingPageSlides = [
   {
     heading: "Reach Us",
     tagline: "Join thousands of satisfied customers",
-    bg_image: "https://baypointcontracting.ca/wp-content/uploads/2024/05/contact-zoomed-1240x645.jpg",
+    bg_image: "/medias/kizush_banner.png",
     button_text: "Get Started",
     button_link: "/contact",
   },
@@ -38,28 +38,23 @@ const HeroBannerSkeleton = () => (
     <div className="container mx-auto h-full px-6 sm:px-8 lg:px-12 xl:px-16">
       <div className="flex h-full flex-col justify-center items-center lg:flex-row lg:items-center lg:justify-between lg:gap-16">
         <div className="flex-1 max-w-5xl space-y-6 md:space-y-8 lg:space-y-10 text-center lg:text-left">
-          {/* Skeleton heading */}
           <div className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-32 bg-gray-600 rounded-lg animate-pulse" />
-          {/* Skeleton tagline */}
           <div className="space-y-3">
             <div className="h-6 sm:h-8 md:h-10 bg-gray-700 rounded animate-pulse max-w-4xl" />
             <div className="h-6 sm:h-8 md:h-10 bg-gray-700 rounded animate-pulse max-w-3xl" />
           </div>
-          {/* Skeleton button */}
-          <div className="pt-6 md:pt-8">
+            <div className="pt-6 md:pt-8">
             <div className="h-12 sm:h-14 md:h-16 w-48 sm:w-56 md:w-64 bg-gray-600 rounded-full animate-pulse mx-auto lg:mx-0" />
           </div>
         </div>
       </div>
     </div>
-    {/* Loading indicator */}
+
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
     </div>
   </div>
 )
-
-// Hook to preload images and validate data
 const useDataValidation = (pathname) => {
   const [isDataReady, setIsDataReady] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState(false)
@@ -67,20 +62,16 @@ const useDataValidation = (pathname) => {
   useEffect(() => {
     const validateAndPreloadData = async () => {
       try {
-        // Find route data or fallback to notfound
         const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
         
         if (!route_data) {
           console.warn(`No route data found for pathname: ${pathname}`)
           return
         }
-
-        // Use slider data for landing page, otherwise use single route data
         const isLandingPage = pathname === "/" && route_data.navigat
         const slides = isLandingPage ? landingPageSlides : [route_data]
-
-        // Validate that all slides have required data
         const isValidSlides = slides.every(slide => 
+          slide && 
           slide.heading && 
           slide.bg_image && 
           (slide.tagline !== undefined) &&
@@ -93,7 +84,6 @@ const useDataValidation = (pathname) => {
           return
         }
 
-        // Preload all images
         const imagePromises = slides.map(slide => {
           return new Promise((resolve, reject) => {
             const img = new Image()
@@ -113,7 +103,7 @@ const useDataValidation = (pathname) => {
               if (!img.complete) {
                 reject(new Error(`Image load timeout: ${slide.bg_image}`))
               }
-            }, 10000) // 10 second timeout
+            }, 5000) // 10 second timeout
             
             img.src = slide.bg_image
           })
@@ -157,8 +147,13 @@ export default function HeroBanner({ pathname }) {
   // Use the data validation hook
   const { isDataReady, imagesLoaded } = useDataValidation(pathname)
 
-  // Find route data or fallback to notfound
-  const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
+  // Find route data or fallback to notfound - with null check
+  const route_data = routeData?.find((r) => r.path === pathname) || routeData?.find((r) => r.path === "notfound")
+
+  // Early return if no route data found
+  if (!route_data) {
+    return <HeroBannerSkeleton />
+  }
 
   // Use slider data for landing page, otherwise use single route data
   const isLandingPage = pathname === "/" && route_data.navigat
@@ -265,6 +260,11 @@ export default function HeroBanner({ pathname }) {
 
   const currentSlideData = slides[currentSlide]
 
+  // Additional null check for currentSlideData
+  if (!currentSlideData) {
+    return <HeroBannerSkeleton />
+  }
+
   return (
     <div
       className="relative w-full overflow-hidden"
@@ -293,25 +293,25 @@ export default function HeroBanner({ pathname }) {
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(${currentSlideData.bg_image})`,
+              backgroundImage: `url(${currentSlideData.bg_image || ''})`,
               backgroundPosition: 'center 40%', // Better positioning for hero images
             }}
             onLoad={() => setImageLoaded(true)}
           />
           
           {/* Image overlay for better text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/10" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
         </motion.div>
       </AnimatePresence>
 
       {/* Content Container with improved positioning */}
       <div className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh]">
-        <div className="container mx-auto h-full px-6 sm:px-8 lg:px-12 xl:px-16">
+        <div className="container mx-auto h-full px-2 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex h-full flex-col justify-center items-center lg:flex-row lg:items-center lg:justify-between lg:gap-16">
             
             {/* Main Content Section with improved typography */}
-            <div className="flex-1 max-w-5xl space-y-6 md:space-y-8 lg:space-y-10 text-center lg:text-left">
+            <div className="md:flex-1 max-w-5xl space-y-6 md:space-y-8 lg:space-y-10 text-center lg:text-left">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={`heading-${currentSlide}`}
@@ -333,7 +333,7 @@ export default function HeroBanner({ pathname }) {
                     lineHeight: '0.85',
                   }}
                 >
-                  {currentSlideData.heading}
+                  {currentSlideData.heading || ''}
                 </motion.h1>
               </AnimatePresence>
 
@@ -350,8 +350,8 @@ export default function HeroBanner({ pathname }) {
                       delay: 0.3, 
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
-                    className="text-gray-100 max-w-4xl leading-relaxed font-medium
-                      text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl
+                    className="text-gray-100 max-w-4xl leading-relaxed font-medium hidden
+                      text-lg sm:text-xl md:flex md:text-2xl lg:text-3xl xl:text-4xl lg:flex xl:flex
                       drop-shadow-lg"
                     style={{
                       fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
@@ -381,7 +381,7 @@ export default function HeroBanner({ pathname }) {
                     <button
                       className="group relative overflow-hidden 
                       bg-white text-gray-900 font-bold
-                      px-8 py-4 sm:px-12 sm:py-5 md:px-16 md:py-6
+                      px-4 py-2 sm:px-12 sm:py-5 md:px-16 md:py-6
                       text-base sm:text-lg md:text-xl lg:text-2xl
                       rounded-full 
                       transition-all duration-500 ease-out
@@ -410,8 +410,6 @@ export default function HeroBanner({ pathname }) {
                           →
                         </motion.span>
                       </span>
-                      
-                      {/* Button hover effects */}
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </button>
@@ -431,7 +429,7 @@ export default function HeroBanner({ pathname }) {
                   lg:mr-4"
               >
                 {/* Enhanced Slide Indicators */}
-                <div className="flex lg:flex-col space-x-2 sm:space-x-3 lg:space-x-0 lg:space-y-3 order-2 lg:order-1">
+                <div className="flex lg:flex-col space-x-4 sm:space-x-3 lg:space-x-0 lg:space-y-3 order-2 lg:order-1">
                   {slides.map((_, index) => (
                     <button
                       key={index}
@@ -448,14 +446,14 @@ export default function HeroBanner({ pathname }) {
                 </div>
 
                 {/* Enhanced Navigation Buttons */}
-                <div className="flex items-center justify-center space-x-3 sm:space-x-4 lg:space-x-0 lg:space-y-4 lg:flex-col order-1 lg:order-2">
+                <div className="hidden sm:flex items-center justify-center space-x-3 sm:space-x-4 lg:space-x-0 lg:space-y-4 lg:flex-col order-1 lg:order-2">
                   <MaterialButton
                     onClick={prevSlide}
                     disabled={isTransitioning}
                     aria-label="Previous slide"
                     size="small"
                   >
-                    <ChevronLeftIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <ChevronLeftIcon className="w-1 h-1 sm:w-6 sm:h-6" />
                   </MaterialButton>
 
                   <MaterialButton 
@@ -464,12 +462,12 @@ export default function HeroBanner({ pathname }) {
                     aria-label="Next slide" 
                     size="small"
                   >
-                    <ChevronRightIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <ChevronRightIcon className="w-1 h-1 sm:w-6 sm:h-6" />
                   </MaterialButton>
                 </div>
 
                 {/* Enhanced Slide Counter */}
-                <div className="text-white/90 text-sm sm:text-base font-semibold order-3 lg:order-3 lg:text-center
+                <div className="text-white/90 hidden text-sm sm:flex sm:text-base font-semibold order-3 lg:order-3 lg:text-center
                   bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
                   <span className="text-white">{String(currentSlide + 1).padStart(2, '0')}</span>
                   <span className="mx-2 text-white/60">—</span>
