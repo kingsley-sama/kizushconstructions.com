@@ -38,7 +38,7 @@ const TeamMemberBio = ({
 				<div
 					className={`flex flex-col md:${
 						layout.direction === 'row' ? 'flex-row' : 'flex-col'
-					} gap-8 items-center`}>
+					} gap-6 items-center`}>
 					{/* Image Section */}
 					<div
 						className='w-full'
@@ -47,7 +47,7 @@ const TeamMemberBio = ({
 							<img
 								src={image}
 								alt={imgProps.alt}
-								className='w-full h-auto rounded shadow-md'
+								className='w-2/3 h-auto rounded shadow-md'
 							/>
 						) : (
 							image

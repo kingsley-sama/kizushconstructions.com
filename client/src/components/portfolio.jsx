@@ -5,40 +5,40 @@ import ProjectCard from './project_card';
 const Projects = () => {
 	const galleryItems = [
 		{
-			src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace',
+			src: '/project_images/project_three.jpeg',
 			alt: 'Ontario',
-			caption: 'Basement Remodel',
-			id: "basement-remodel"
+			caption: 'Construction',
+			id: "0"
 		},
 		{
-			src: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77',
+			src: '/project_images/project_one.jpeg',
+			alt: 'Ontario',
+			caption: 'Building',
+			id: "1"
+		},
+		{
+			src: '/project_images/project_four.png',
 			alt: '',
-			caption: 'Nirnia',
-			id: "kitchen-remodel"
+			caption: '',
+			id: '4',
 		},
 		{
-			src: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77',
+			src: '/project_images/construction.jpeg',
 			alt: 'Nirnia',
-			caption: 'bathroom-remodel',
-			id: 'bathroom-remodel',
+			caption: 'Construction',
+			id: "2",
 		},
 		{
-			src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-			alt: 'Artex',
-			caption: 'Artex',
-			id: 'bathroom-remodel',
+			src: '/project_images/remodeling.jpeg',
+			alt: 'Ontario',
+			caption: 'remodel',
+			id: "3",
 		},
 		{
-			src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
-			alt: 'Brera',
-			caption: 'Brera',
-			id: 'kitchen-remodel',
-		},
-		{
-			src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea',
-			alt: 'Alea Pro',
-			caption: 'Alea Pro',
-			id: 'cottage-remodel',
+			src: '/project_images/project_five.png',
+			alt: '',
+			caption: '',
+			id: '5',
 		},
 	];
 

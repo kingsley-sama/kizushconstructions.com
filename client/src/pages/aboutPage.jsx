@@ -11,7 +11,7 @@ const sections = [
 		description:
 			'Our mission is to be a company of passionate people working and serving together to bring our client’s dreams to reality by creating spaces that inspire and enhance their lives by delivering a professional and rewarding renovation experience.',
 		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Enns-Whole-Home20240111_005-scaled.jpeg',
+			'/medias/kizush_banner.png',
 		imageAlt: 'Modern sitting area with kitchen and dining room',
 	},
 	{
@@ -20,7 +20,7 @@ const sections = [
 		description:
 			'kizush Construction is an authority in design and renovation services, known for our commitment to quality and client satisfaction. Our vision is to be the trusted source for clients seeking personalized and exceptional renovation experiences, setting the standard for excellence within our community.',
 		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/002-Mi-Townhouse-High-Res-Large-1.jpg',
+			'public/medias/kizush_hat.png',
 		imageAlt: 'Monochrome sitting area ',
 	},
 ];
@@ -32,25 +32,14 @@ const TeamBio = [
 		image:
 			'/medias/kizush_difference.jpg',
 		paragraphs: [
-			"Meet Paul, the driving force behind Bay Point Contracting's commitment to excellence in design and renovations. With roots tracing back to his early days working alongside his father, he brings over three decades of experience to every project and an unwavering dedication to quality, professionalism, and values.",
-			"Paul's commitment to quality and dedication to his principles infuse every aspect of his work. With Paul, your renovation project is a partnership, driven by integrity, expertise, and a genuine passion for creating extraordinary spaces.",
-			"Beyond the blueprints and job sites, you'll find Paul spending time with his family, harnessing the wind on his sailboat, and finding fulfillment in serving his community through his church. As a man of faith, Paul sees himself as the steward of the business and constantly endeavours to honour God in his daily life and actions.",
+			"Meet Kizzy, the visionary behind Kizush Constructions’ growing reputation for quality craftsmanship and thoughtful design. With a deep passion for building and over ten years of hands-on experience across Canada, Kizzy brings energy, precision, and a personal commitment to excellence in every project.",
+
+"At the heart of Kizzy’s work is a belief that every home should be a reflection of integrity, functionality, and beauty. Whether it's a custom build or a renovation, clients quickly learn that working with Kizzy is more than a transaction—it's a collaboration built on trust, clear communication, and shared goals.",
+
+"Outside the construction world, Kizzy finds joy in time with family, giving back to the community, and living out his faith. He sees Kizush Constructions not just as a business, but as a calling—an opportunity to serve others while building lasting spaces that truly feel like home."
 		],
 		quote:
 			'Recognizing, as the owner of this business, that I am a steward of this company; I will lead with the endeavour of constantly striving to honour God in all I say and do.',
-	},
-	{
-		id: 2,
-		title: 'Rebecca Farnsworth: Interior Designer',
-		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/rebecca-640x800.jpg',
-		paragraphs: [
-			'A graduate of Ryerson University’s CIDA accredited Interior Design program, Rebecca brings a rich background in custom residential and retail design to her craft. With a client-centred approach cultivated through her diverse experiences, she navigates the design process with creativity and expertise, turning client visions into tangible realities.',
-			'From a young age, Rebecca recognized her calling in the creative realm, embarking on a fulfilling journey in interior design. She finds joy in guiding projects through various design phases, ensuring each aspect aligns with her clients’ aspirations.',
-			'Rebecca believes that trust and open communication are the foundation for exceptional client-designer relationships. With 10+ years working with CAD software, she skillfully translates client ideas into compelling visual presentations and detailed working drawings.',
-			'In her free time, Rebecca remains dedicated to her creative pursuits and can often be found painting, experimenting with new recipes, or engaging in DIY projects around her home.',
-		],
-		quote: '',
 	},
 ];
 
