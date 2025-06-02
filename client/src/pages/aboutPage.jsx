@@ -20,7 +20,7 @@ const sections = [
 		description:
 			'kizush Construction is an authority in design and renovation services, known for our commitment to quality and client satisfaction. Our vision is to be the trusted source for clients seeking personalized and exceptional renovation experiences, setting the standard for excellence within our community.',
 		image:
-			'public/medias/kizush_hat.png',
+			'/medias/kizush_hat.png',
 		imageAlt: 'Monochrome sitting area ',
 	},
 ];
