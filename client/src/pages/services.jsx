@@ -12,7 +12,7 @@ const sections = [
 		description:
 			'Design your dream home with an expert team that will make it a reality. At Kizush Contracting, we are passionate about crafting spaces that blend functionality and beauty. From the initial idea to the final touches, we collaborate closely with you, getting to know your unique style and goals.',
 		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Bay-Point-Contracting-Main-Floor-Reno-2023_001-scaled.jpg',
+			'/medias/design.png',
 		imageAlt: 'Modern sitting area interior with white sofas and large windows',
 	},
 	{

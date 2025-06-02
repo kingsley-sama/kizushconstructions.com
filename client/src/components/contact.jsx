@@ -45,10 +45,7 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
     setSubmitted(true)
-
-    // Reset form after 3 seconds
     setTimeout(() => {
       setSubmitted(false)
       setFormData({

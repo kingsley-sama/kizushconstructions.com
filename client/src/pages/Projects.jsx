@@ -3,101 +3,47 @@ import KuzushDifference from '../components/kizush';
 
 const projects = [
 	{
-		id: 1,
-		title: 'Modern Mansard',
+		id: "0",
+		title: 'Construction',
 		location: 'Ontario',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/10/56A0391-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Addition'],
+		imageUrl: '/project_images/project_three.jpeg',
+		categories: ['Construction'],
 	},
 	{
-		id: 2,
-		title: 'Elevated Addition',
-		location: 'Barrie',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_24-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Bathroom'],
-	},
-	{
-		id: 3,
-		title: 'White Wood Kitchen',
-		location: 'Orange Ville',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/10/56A0391-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Kitchen'],
-	},
-	{
-		id: 4,
-		title: 'Bold Monochrome',
-		location: 'Innisfil',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2025/02/Bay-Point-Contracting-Monochrome-Bath_07-Large-533x800.jpeg',
-		categories: ['Accessibility', 'Kitchen'],
-	},
-	{
-		id: 5,
-		title: 'Kitchen Makeover',
-		location: 'Orangeville',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Kitchen-2020_0005_HDR-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Kitchen'],
-	},
-	{
-		id: 6,
-		title: 'Elegant Home Reno',
-		location: 'New Market',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Main-Floor-Reno-28aewarm-1-Large-1199x800.jpeg',
-		categories: ['Accessibility', 'Addition', 'Second Floor'],
-	},
-	{
-		id: 7,
-		title: 'Ranch Revival',
-		location: 'New Tecumseth',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Enns-Whole-Home20240111_004-1199x800.jpeg',
-		categories: ['Accessibility', 'Addition', 'Second Floor', 'main floor'],
-	},
-	{
-		id: 8,
-		title: 'Primary Ensuite Oasis',
-		location: 'Barrie',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/05/Bay-Point-Contracting_Anderson_2024_14-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Bathroom'],
-	},
-	{
-		id: 9,
-		title: 'Whitehaven Kitchen',
-		location: 'Barrie',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0678-Enhanced-NR-Custom-1120x800.jpeg',
-		categories: ['Accessibility', 'Kitchen'],
-	},
-	{
-		id: 10,
-		title: 'Townhouse Renewal',
-		location: 'Woodstock',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Atwell_13-copyae-Large-1200x800.jpeg',
-		categories: ['Accessibility', 'Addition', 'Exterior'],
-	},
-	{
-		id: 11,
-		title: 'Accessibility Upgrade',
+		id: "1",
+		title: 'Building',
 		location: 'Ontario',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Turgeon-2ae-Large-1-1067x800.jpeg',
-		categories: ['Accessibility', 'Addition', 'Exterior'],
+		imageUrl: '/project_images/project_one.jpeg',
+		categories: ['Building'],
 	},
 	{
-		id: 12,
-		title: 'Basement Refresh',
-		location: 'Orillia',
-		imageUrl:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/Sharma-Living-Space-Large-1199x800.jpg',
-		categories: ['Accessibility', 'Addition', 'Basement'],
+		id: "4",
+		title: '',
+		location: '',
+		imageUrl: '/project_images/project_four.png',
+		categories: ['Remodel', 'Renovation', 'Construction', 'Design'],
 	},
+	{
+		id: "2",
+		title: 'Construction',
+		location: 'Nirnia',
+		imageUrl: '/project_images/construction.jpeg',
+		categories: ['Construction', 'Renovation'],
+	},
+	{
+		id: "3",
+		title: 'Remodel',
+		location: 'Ontario',
+		imageUrl: '/project_images/remodeling.jpeg',
+		categories: ['Remodel', 'Renovation', 'Design'],
+	},
+	{
+		id: "5",
+		title: '',
+		location: '',
+		imageUrl: '/project_images/project_five.png',
+		categories: ['Remodel', 'Renovation', 'Design'],
+	}
 ];
 
 const Projects = () => {

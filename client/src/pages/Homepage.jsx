@@ -10,16 +10,9 @@ import Projects from '../components/portfolio';
 
 
 const sections = [
+
 	{
 		id: 1,
-		title: 'Design',
-		description:
-			'Elevate your home with our custom design services, where creativity meets functionality. Our expert designers work with you to bring your vision to life, ensuring every detail reflects your personal style and enhances your living experience.',
-		image: '/images/im3rd-media-FJZtZldA-uE-unsplash.jpg',
-		imageAlt: 'Modern kitchen interior with white cabinets and island',
-	},
-	{
-		id: 2,
 		title: 'Remodeling',
 		description:
 			'Transform your space with our expert construction services. Our skilled craftsmen bring precision and care to every project, ensuring superior quality and attention to detail that exceeds your expectations.',
@@ -27,11 +20,19 @@ const sections = [
 		imageAlt: 'Construction project in progress',
 	},
 	{
+		id: 2,
+		title: 'Design',
+		description:
+			'Elevate your home with our custom design services, where creativity meets functionality. Our expert designers work with you to bring your vision to life, ensuring every detail reflects your personal style and enhances your living experience.',
+		image: '/medias/design.png',
+		imageAlt: 'Modern kitchen interior with white cabinets and island',
+	},
+	{
 		id: 3,
 		title: 'Construction & Renovation',
 		description:
 			'Breathe new life into your existing space with our renovation services. We specialize in updating and modernizing homes while preserving their unique character and maximizing their potential.',
-		image: 'public/project_images/remodeling.jpeg',
+		image: '/project_images/remodeling.jpeg',
 		imageAlt: 'Home renovation project',
 	},
 	{
