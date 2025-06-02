@@ -20,18 +20,18 @@ const sections = [
 	},
 	{
 		id: 2,
-		title: 'Building',
+		title: 'Remodeling',
 		description:
 			'Transform your space with our expert construction services. Our skilled craftsmen bring precision and care to every project, ensuring superior quality and attention to detail that exceeds your expectations.',
-		image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
+		image: '/project_images/project_four.png',
 		imageAlt: 'Construction project in progress',
 	},
 	{
 		id: 3,
-		title: 'Renovation',
+		title: 'Construction & Renovation',
 		description:
 			'Breathe new life into your existing space with our renovation services. We specialize in updating and modernizing homes while preserving their unique character and maximizing their potential.',
-		image: '/images/jolene-hardy-uuApNXxgcRM-unsplash.jpg',
+		image: 'public/project_images/remodeling.jpeg',
 		imageAlt: 'Home renovation project',
 	},
 	{
@@ -39,7 +39,7 @@ const sections = [
 		title: 'Maintainance',
 		description:
 			'Keep your home in perfect condition with our comprehensive maintenance services. Our preventive care and prompt attention to details ensure your space remains beautiful and functional for years to come.',
-		image: '/images/webaliser-_TPTXZd9mOo-unsplash.jpg',
+		image: '/medias/kizush_difference.jpg',
 		imageAlt: 'Home maintenance work',
 	},
 ];
