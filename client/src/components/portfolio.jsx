@@ -7,36 +7,36 @@ const Projects = () => {
 		{
 			src: '/project_images/project_three.jpeg',
 			alt: 'Ontario',
-			caption: 'Construction',
+			caption: '',
 			id: "0"
 		},
 		{
 			src: '/project_images/project_one.jpeg',
 			alt: 'Ontario',
-			caption: 'Building',
+			caption: '',
 			id: "1"
 		},
 		{
 			src: '/project_images/project_four.png',
-			alt: '',
-			caption: '',
+			alt: 'Simcoe County',
+			caption: 'S',
 			id: '4',
 		},
 		{
 			src: '/project_images/construction.jpeg',
-			alt: 'Nirnia',
-			caption: 'Construction',
+			alt: 'Barrie',
+			caption: '',
 			id: "2",
 		},
 		{
 			src: '/project_images/remodeling.jpeg',
-			alt: 'Ontario',
-			caption: 'remodel',
+			alt: 'Toronto',
+			caption: '',
 			id: "3",
 		},
 		{
 			src: '/project_images/project_five.png',
-			alt: '',
+			alt: 'Vaughan',
 			caption: '',
 			id: '5',
 		},

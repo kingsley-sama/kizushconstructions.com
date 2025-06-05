@@ -14,6 +14,14 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: #08445e;
+    --primary-100: hsl(200, 86%, 95%);
+    --primary-200: hsl(200, 86%, 85%);
+    --primary-300: hsl(200, 86%, 70%);
+    --primary-400: hsl(200, 86%, 55%);
+    --primary-500: hsl(200, 86%, 40%); 
+    --primary-600: hsl(200, 86%, 30%);
+    --primary-700: hsl(200, 86%, 20%); 
+
     --primary-foreground: 210 40% 98%;
 
     --secondary:#ed6a11;

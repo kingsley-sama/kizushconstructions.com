@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
 function Section({ data, imageOnLeft = false }) {
 	const clipPath = imageOnLeft
 		? 'polygon(0 0, 100% 10%, 100% 90%, 0 100%)'
 		: 'polygon(0 10%, 100% 0, 100% 100%, 0 90%)';
-
 	return (
 		<div className='grid lg:grid-cols-2 gap-4 items-center'>
 			{/* Image Section */}
@@ -18,7 +18,6 @@ function Section({ data, imageOnLeft = false }) {
 					}}
 				/>
 			</div>
-
 			{/* Content Section */}
 			<div
 				className={`max-w-xl px-4 py-16 ${
@@ -27,14 +26,19 @@ function Section({ data, imageOnLeft = false }) {
 				<h2 className='text-4xl text-primary md:text-5xl font-bold tracking-tight mb-6'>
 					{data.title}
 				</h2>
-
 				<p className='text-primary text-lg mb-8'>{data.description}</p>
-
+				<Link to={`/about`}>
 				<button
 					variant='outline'
-					className='border border-2 p-4 border-accent text-accent hover:border-black hover:bg-white hover:text-black transition-colors'>
+					className='border-2 border-primary/30 text-primary/70 bg-primary/5
+					px-4 py-2 text-sm 
+					md:px-6 md:py-3 md:text-base
+					rounded-md font-medium
+					hover:border-accent hover:text-accent hover:bg-accent/10
+					transition-all duration-300 ease-in-out'>
 					Learn More
 				</button>
+				</Link>
 			</div>
 		</div>
 	);

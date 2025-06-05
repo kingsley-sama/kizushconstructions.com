@@ -16,6 +16,7 @@ const ValueCard = ({ icon, title, description }) => {
 
 	return (
 		<Box
+			bgcolor=''
 			textAlign='center'
 			sx={{ mb: 4 }}>
 			<Box
@@ -28,7 +29,7 @@ const ValueCard = ({ icon, title, description }) => {
 			</Box>
 			<Typography
 				variant='h5'
-				className='text-[var(--primary)]'
+				className='text-primary'
 				component='h3'
 				gutterBottom
 				sx={{
@@ -39,7 +40,7 @@ const ValueCard = ({ icon, title, description }) => {
 				{title}
 			</Typography>
 			<Typography
-				className='text-[var(--primary)]'
+				className='text-primary'
 				variant='body1'
 				color='text.secondary'
 				sx={{
@@ -53,7 +54,7 @@ const ValueCard = ({ icon, title, description }) => {
 };
 
 const KizushValues = () => {
-	const iconStyle = { fontSize: 40, color: 'var(--primary)' };
+	const iconStyle = { fontSize: 50, color: 'primary' };
 
 	const valuesData = [
 		{
