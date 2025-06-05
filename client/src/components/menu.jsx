@@ -5,6 +5,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { ArrowDownward } from '@mui/icons-material';
+
 const servicesDropdown = [
 	{ title: 'Design', to: '/services/search' },
 	{ title: 'Whole Home Renovations', to: '/services/design' },
@@ -250,7 +251,7 @@ export default function Navbar() {
               transition={{ delay: 0.1, duration: 0.3 }}
             >
               <Link
-                href="/"
+                to="/"
                 className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -261,11 +262,9 @@ export default function Navbar() {
               <div>
                 <div className="flex items-center justify-between">
                   <Link
-                    href="/services"
+                    to="/services"
                     className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation() // Prevent dropdown toggle when clicking the link
-                    }}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     Services
                   </Link>
@@ -292,8 +291,8 @@ export default function Navbar() {
                     >
                       {servicesDropdown.map((item) => (
                         <Link
-                          key={item.href}
-                          href={item.href}
+                          key={item.to}
+                          to={item.to}
                           className="block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors"
                           onClick={() => setIsMenuOpen(false)}
                         >
@@ -307,7 +306,7 @@ export default function Navbar() {
 
               {/* Projects Link */}
               <Link
-                href="/projects"
+                to="/projects"
                 className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -316,7 +315,7 @@ export default function Navbar() {
 
               {/* Process Link */}
               <Link
-                href="/process"
+                to="/process"
                 className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -327,11 +326,9 @@ export default function Navbar() {
               <div>
                 <div className="flex items-center justify-between">
                   <Link
-                    href="/about"
+                    to="/about"
                     className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation() // Prevent dropdown toggle when clicking the link
-                    }}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     About Us
                   </Link>
@@ -358,8 +355,8 @@ export default function Navbar() {
                     >
                       {aboutDropdown.map((item) => (
                         <Link
-                          key={item.href}
-                          href={item.href}
+                          key={item.to}
+                          to={item.to}
                           className="block py-2 text-sm text-gray-600 hover:text-orange-600 transition-colors"
                           onClick={() => setIsMenuOpen(false)}
                         >
@@ -373,7 +370,7 @@ export default function Navbar() {
 
               {/* Resources Link */}
               <Link
-                href="/resources"
+                to="/resources"
                 className="text-base font-medium text-gray-700 hover:text-orange-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -382,14 +379,14 @@ export default function Navbar() {
 
               <div className="flex flex-col space-y-3 pt-4">
                 <Link
-                  href="/login"
+                  to="/login"
                   className="text-center text-lg font-medium text-orange-600 hover:text-orange-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Log in
                 </Link>
                 <Link
-                  href="/contact"
+                  to="/contact"
                   className="rounded-md bg-primary px-4 py-2 text-center text-base font-medium text-white hover:bg-orange-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >

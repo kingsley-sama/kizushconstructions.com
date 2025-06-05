@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect, useCallback } from "react"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
-import { Link } from "react-router-dom"
+import { Link , useNavigate} from "react-router-dom"
 import { routeData } from "../route-data"
 
 // Slider data specifically for the landing page
+const navigate = useNavigate
 const landingPageSlides = [
   {
     heading: "About Us",
@@ -31,6 +32,13 @@ const landingPageSlides = [
   },
 ]
 
+const handleGoBack = () => {
+	if (window.history.length > 1) {
+	  window.history.back()
+	} else {
+	  navigate('/notfound')
+	}
+  }
 // Loading component
 const HeroBannerSkeleton = () => (
   <div className="relative w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] bg-gray-900">
@@ -65,7 +73,7 @@ const useDataValidation = (pathname) => {
         const route_data = routeData.find((r) => r.path === pathname) || routeData.find((r) => r.path === "notfound")
         
         if (!route_data) {
-          console.warn(`No route data found for pathname: ${pathname}`)
+          handleGoBack()
           return
         }
         const isLandingPage = pathname === "/" && route_data.navigat
@@ -223,14 +231,12 @@ export default function HeroBanner({ pathname }) {
       </button>
     )
   }
-
-  // Auto-slide functionality for landing page only
   useEffect(() => {
     if (!isLandingPage || isPaused || slides.length <= 1 || !isDataReady) return
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 6000) // Increased to 6 seconds for better reading time
+    }, 5000) 
 
     return () => clearInterval(interval)
   }, [isLandingPage, isPaused, nextSlide, slides.length, isDataReady])
@@ -239,12 +245,11 @@ export default function HeroBanner({ pathname }) {
     if (isTransitioning) {
       const timer = setTimeout(() => {
         setIsTransitioning(false)
-      }, 1000) // Slightly longer transition
+      }, 1000) 
       return () => clearTimeout(timer)
     }
   }, [isTransitioning])
 
-  // Preload next image
   useEffect(() => {
     if (isLandingPage && slides.length > 1 && isDataReady) {
       const nextIndex = (currentSlide + 1) % slides.length
@@ -253,7 +258,6 @@ export default function HeroBanner({ pathname }) {
     }
   }, [currentSlide, isLandingPage, slides, isDataReady])
 
-  // Show loading skeleton if data is not ready
   if (!isDataReady) {
     return <HeroBannerSkeleton />
   }
