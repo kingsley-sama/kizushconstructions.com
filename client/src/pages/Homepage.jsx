@@ -51,11 +51,7 @@ function HomeSection() {
 			<AboutSection
 				title='About Us'
 				subtitle='Design Renovation & Construction Specialist In Canada'
-				description='At Kizush Constructions, we specialize in bringing your vision to life
-          through thoughtful design and renovation. Crafting a space that
-          reflects your style and dreams, our in-house design team and
-          renovation expertise come together for a customized and stylish
-          transformation of your home.'
+				description='Whether it is a custom build, new construction, or renovation, clients quickly discover that working with Kizzy is not just a transaction—it is a true partnership grounded in trust, open communication, and aligned goals.'
 			/>
 			<DesignSections sections={sections} />
 			<Projects />
