@@ -1,112 +1,126 @@
-function WhyChooseUs() {
-    return (
-      <div className="relative max-w-[1400px] mr-auto ml-auto">
-        <div className="relative w-full h-[500px]">
-          {/* Background image */}
-          <div className="absolute flex flex-col items-center justify-center p-4 inset-0 w-full h-full bg-cover bg-center bg-primary">
-            <h2 className="text-4xl max-h-fit md:w-1/2 text-white bg-amber-400md:text-5xl font-bold text-center">Why Choose Us</h2>
-            <div className="max-w-l px-4 lg:pr-12">
-              <p className="text-muted-foreground font-serif text-lg text-white mb-4 px-10">
-                At Kizush Constructions, we believe in transforming spaces with purpose
-                this has been our guiding principle in our development project. Below are 
-                some reviews we got from our clients 
-              </p>
-            </div>  
-          </div>
-  
-          {/* Dim black overlay */}
-          
+import React from 'react';
+import { 
+  Star, 
+  Shield, 
+  Users, 
+  TrendingUp, 
+  HandHeart, 
+  Award,
+  Clock,
+  Target, 
+} from 'lucide-react';
+
+const FeatureCard = ({ icon, title, description }) => {
+  return (
+    <div className="text-center mb-8 md:mb-0">
+      <div className="flex justify-center mb-4">
+        <div className="w-16 h-16 bg-[rgba(8,68,94,0.7)] hover:bg-[rgba(8,68,94,0.9)] rounded-full flex items-center justify-center">
+          {React.cloneElement(icon, { 
+            size: 28, 
+            color: 'white' 
+          })}
         </div>
-  
-        <div className="flex flex-col md:flex-row justify-between bg-white p-8 md:p-10 pt-10 pb-6 -mt-20 mx-auto w-[90%] shadow-lg relative z-10 rounded-t-lg">
-          <div className="flex-1 px-4 text-center mb-8 md:mb-0">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Expertise</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              Our experienced real estate professionals are experts in the local market, providing you with invaluable
-              insights.
-            </p>
-          </div>
-  
-          <div className="flex-1 px-4 text-center mb-8 md:mb-0">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Transparency</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              We pride ourselves on clear and honest communication throughout your real estate journey.
-            </p>
-          </div>
-  
-          <div className="flex-1 px-4 text-center">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Personalized Service</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              We believe in understanding your unique needs and preferences, tailoring our services to match your goals.
-            </p>
-          </div>
-        </div>
-  
-        {/* Second row of cards */}
-        <div className="flex flex-col md:flex-row justify-between bg-white p-8 md:p-10 pt-6 pb-10 mx-auto w-[90%] shadow-lg relative z-10 rounded-b-lg border-t border-gray-100">
-          <div className="flex-1 px-4 text-center mb-8 md:mb-0">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Market Knowledge</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              We stay ahead of market trends and provide you with up-to-date information to make informed decisions.
-            </p>
-          </div>
-  
-          <div className="flex-1 px-4 text-center mb-8 md:mb-0">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Negotiation Skills</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              Our agents are skilled negotiators who work tirelessly to secure the best possible terms for your
-              transaction.
-            </p>
-          </div>
-  
-          <div className="flex-1 px-4 text-center">
-            <div className="w-10 h-10 mx-auto mb-4">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <circle cx="12" cy="12" r="10" fill="#0C6E59" />
-                <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold mb-3">Full-Service Support</h3>
-            <p className="text-sm leading-relaxed text-gray-600">
-              From listing to closing, we provide comprehensive support throughout every step of your real estate
-              transaction.
-            </p>
-          </div>
-        </div>
-        
       </div>
-    )
-  }
-  
-  export default WhyChooseUs;
-  
+      <h3 className="text-xl font-semibold mb-3 text-gray-900">
+        {title}
+      </h3>
+      <p className="text-sm leading-relaxed text-gray-600 px-2">
+        {description}
+      </p>
+    </div>
+  );
+};
+
+function WhyChooseUs() {
+  const featuresData = [
+    {
+      icon: <Star />,
+      title: 'Proven Excellence',
+      description: 'Our track record speaks for itself with countless successful projects and satisfied clients who trust us with their most important investments.'
+    },
+    {
+      icon: <Shield />,
+      title: 'Safety',
+      description: 'We prioritize safety above all else. Our rigorous safety protocols and training ensure a secure environment for our team and clients throughout every project.'
+    },
+    {
+      icon: <Users />,
+      title: 'Personalized Approach',
+      description: 'Every client is unique. We take time to understand your specific needs, preferences, and goals to deliver tailored solutions that exceed expectations.'
+    },
+    {
+      icon: <TrendingUp />,
+      title: 'Market Leadership',
+      description: 'Stay ahead with our deep market knowledge and trend analysis. We provide insights that help you make informed decisions for optimal outcomes.'
+    },
+    {
+      icon: <HandHeart />,
+      title: 'Expert Negotiation',
+      description: 'Our skilled negotiators work tirelessly to secure the best possible terms, protecting your interests and maximizing your investment value.'
+    },
+    {
+      icon: <Award />,
+      title: 'Quality Assurance',
+      description: 'We maintain the highest standards in every aspect of our work, from initial consultation to project completion and beyond.'
+    },
+    {
+      icon: <Clock />,
+      title: 'Timely Delivery',
+      description: 'Reliability is our commitment. We respect your time and ensure projects are completed efficiently without compromising on quality.'
+    },
+    {
+      icon: <Target />,
+      title: 'End-to-End Support',
+      description: 'From initial planning to final handover and after-sales service, we provide comprehensive support throughout your entire journey with us.'
+    }
+  ];
+
+  return (
+    <div className="relative max-w-[1400px] mx-auto">
+      {/* Hero Section */}
+      <div className="relative w-full h-[500px]">
+        <div className="absolute flex flex-col items-center justify-center p-4 inset-0 w-full h-full bg-cover bg-center bg-primary">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-6">
+            Why Choose Kizush Constructions
+          </h2>
+          <div className="max-w-3xl px-4">
+            <p className="text-white font-serif text-lg text-center mb-4 leading-relaxed">
+              At Kizush Constructions, we believe in transforming spaces with purpose and precision. 
+              Our commitment to excellence has made us the trusted choice for clients who demand the best. 
+              Here's what sets us apart in the construction and real estate industry.
+            </p>
+          </div>  
+        </div>
+      </div>
+
+      {/* Features Grid */}
+      <div className="bg-white p-8 md:p-12 -mt-20 mx-auto w-[90%] relative z-10 rounded-lg">
+        {/* First Row - Top 4 Features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {featuresData.slice(0, 4).map((feature, index) => (
+            <FeatureCard
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+
+        <div className="border-t border-gray-200 mb-12"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {featuresData.slice(4, 8).map((feature, index) => (
+            <FeatureCard
+              key={index + 4}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default WhyChooseUs;
