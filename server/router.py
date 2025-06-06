@@ -43,10 +43,18 @@ review_router = APIRouter()
 project_router = APIRouter()
 message_router = APIRouter()
 auth_router = APIRouter()
+home_router = APIRouter()
+
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+# Home route
+@home_router.get("/")
+def home():
+    return {"message": "Welcome to the Admin Dashboard API"}
 # Admin routes
 @admin_router.post("/register")
 def create_admins(admin:AdminCreate, db: Session = Depends(get_db)):

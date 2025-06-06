@@ -63,7 +63,7 @@ function WhyChooseUs() {
       title: 'Precision',
       description: 'Attention to detail and precision in execution set us apart. We meticulously plan and execute every project to ensure perfect results and client satisfaction.'
     }
-  ];
+  ];  
 
   return (
     <div className="relative max-w-[1400px] mx-auto">
