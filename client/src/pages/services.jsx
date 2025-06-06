@@ -61,15 +61,6 @@ const sections = [
 		imageAlt: 'Sitting Area',
 	},
 	{
-		id: 7,
-		title: 'Second Floor',
-		description:
-			'Enhance your home living with a second-floor renovation to match your lifestyle needs. At Bay Point Contracting, we work closely with you to consider every detail. Whether you’re looking to design a quiet retreat or add more living areas, our skilled team will turn your vision into a beautifully realized space.',
-		image:
-			'https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_003-Large.jpeg',
-		imageAlt: 'Green and water chair interior',
-	},
-	{
 		id: 8,
 		title: 'Exterior Upgrades',
 		description:

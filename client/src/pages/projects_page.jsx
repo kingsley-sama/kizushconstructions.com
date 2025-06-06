@@ -304,7 +304,6 @@ export default function ProjectPage() {
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
               <h2 className="text-3xl font-bold text-[#08445e] mb-6">Project Details</h2>
-
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-[#08445e] mb-4">Location</h3>
                 <div className="flex items-center text-gray-700">
@@ -325,7 +324,7 @@ export default function ProjectPage() {
                             : spec.icon === "utensils"
                               ? "🍽️"
                               : spec.icon === "stairs"
-                                ? "🪜"
+                                ? "🪜"  
                                 : spec.icon === "window"
                                   ? "🪟"
                                   : spec.icon === "door"
@@ -347,14 +346,6 @@ export default function ProjectPage() {
                   <ExpandMore className="h-5 w-5" />
                 </button>
               </div>
-            </div>
-
-            <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg">
-              <img 
-                src={project.gallery?.[1] || project.imageUrl || project.src || "/placeholder.svg"} 
-                alt="Project Detail" 
-                className="w-full h-full object-cover" 
-              />
             </div>
           </div>
         </div>

@@ -1,23 +1,23 @@
 import React from 'react';
-import { 
-  Star, 
-  Shield, 
-  Users, 
-  TrendingUp, 
-  HandHeart, 
+import {
+  Star,
+  Shield,
+  Users,
+  TrendingUp,
+  HandHeart,
   Award,
   Clock,
-  Target, 
+  Target,
 } from 'lucide-react';
 
 const FeatureCard = ({ icon, title, description }) => {
   return (
-    <div className="text-center mb-8 md:mb-0">
+    <div className="text-center bg-[] mb-8 md:mb-0">
       <div className="flex justify-center mb-4">
         <div className="w-16 h-16 bg-[rgba(8,68,94,0.7)] hover:bg-[rgba(8,68,94,0.9)] rounded-full flex items-center justify-center">
           {React.cloneElement(icon, { 
-            size: 28, 
-            color: 'white' 
+            size: 28,
+            color: 'white'
           })}
         </div>
       </div>
@@ -34,44 +34,34 @@ const FeatureCard = ({ icon, title, description }) => {
 function WhyChooseUs() {
   const featuresData = [
     {
-      icon: <Star />,
-      title: 'Proven Excellence',
-      description: 'Our track record speaks for itself with countless successful projects and satisfied clients who trust us with their most important investments.'
-    },
-    {
       icon: <Shield />,
-      title: 'Safety',
-      description: 'We prioritize safety above all else. Our rigorous safety protocols and training ensure a secure environment for our team and clients throughout every project.'
-    },
-    {
-      icon: <Users />,
-      title: 'Personalized Approach',
-      description: 'Every client is unique. We take time to understand your specific needs, preferences, and goals to deliver tailored solutions that exceed expectations.'
-    },
-    {
-      icon: <TrendingUp />,
-      title: 'Market Leadership',
-      description: 'Stay ahead with our deep market knowledge and trend analysis. We provide insights that help you make informed decisions for optimal outcomes.'
+      title: 'Integrity',
+      description: 'We conduct our business with honesty, transparency, and ethical practices. Our clients can trust us to deliver on our promises and maintain the highest moral standards.'
     },
     {
       icon: <HandHeart />,
-      title: 'Expert Negotiation',
-      description: 'Our skilled negotiators work tirelessly to secure the best possible terms, protecting your interests and maximizing your investment value.'
+      title: 'Service',
+      description: 'Our commitment to exceptional service drives everything we do. We go above and beyond to ensure our clients receive personalized attention and support throughout their journey.'
+    },
+    {
+      icon: <Star />,
+      title: 'Gratitude',
+      description: 'We are deeply grateful for the trust our clients place in us. This appreciation motivates us to continuously exceed expectations and build lasting relationships.'
     },
     {
       icon: <Award />,
-      title: 'Quality Assurance',
-      description: 'We maintain the highest standards in every aspect of our work, from initial consultation to project completion and beyond.'
+      title: 'Quality',
+      description: 'We never compromise on quality. From materials to craftsmanship, every aspect of our work meets the highest standards to ensure lasting results.'
     },
     {
-      icon: <Clock />,
-      title: 'Timely Delivery',
-      description: 'Reliability is our commitment. We respect your time and ensure projects are completed efficiently without compromising on quality.'
+      icon: <TrendingUp />,
+      title: 'Excellence',
+      description: 'Excellence is not just a goal, it\'s our standard. We continuously strive to improve and deliver outstanding results that surpass industry benchmarks.'
     },
     {
       icon: <Target />,
-      title: 'End-to-End Support',
-      description: 'From initial planning to final handover and after-sales service, we provide comprehensive support throughout your entire journey with us.'
+      title: 'Precision',
+      description: 'Attention to detail and precision in execution set us apart. We meticulously plan and execute every project to ensure perfect results and client satisfaction.'
     }
   ];
 
@@ -84,11 +74,13 @@ function WhyChooseUs() {
             Why Choose Kizush Constructions
           </h2>
           <div className="max-w-3xl px-4">
-            <p className="text-white font-serif text-lg text-center mb-4 leading-relaxed">
-              At Kizush Constructions, we believe in transforming spaces with purpose and precision. 
-              Our commitment to excellence has made us the trusted choice for clients who demand the best. 
-              Here's what sets us apart in the construction and real estate industry.
-            </p>
+            <p className="text-white font-sans text-lg text-center mb-4 leading-relaxed">
+            We Make It Great. We Make It Work. We Make It Happen.
+            We Make It Powerful. We Make It Awesome. We Make It Soar.
+            We Make It Better. We Make It Last. We Make It Strong.
+            We Make It Proud. We Make It Excellent. We Make It Simple.
+            We Make It Smart. We Make It Real. We Make It Precise.
+             </p>
           </div>  
         </div>
       </div>
