@@ -2,48 +2,42 @@ import CategoryFilter from '../components/Filter';
 import KuzushDifference from '../components/kizush';
 
 const projects = [
-	{
-		id: "0",
-		title: 'Construction',
-		location: 'Ontario',
-		imageUrl: '/project_images/project_three.jpeg',
-		categories: ['Construction'],
-	},
-	{
-		id: "1",
-		title: 'Building',
-		location: 'Ontario',
-		imageUrl: '/project_images/project_one.jpeg',
-		categories: ['Building'],
-	},
-	{
-		id: "4",
-		title: '',
-		location: '',
-		imageUrl: '/project_images/project_four.png',
-		categories: ['Remodel', 'Renovation', 'Construction', 'Design'],
-	},
-	{
-		id: "2",
-		title: 'Construction',
-		location: 'Nirnia',
-		imageUrl: '/project_images/construction.jpeg',
-		categories: ['Construction', 'Renovation'],
-	},
-	{
-		id: "3",
-		title: 'Remodel',
-		location: 'Ontario',
-		imageUrl: '/project_images/remodeling.jpeg',
-		categories: ['Remodel', 'Renovation', 'Design'],
-	},
-	{
-		id: "5",
-		title: '',
-		location: '',
-		imageUrl: '/project_images/project_five.png',
-		categories: ['Remodel', 'Renovation', 'Design'],
-	}
+		{
+			src: '/project_images/project_three.jpeg',
+			location: 'Ontario',
+			caption: '',
+			id: "0"
+		},
+		{
+			src: '/project_images/project_one.jpeg',
+			location: 'Ontario',
+			caption: '',
+			id: "1"
+		},
+		{
+			src: '/project_images/project_four.png',
+			location: 'Simcoe County',
+			caption: '',
+			id: '4',
+		},
+		{
+			src: '/project_images/construction.jpeg',
+			location: 'Barrie',
+			caption: '',
+			id: "2",
+		},
+		{
+			src: '/project_images/remodeling.jpeg',
+			location: 'Toronto',
+			caption: '',
+			id: "3",
+		},
+		{
+			src: '/project_images/project_five.png',
+			location: 'Vaughan',
+			caption: '',
+			id: '5',
+		},
 ];
 
 const Projects = () => {

@@ -294,7 +294,7 @@ export default function Footer() {
                 href="+123456789" 
                 type="phone"
               >
-                +123 456 789
+                416-300-4040
               </ContactItem>
               <ContactItem icon={Place}>
                 1234 Main Street, Suite 111<br />

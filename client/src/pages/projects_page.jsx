@@ -1,8 +1,60 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ExpandMore, Place, ChevronRight, Close } from "@mui/icons-material" 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Contact from "./contact";
+
+const projects = [   
+  {     
+    name: 'Ontario Home Construction',     
+    src: '/project_images/project_three.jpeg',     
+    location: 'Ontario',     
+    caption: '',     
+    id: "0",     
+    cartegory: 'Accessibility',   
+  },   
+  {     
+    name: 'Ontario Home Addition',     
+    src: '/project_images/project_one.jpeg',     
+    location: 'Ontario',     
+    caption: '',     
+    id: "1",     
+    cartegory: 'Remodeling',   
+  },   
+  {     
+    name: 'Simcoe County Home construction',     
+    src: '/project_images/project_four.png',     
+    location: 'Simcoe County',     
+    caption: '',     
+    id: '4',     
+    cartegory: 'Construction',   
+  },   
+  {     
+    name: 'Barrie Home Remodeling',     
+    src: '/project_images/construction.jpeg',     
+    location: 'Barrie',     
+    caption: '',     
+    id: "2",     
+    cartegory: 'Construction',   
+  },   
+  {     
+    name: 'Toronto Home Remodeling',     
+    src: '/project_images/remodeling.jpeg',     
+    location: 'Toronto',     
+    caption: '',     
+    id: "3",     
+    cartegory: 'Remodeling',   
+  },   
+  {     
+    name: 'Vaughan Home',     
+    src: '/project_images/project_five.png',     
+    location: 'Vaughan',     
+    caption: '',     
+    id: '5',     
+    cartegory: 'Home',   
+  },
+];
+
 const projectsData = [
   {
     id: "basement-remodel",
@@ -30,37 +82,8 @@ const projectsData = [
         "From the very start, your team was personable, knowledgeable, and attentive to detail. We felt extremely comfortable working with your team to formulate an incredible renovation plan. The contract and construction timeline was very clear, ensured no hidden costs, and exemplified what a 'full-service' renovation is intended to be.",
       author: "Michael and Sarah",
     },
-    gallery: [
-      "https://baypointcontracting.ca/wp-content/uploads/2024/10/56A0391-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_24-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Kitchen-2020_0005_HDR-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Main-Floor-Reno-28aewarm-1-Large-1199x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Enns-Whole-Home20240111_004-1199x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/05/Bay-Point-Contracting_Anderson_2024_14-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0678-Enhanced-NR-Custom-1120x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/Sharma-Living-Space-Large-1199x800.jpg",
-    ],
-    beforeAfter: [
-      {
-        title: "Kitchen Renovation",
-        before:
-          "https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_24-Large-1200x800.jpeg",
-        after:
-          "https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Kitchen-2020_0005_HDR-Large-1200x800.jpeg",
-      },
-      {
-        title: "Bathroom Remodel",
-        before:
-          "https://baypointcontracting.ca/wp-content/uploads/2025/02/Bay-Point-Contracting-Monochrome-Bath_07-Large-533x800.jpeg",
-        after:
-          "https://baypointcontracting.ca/wp-content/uploads/2024/05/Bay-Point-Contracting_Anderson_2024_14-Large-1200x800.jpeg",
-      },
-      {
-        title: "Exterior Transformation",
-        before: "https://baypointcontracting.ca/wp-content/uploads/2024/06/Turgeon-2ae-Large-1-1067x800.jpeg",
-        after: "https://baypointcontracting.ca/wp-content/uploads/2024/06/Atwell_13-copyae-Large-1200x800.jpeg",
-      },
-    ],
+    gallery: [],
+    beforeAfter: [],
   },
   {
     id: "elevated-addition",
@@ -86,16 +109,7 @@ const projectsData = [
         "We never had to worry... your team was fast to find solutions and delivered on their promises. The communication, professionalism, and craftsmanship completed by the tradespeople was outstanding!",
       author: "James and Emily",
     },
-    gallery: [
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Addition-20240421_24-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/05/Bay-Point-Contracting_Anderson_2024_14-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/Atwell_13-copyae-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/Turgeon-2ae-Large-1-1067x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/10/56A0391-Large-1200x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/12/Bay-Point-Contracting-Main-Floor-Reno-28aewarm-1-Large-1199x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/06/BPC-Enns-Whole-Home20240111_004-1199x800.jpeg",
-      "https://baypointcontracting.ca/wp-content/uploads/2024/05/DSC_0678-Enhanced-NR-Custom-1120x800.jpeg",
-    ],
+    gallery: [],
     beforeAfter: [
       {
         title: "Addition Construction",
@@ -119,18 +133,136 @@ const projectsData = [
   },
 ]
 
+// Helper function to convert text to URL-friendly slug
+function createSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/[\s_-]+/g, '-') // Replace spaces and underscores with hyphens
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
+
+// Project Not Found Component
+function ProjectNotFound({ projectId }) {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/projects');
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="text-center max-w-md mx-auto px-4">
+        <div className="mb-8">
+          <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.513-.751-6.281-2.03.938-2.471 2.905-4.246 5.281-4.97zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h1 className="text-3xl font-bold text-[#08445e] mb-4">Project Not Found</h1>
+          <p className="text-gray-600 mb-6">
+            We couldn't find a project with ID "{projectId}". You'll be redirected to the projects page shortly.
+          </p>
+          <div className="space-y-3">
+            <Link
+              to="/projects"
+              className="inline-block bg-[#ed6a11] hover:bg-[#ed6a11]/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              View All Projects
+            </Link>
+            <div className="text-sm text-gray-500">
+              Redirecting in 3 seconds...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectPage() {
-  // Find the project by slug
   const params = useParams();
-  const project = projectsData.find((p) => p.id === params.slug) || projectsData[0]
-console.log(params)
+  const navigate = useNavigate();
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const projectSlug = params.slug;
+    
+    // Search in both arrays for the project
+    let foundProject = null;
+    
+    // First search in projectsData by id
+    foundProject = projectsData.find(p => p.id === projectSlug);
+    
+    // If not found, search in projects array by id
+    if (!foundProject) {
+      foundProject = projects.find(p => p.id === projectSlug);
+    }
+    
+    // If still not found, search by name converted to slug
+    if (!foundProject) {
+      foundProject = projects.find(p => createSlug(p.name) === projectSlug);
+    }
+    
+    // If we found a basic project, convert it to full project format
+    if (foundProject && !foundProject.title) {
+      foundProject = {
+        id: foundProject.id,
+        title: foundProject.name,
+        name: foundProject.name,
+        location: foundProject.location,
+        imageUrl: foundProject.src,
+        categories: [foundProject.cartegory || "General"],
+        description: `A beautiful ${foundProject.cartegory?.toLowerCase() || 'renovation'} project in ${foundProject.location}, showcasing our craftsmanship and attention to detail.`,
+        details: [
+          "This project represents our commitment to quality craftsmanship and client satisfaction.",
+          "We worked closely with the homeowners to understand their vision and bring it to life.",
+          "The result is a space that perfectly balances functionality with aesthetic appeal."
+        ],
+        specifications: [
+          { name: foundProject.cartegory || "Renovation", icon: "home" },
+          { name: "Design", icon: "utensils" },
+        ],
+        testimonial: {
+          quote: "Outstanding work and professional service throughout the entire project.",
+          author: "Satisfied Client",
+        },
+        gallery: [foundProject.src],
+        beforeAfter: [],
+      };
+    }
+    
+    setProject(foundProject);
+    setLoading(false);
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ed6a11] mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading project...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!project) {
+    return <ProjectNotFound projectId={params.slug} />;
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative">
         <div className="container mx-auto px-4 py-8 md:py-12">
           <Link
-            path="/projects"
+            to="/projects"
             className="inline-flex items-center text-sm font-medium text-[#08445e] hover:text-[#ed6a11] mb-6"
           >
             <ChevronLeft className="mr-1 h-4 w-4" />
@@ -138,7 +270,7 @@ console.log(params)
           </Link>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#08445e] mb-4">{project.title}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-[#08445e] mb-4">{project.title || project.name}</h1>
               <div className="flex items-center text-gray-600 mb-6">
                 <Place className="h-5 w-5 mr-2 text-[#ed6a11]" />
                 <span>{project.location}</span>
@@ -157,10 +289,9 @@ console.log(params)
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
               <img
-                src={project.imageUrl || "/placeholder.svg"}
-                alt={project.title}
-                className="object-cover"
-                priority
+                src={project.imageUrl || project.src || "/placeholder.svg"}
+                alt={project.title || project.name}
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -219,7 +350,11 @@ console.log(params)
             </div>
 
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg">
-              <img src={project.gallery[1] || project.imageUrl} alt="Project Detail" fill className="object-cover" />
+              <img 
+                src={project.gallery?.[1] || project.imageUrl || project.src || "/placeholder.svg"} 
+                alt="Project Detail" 
+                className="w-full h-full object-cover" 
+              />
             </div>
           </div>
         </div>
@@ -230,7 +365,11 @@ console.log(params)
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-video overflow-hidden rounded-lg shadow-lg">
-              <img src={project.gallery[2] || project.imageUrl} alt="Project Feature" fill className="object-cover" />
+              <img 
+                src={project.gallery?.[2] || project.imageUrl || project.src || "/placeholder.svg"} 
+                alt="Project Feature" 
+                className="w-full h-full object-cover" 
+              />
             </div>
 
             <div>
@@ -243,7 +382,11 @@ console.log(params)
                 ))}
               </div>
               <div className="mt-8">
-                <button className="bg-[#ed6a11] hover:bg-[#ed6a11]/90 text-white">Request a Consultation</button>
+                <Link to={'/contact'}>
+                <button className="bg-[#ed6a11] hover:bg-[#ed6a11]/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                  Request a Consultation
+                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -265,33 +408,33 @@ console.log(params)
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#08445e] mb-8 text-center">Gallery</h2>
-          <ImageGallery images={project.gallery} alt={project.title} />
-        </div>
-      </section>
+      {/* Gallery - Only show if there are gallery images */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-[#08445e] mb-8 text-center">Gallery</h2>
+            <ImageGallery images={project.gallery} alt={project.title || project.name} />
+          </div>
+        </section>
+      )}
 
-      {/* Before/After */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#08445e] mb-8 text-center">Before / After</h2>
-          <BeforeAfterSlider images={project.beforeAfter} />
-        </div>
-      </section>
+      {/* Before/After - Only show if there are before/after images */}
+      {project.beforeAfter && project.beforeAfter.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-[#08445e] mb-8 text-center">Before / After</h2>
+            <BeforeAfterSlider images={project.beforeAfter} />
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
-      <Contact ></Contact>
+      <Contact />
     </div>
   )
 }
 
-
-
-
-
-
+// BeforeAfterSlider component
 function BeforeAfterSlider({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showBefore, setShowBefore] = useState(false)
@@ -319,7 +462,6 @@ function BeforeAfterSlider({ images }) {
     document.body.style.overflow = "auto"
   }
 
-  // Handle keyboard navigation
   const handleKeyDown = (e) => {
     if (e.key === "Escape") closeFullscreen()
     if (e.key === "ArrowLeft") goToPrevious()
@@ -337,7 +479,7 @@ function BeforeAfterSlider({ images }) {
           <img
             src={showBefore ? images[currentIndex].before : images[currentIndex].after}
             alt={showBefore ? "Before Renovation" : "After Renovation"}
-            className="object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
 
@@ -376,7 +518,6 @@ function BeforeAfterSlider({ images }) {
         </div>
       </div>
 
-      {/* Thumbnails */}
       <div className="flex justify-center mt-6 gap-2 overflow-x-auto pb-2">
         {images.map((image, index) => (
           <div
@@ -389,13 +530,12 @@ function BeforeAfterSlider({ images }) {
             <img
               src={image.after || "/placeholder.svg"}
               alt={`Thumbnail ${index + 1}`}
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
       </div>
 
-      {/* Fullscreen view */}
       {isFullscreen && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
@@ -438,9 +578,7 @@ function BeforeAfterSlider({ images }) {
               <img
                 src={showBefore ? images[currentIndex].before : images[currentIndex].after}
                 alt={showBefore ? "Before Renovation" : "After Renovation"}
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                priority
+                className="w-full h-full object-contain"
               />
             </div>
 
@@ -460,10 +598,6 @@ function BeforeAfterSlider({ images }) {
     </>
   )
 }
-
-
-
-
 function ImageGallery({ images, alt = "Project image" }) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -471,12 +605,12 @@ function ImageGallery({ images, alt = "Project image" }) {
   const openLightbox = (index) => {
     setCurrentImageIndex(index)
     setIsOpen(true)
-    document.body.style.overflow = "hidden" // Prevent scrolling when lightbox is open
+    document.body.style.overflow = "hidden"
   }
 
   const closeLightbox = () => {
     setIsOpen(false)
-    document.body.style.overflow = "auto" // Restore scrolling
+    document.body.style.overflow = "auto"
   }
 
   const goToPrevious = () => {
@@ -487,7 +621,6 @@ function ImageGallery({ images, alt = "Project image" }) {
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
   }
 
-  // Handle keyboard navigation
   const handleKeyDown = (e) => {
     if (e.key === "Escape") closeLightbox()
     if (e.key === "ArrowLeft") goToPrevious()
@@ -506,13 +639,12 @@ function ImageGallery({ images, alt = "Project image" }) {
             <img
               src={image|| "/placeholder.svg"}
               alt={`${alt} ${index + 1}`}
-              className="object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
         ))}
       </div>
 
-      {/* Full-screen lightbox */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
@@ -555,9 +687,7 @@ function ImageGallery({ images, alt = "Project image" }) {
               <img
                 src={images[currentImageIndex] || "/placeholder.svg"}
                 alt={`${alt} ${currentImageIndex + 1}`}
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                priority
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full text-sm">
@@ -569,10 +699,6 @@ function ImageGallery({ images, alt = "Project image" }) {
     </>
   )
 }
-
-
-
-
 
 
 function TestimonialSlider({ testimonials }) {
