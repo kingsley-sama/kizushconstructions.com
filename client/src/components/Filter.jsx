@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Add this import
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ProjectCard from './project_card';
 
@@ -26,11 +27,13 @@ export default function CategoryFilter({
 		if (selectedCategories.length === 0) {
 			setFilteredProjects(projects);
 		} else {
-			const filtered = projects.filter((project) =>
-				project.categories.some((category) =>
+			const filtered = projects.filter((project) => {
+				// Ensure project has categories array, default to empty array if not
+				const projectCategories = project.categories || [];
+				return projectCategories.some((category) =>
 					selectedCategories.includes(category)
-				)
-			);
+				);
+			});
 			setFilteredProjects(filtered);
 		}
 	}, [selectedCategories, projects]);
@@ -65,13 +68,13 @@ export default function CategoryFilter({
 					</button>
 				))}
 			</div>
-
 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
-			{filteredProjects.map((project) => (
-				<ProjectCard key={project.id} item={project} />
-			))}
+				{filteredProjects.map((project) => (
+					<Link key={project.id} to={`/projects/${project.id}`}>
+						<ProjectCard item={project} />
+					</Link>
+				))}
 			</div>
-
 			{/* Empty State */}
 			{filteredProjects.length === 0 && (
 				<div className='text-center py-12'>

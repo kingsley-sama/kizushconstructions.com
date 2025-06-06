@@ -2,42 +2,48 @@ import CategoryFilter from '../components/Filter';
 import KuzushDifference from '../components/kizush';
 
 const projects = [
-		{
-			src: '/project_images/project_three.jpeg',
-			location: 'Ontario',
-			caption: '',
-			id: "0"
-		},
-		{
-			src: '/project_images/project_one.jpeg',
-			location: 'Ontario',
-			caption: '',
-			id: "1"
-		},
-		{
-			src: '/project_images/project_four.png',
-			location: 'Simcoe County',
-			caption: '',
-			id: '4',
-		},
-		{
-			src: '/project_images/construction.jpeg',
-			location: 'Barrie',
-			caption: '',
-			id: "2",
-		},
-		{
-			src: '/project_images/remodeling.jpeg',
-			location: 'Toronto',
-			caption: '',
-			id: "3",
-		},
-		{
-			src: '/project_images/project_five.png',
-			location: 'Vaughan',
-			caption: '',
-			id: '5',
-		},
+	{
+		src: '/project_images/project_three.jpeg',
+		location: 'Ontario',
+		caption: '',
+		id: "0",
+		categories: ['Bathroom', 'Main Floor']
+	},
+	{
+		src: '/project_images/project_one.jpeg',
+		location: 'Ontario',
+		caption: '',
+		id: "1",
+		categories: ['Kitchen', 'Main Floor']
+	},
+	{
+		src: '/project_images/project_four.png',
+		location: 'Simcoe County',
+		caption: '',
+		id: '4',
+		categories: ['Exterior', 'Whole Home']
+	},
+	{
+		src: '/project_images/construction.jpeg',
+		location: 'Barrie',
+		caption: '',
+		id: "2",
+		categories: ['Addition', 'Exterior']
+	},
+	{
+		src: '/project_images/remodeling.jpeg',
+		location: 'Toronto',
+		caption: '',
+		id: "3",
+		categories: ['Whole Home', 'Kitchen', 'Bathroom']
+	},
+	{
+		src: '/project_images/project_five.png',
+		location: 'Vaughan',
+		caption: '',
+		id: '5',
+		categories: ['Basement', 'Addition']
+	},
 ];
 
 const Projects = () => {
@@ -59,7 +65,7 @@ const Projects = () => {
 				]}
 				projects={projects}
 				onFilterChange={(selected) => {
-					console.log('Selected categories:', selected);
+					// Optional callback if you need to handle filter changes
 				}}
 			/>
 			<KuzushDifference
@@ -93,4 +99,5 @@ const Projects = () => {
 		</>
 	);
 };
+
 export default Projects;
