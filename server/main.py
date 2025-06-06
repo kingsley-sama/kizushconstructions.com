@@ -9,7 +9,8 @@ from router import(
     review_router, 
     project_router, 
     message_router,
-    auth_router
+    auth_router,
+    home_router
 )
 
 app = FastAPI()
@@ -28,11 +29,7 @@ app.include_router(review_router, prefix="/review", tags=["review"])
 app.include_router(project_router, prefix="/project", tags=["project"])
 app.include_router(message_router, prefix="/message", tags=["message"])
 app.include_router(auth_router, prefix="", tags=["auth"])
-
-app.get("/")
-def root():
-    return {"message": "This is the backend for kizushconstructions.com"}
-
+app.include_router(home_router, prefix="", tags=["home"])
 
 if __name__ == "__main__":
     import uvicorn
