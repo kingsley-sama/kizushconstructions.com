@@ -49,9 +49,12 @@ function AboutPage() {
 			<AboutSection
 				title='Welcome to Kizush Constructions'
 				subtitle='Our Company, Mission, and Vision'
-				description={`With a passion for transforming spaces and a commitment to excellence, we take pride in being your trusted partner for all your renovation needs.
+				description={`
+At Kizush Construction, we bring your vision to life—whether it is a new build, a complete renovation, a custom remodelling, or a simple home improvement project. With a passion for transforming spaces and a commitment to excellence, we take pride in being your trusted partner for all your construction and design needs. With over a decade experience in the industry, we have built our reputation on quality craftsmanship, innovative solutions, and personalized service. From concept to completion, our team delivers tailored residential and commercial projects that enhance both form and function.
 
-Established in 2010, our journey began with a vision to transform homes through custom renovations that enhance both form and function. Over the years, we’ve evolved into a reputable design and renovation company, earning the trust of our clients through our dedication to customer service and quality craftsmanship.`}
+Over the years, we have evolved into a full-service construction and renovation company, earning the trust of our clients through integrity, reliability, and results that speak for themselves.
+
+Let us build something great together.`}
 			/>
 			<DesignSections sections={sections} />
 			<KizushValues />
