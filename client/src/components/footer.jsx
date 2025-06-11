@@ -296,10 +296,6 @@ export default function Footer() {
               >
                 416-300-4040
               </ContactItem>
-              <ContactItem icon={Place}>
-                1234 Main Street, Suite 111<br />
-                California, CA 90210
-              </ContactItem>
             </div>
           </div>
 
