@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function ReusableDifference({
 	title = 'Hear What Makes Us Different',
-	primaryText = 'At KiZush Constructions, we believe in transforming spaces with purpose and passion. Our dedicated team brings expertise, creativity, and attention to detail to every project, ensuring results that exceed expectations.',
+	primaryText = 'At Kizush Constructions, we believe in transforming spaces with purpose and passion. Our dedicated team brings expertise, creativity, and attention to detail to every project, ensuring results that exceed expectations.',
 	secondaryText = 'What sets us apart is our commitment to understanding your vision and bringing it to life. We don’t just build structures; we create environments where people thrive, connect, and feel inspired every day.',
 	buttonText = 'About Us',
 	buttonOnClick = () => {},

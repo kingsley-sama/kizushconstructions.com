@@ -5,6 +5,7 @@ const contactMethods = [
   { id: "email", label: "Email", icon: "✉️", placeholder: "your.email@example.com" },
   { id: "phone", label: "Phone", icon: "📱", placeholder: "+1 (123) 456-7890" },
   { id: "whatsapp", label: "WhatsApp", icon: "💬", placeholder: "+1 (123) 456-7890" },
+  { id: "social", label: "Social", icon: "🌐", placeholder: "@yourhandle" }
 ]
 
 export default function ContactForm() {
@@ -36,11 +37,7 @@ export default function ContactForm() {
       const updatedMethods = prev.contactMethods.includes(methodId)
         ? prev.contactMethods.filter((id) => id !== methodId)
         : [...prev.contactMethods, methodId]
-
-      return {
-        ...prev,
-        contactMethods: updatedMethods,
-      }
+      return { ...prev, contactMethods: updatedMethods }
     })
   }
 
@@ -50,31 +47,25 @@ export default function ContactForm() {
     setError("")
 
     try {
-      // Prepare the data to send - matching your API's expected format
       const dataToSend = {
         sender_name: formData.name,
         sender_email: formData.user_mail,
         sender_phone: formData.contactMethods.includes("phone") ? formData.phone : "",
-        sender_whattsapp: formData.contactMethods.includes("whatsapp") ? formData.whatsapp : "",
+        sender_whatsapp: formData.contactMethods.includes("whatsapp") ? formData.whatsapp : "",
         message: formData.message
       }
-
-      // Send POST request to your endpoint
+      console.log("Sending data:", dataToSend)
       const response = await fetch('https://kizushconstructions-com.onrender.com/message/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend),
       })
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
 
       const result = await response.json()
       console.log("Form submitted successfully:", result)
-      
+
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)
@@ -99,17 +90,17 @@ export default function ContactForm() {
   }
 
   const isFormValid = () => {
-    return formData.name && 
-           formData.message && 
-           formData.user_mail && 
-           formData.contactMethods.length > 0 &&
-           formData.contactMethods.every(method => {
-             if (method === "email") return formData.email
-             if (method === "phone") return formData.phone
-             if (method === "whatsapp") return formData.whatsapp
-             if (method === "social") return formData.social
-             return true
-           })
+    return formData.name &&
+      formData.message &&
+      formData.user_mail &&
+      formData.contactMethods.length > 0 &&
+      formData.contactMethods.every((method) => {
+        if (method === "email") return formData.email
+        if (method === "phone") return formData.phone
+        if (method === "whatsapp") return formData.whatsapp
+        if (method === "social") return formData.social
+        return true
+      })
   }
 
   return (
@@ -122,9 +113,7 @@ export default function ContactForm() {
           </p>
         </div>
 
-        {/* Flex container for side-by-side layout on large screens */}
         <div className="flex lg:flex-row lg:items-center lg:gap-8">
-          {/* Contact Form - Full width on mobile, 50% on large screens */}
           <div className="w-full lg:w-1/2">
             <div className="bg-white rounded-lg shadow-[0_2px_10px_-3px_rgba(8,68,94,0.1)] p-4">
               {submitted ? (
@@ -134,15 +123,13 @@ export default function ContactForm() {
                   <p className="text-[#08445e]">Your message has been received. We'll contact you shortly.</p>
                 </div>
               ) : (
-                <div className="space-y-6">
-                  {/* Error Message */}
+                <form onSubmit={handleSubmit} className="space-y-6">
                   {error && (
                     <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
                       {error}
                     </div>
                   )}
 
-                  {/* Name Field */}
                   <div>
                     <label htmlFor="name" className="block text-[#08445e] font-medium mb-2">
                       Your Name
@@ -154,10 +141,11 @@ export default function ContactForm() {
                       value={formData.name}
                       onChange={handleInputChange}
                       disabled={loading}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
                       placeholder="John Doe"
                     />
                   </div>
+
                   <div>
                     <label htmlFor="user_mail" className="block text-[#08445e] font-medium mb-2">
                       Your Email
@@ -169,12 +157,11 @@ export default function ContactForm() {
                       value={formData.user_mail}
                       onChange={handleInputChange}
                       disabled={loading}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
-                  {/* Message Field */}
                   <div>
                     <label htmlFor="message" className="block text-[#08445e] font-medium mb-2">
                       Your Message
@@ -186,33 +173,31 @@ export default function ContactForm() {
                       onChange={handleInputChange}
                       disabled={loading}
                       rows={5}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
                       placeholder="Please describe your inquiry or feedback..."
                     />
                   </div>
 
-                  {/* Contact Method Selection */}
                   <div>
                     <p className="block text-[#08445e] font-medium mb-3">How should we contact you?</p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {contactMethods.map((method) => (
-                        <div key={method.id}>
-                          <button
-                            type="button"
-                            onClick={() => handleContactMethodChange(method.id)}
-                            disabled={loading}
-                            className={`w-full py-3 px-4 rounded-lg border-2 transition-all flex items-center justify-center gap-2 disabled:opacity-50
-                              ${
-                                formData.contactMethods.includes(method.id)
-                                  ? "border-[#ed6a11] bg-[#ed6a11]/10 text-[#ed6a11]"
-                                  : "border-gray-300 text-[#08445e] hover:border-[#08445e]/50"
-                              }
-                            `}
-                          >
-                            <span>{method.icon}</span>
-                            <span>{method.label}</span>
-                          </button>
-                        </div>
+                        <button
+                          key={method.id}
+                          type="button"
+                          onClick={() => handleContactMethodChange(method.id)}
+                          disabled={loading}
+                          className={`w-full py-3 px-4 rounded-lg border-2 flex items-center justify-center gap-2 transition-all
+                            ${
+                              formData.contactMethods.includes(method.id)
+                                ? "border-[#ed6a11] bg-[#ed6a11]/10 text-[#ed6a11]"
+                                : "border-gray-300 text-[#08445e] hover:border-[#08445e]/50"
+                            }
+                          `}
+                        >
+                          <span>{method.icon}</span>
+                          <span>{method.label}</span>
+                        </button>
                       ))}
                     </div>
                     {formData.contactMethods.length === 0 && (
@@ -220,7 +205,6 @@ export default function ContactForm() {
                     )}
                   </div>
 
-                  {/* Dynamic Contact Fields */}
                   {formData.contactMethods.length > 0 && (
                     <div className="space-y-4 border-t border-gray-100 pt-4">
                       <p className="text-[#08445e] font-medium">Your contact details:</p>
@@ -237,12 +221,11 @@ export default function ContactForm() {
                               value={formData.email}
                               onChange={handleInputChange}
                               disabled={loading}
-                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e]"
                               placeholder={contactMethods.find((m) => m.id === "email").placeholder}
                             />
                           </div>
                         )}
-
                         {formData.contactMethods.includes("phone") && (
                           <div>
                             <label htmlFor="phone" className="block text-[#08445e] text-sm font-medium mb-1">
@@ -255,12 +238,11 @@ export default function ContactForm() {
                               value={formData.phone}
                               onChange={handleInputChange}
                               disabled={loading}
-                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e]"
                               placeholder={contactMethods.find((m) => m.id === "phone").placeholder}
                             />
                           </div>
                         )}
-
                         {formData.contactMethods.includes("whatsapp") && (
                           <div>
                             <label htmlFor="whatsapp" className="block text-[#08445e] text-sm font-medium mb-1">
@@ -273,16 +255,15 @@ export default function ContactForm() {
                               value={formData.whatsapp}
                               onChange={handleInputChange}
                               disabled={loading}
-                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
+                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e]"
                               placeholder={contactMethods.find((m) => m.id === "whatsapp").placeholder}
                             />
                           </div>
                         )}
-
                         {formData.contactMethods.includes("social") && (
                           <div>
                             <label htmlFor="social" className="block text-[#08445e] text-sm font-medium mb-1">
-                              Social Media Handle
+                              Social Handle
                             </label>
                             <input
                               type="text"
@@ -291,8 +272,8 @@ export default function ContactForm() {
                               value={formData.social}
                               onChange={handleInputChange}
                               disabled={loading}
-                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#08445e] disabled:opacity-50"
-                              placeholder={contactMethods.find((m) => m.id === "social")?.placeholder || "@username"}
+                              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#08445e]"
+                              placeholder={contactMethods.find((m) => m.id === "social").placeholder}
                             />
                           </div>
                         )}
@@ -300,39 +281,15 @@ export default function ContactForm() {
                     </div>
                   )}
 
-                  {/* Submit Button */}
-                  <div className="pt-2">
-                    <button
-                      type="button"
-                      onClick={handleSubmit}
-                      disabled={!isFormValid() || loading}
-                      className="w-full max-w-[200px] py-3 px-6 bg-[#08445e] text-white rounded-lg hover:bg-[#08445e]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    >
-                      {loading ? (
-                        <>
-                          <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        "Send Message"
-                      )}
-                    </button>
-                  </div>
-                </div>
+                  <button
+                    type="submit"
+                    disabled={!isFormValid() || loading}
+                    className="w-full py-3 rounded-lg bg-[#08445e] text-white font-semibold hover:bg-[#073748] transition disabled:opacity-50"
+                  >
+                    {loading ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
               )}
-            </div>
-          </div>
-
-          {/* Image - Hidden on mobile, 50% width on large screens */}
-          <div className="hidden lg:block lg:w-1/2">
-            <div className="rounded-lg overflow-hidden h-full">
-              <div className="relative w-full h-full min-h-[650px]">
-                <img
-                  src="https://baypointcontracting.ca/wp-content/uploads/bb-plugin/cache/Atwell_12-scaled-1-square-7a00787d022133623965671ad10bc029-0n61cux97zm4.jpg"
-                  alt="Contact us"
-                  className="h-[650px] w-auto"
-                />
-              </div>
             </div>
           </div>
         </div>

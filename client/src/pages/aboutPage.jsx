@@ -18,7 +18,7 @@ const sections = [
 		id: 2,
 		title: 'Vision',
 		description:
-			'kizush Construction is an authority in design and renovation services, known for our commitment to quality and client satisfaction. Our vision is to be the trusted source for clients seeking personalized and exceptional renovation experiences, setting the standard for excellence within our community.',
+			'Kizush Construction is an authority in design and renovation services, known for our commitment to quality and client satisfaction. Our vision is to be the trusted source for clients seeking personalized and exceptional renovation experiences, setting the standard for excellence within our community.',
 		image:
 			'/medias/kizush_hat.png',
 		imageAlt: 'Monochrome sitting area ',
@@ -28,18 +28,16 @@ const sections = [
 const TeamBio = [
 	{
 		id: 1,
-		title: 'Kizzy: Father, Owner, Visionary',
+		title: 'Kizzy: Owner, Visionary',
 		image:
 			'/medias/kizush_difference.jpg',
 		paragraphs: [
-			"Meet Kizzy, the visionary behind Kizush Constructions’ growing reputation for quality craftsmanship and thoughtful design. With a deep passion for building and over ten years of hands-on experience across Canada, Kizzy brings energy, precision, and a personal commitment to excellence in every project.",
+			"Meet Kizzy, the visionary behind Kizush Constructions’ growing reputation for quality craftsmanship and thoughtful design. With a deep passion for building and over twenty years of hands-on experience across Canada, Kizzy brings energy, precision, and a personal commitment to excellence in every project.",
 
 "At the heart of Kizzy’s work is a belief that every home should be a reflection of integrity, functionality, and beauty. Whether it's a custom build or a renovation, clients quickly learn that working with Kizzy is more than a transaction—it's a collaboration built on trust, clear communication, and shared goals.",
 
-"Outside the construction world, Kizzy finds joy in time with family, giving back to the community, and living out his faith. He sees Kizush Constructions not just as a business, but as a calling—an opportunity to serve others while building lasting spaces that truly feel like home."
+"He sees Kizush Constructions not just as a business, but as a calling—an opportunity to serve others while building lasting spaces that truly feel like home."
 		],
-		quote:
-			'Recognizing, as the owner of this business, that I am a steward of this company; I will lead with the endeavour of constantly striving to honour God in all I say and do.',
 	},
 ];
 

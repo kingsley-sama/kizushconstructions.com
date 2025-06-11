@@ -19,7 +19,7 @@ const Projects = () => {
 		{
 			src: '/project_images/project_four.png',
 			alt: 'Simcoe County',
-			caption: 'S',
+			caption: '',
 			id: '4',
 		},
 		{
