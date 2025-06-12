@@ -8,46 +8,29 @@ const TeamMemberBio = ({
 	quote,
 	layout = {
 		direction: 'row', // 'row' or 'column'
-		imageWidth: '60%', // width of image container for row layout
-		contentWidth: '60%', // width of content container for row layout
-		containerWidth: '80%', // max container width (inline style)
+		imageWidth: 'lg:w-1/2', // Tailwind width class for image
+		contentWidth: 'lg:w-1/2', // Tailwind width class for content
+		containerWidth: 'max-w-5xl', // Tailwind max-width class
 	},
-	imgProps = {
-		alt: '',
-	},
+	imgProps = { alt: '' },
 	children,
 }) => {
-	// For row layout, we set inline styles on medium screens; for column layout, full width
-	const imageStyle =
-		layout.direction === 'row'
-			? { width: layout.imageWidth }
-			: { width: '100%' };
-	const contentStyle =
-		layout.direction === 'row'
-			? { width: layout.contentWidth }
-			: { width: '100%' };
+	const isRow = layout.direction === 'row';
 
 	return (
-		<div className='bg-[#f5f5f5]'>
-			<div
-				className='container mx-auto p-4'
-				style={{ maxWidth: layout.containerWidth }}>
-				{/* 
-        The default flex direction is column (mobile) and on md screens, if a row layout is desired, we switch to flex-row.
-      */}
+		<div className='bg-[#f5f5f5] py-8'>
+			<div className={`mx-auto px-4 ${layout.containerWidth}`}>
 				<div
-					className={`flex flex-col md:${
-						layout.direction === 'row' ? 'flex-row' : 'flex-col'
-					} gap-6 items-center`}>
+					className={`flex flex-col gap-6 items-center ${
+						isRow ? 'lg:flex-row' : ''
+					}`}>
 					{/* Image Section */}
-					<div
-						className='w-full'
-						style={imageStyle}>
+					<div className={`w-full ${isRow ? layout.imageWidth : ''}`}>
 						{typeof image === 'string' ? (
 							<img
 								src={image}
 								alt={imgProps.alt}
-								className='w-2/3 h-auto rounded shadow-md'
+								className='w-full h-auto rounded shadow-md'
 							/>
 						) : (
 							image
@@ -55,18 +38,16 @@ const TeamMemberBio = ({
 					</div>
 
 					{/* Content Section */}
-					<div
-						className='w-full'
-						style={contentStyle}>
+					<div className={`w-full ${isRow ? layout.contentWidth : ''}`}>
 						{title && (
-							<h2 className='text-2xl sm:text-3xl font-semibold mb-5 text-gray-800'>
+							<h2 className='text-2xl sm:text-3xl font-semibold mb-5 text-primary'>
 								{title}
 							</h2>
 						)}
 						{paragraphs.map((para, index) => (
 							<p
 								key={index}
-								className='mb-4 text-gray-600 leading-relaxed'>
+								className='mb-4 text-primary leading-relaxed'>
 								{para}
 							</p>
 						))}
@@ -84,9 +65,15 @@ TeamMemberBio.propTypes = {
 	image: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	paragraphs: PropTypes.arrayOf(PropTypes.string),
 	quote: PropTypes.string,
-	layout: PropTypes.object,
+	layout: PropTypes.shape({
+		direction: PropTypes.oneOf(['row', 'column']),
+		imageWidth: PropTypes.string,
+		contentWidth: PropTypes.string,
+		containerWidth: PropTypes.string,
+	}),
 	imgProps: PropTypes.object,
 	children: PropTypes.node,
 };
 
 export default TeamMemberBio;
+
